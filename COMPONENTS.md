@@ -4,12 +4,8 @@
 
 - [Laravel](http://laravel.com)
 	- Version: 4.2.7
-- [Flysystem](http://flysystem.thephpleague.com/)
-	- Version: 0.5.3
 - [Fractal](http://fractal.thephpleague.com/)
 	- Version: 0.9.1
-- [AWS SDK](https://aws.amazon.com/sdkforphp/)
-	- Version: 2.6.12
 - [Parsedown](http://parsedown.org/)
 	- Version: 1.0.1
 - [Browser](https://github.com/Ikimea/Browser)
