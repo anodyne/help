@@ -1,0 +1,38 @@
+{
+	"require": {
+		"laravel/framework": "4.2.*",
+		"league/fractal": "~0.8",
+		"erusev/parsedown": "~1.0",
+		"ikimea/browser": "~1.0",
+		"laracasts/presenter": "~0.1",
+		"guzzlehttp/guzzle": "~4.0",
+		"daylerees/sanitizer": "*",
+		"zizaco/entrust": "1.2.*"
+	},
+
+	"require-dev": {
+		"raveren/kint": "dev-master",
+		"fzaninotto/faker": "*"
+	},
+
+	"autoload": {
+		"classmap": [
+			"Help/database/migrations",
+			"Help/database/seeds"
+		],
+		
+		"psr-4": {
+			"Help\\": "Help\\Web",
+			"Help\\Api\\": "Help\\Api",
+			"Help\\Extensions\\": "Help\\Extensions"
+		}
+	},
+	
+	"config": {
+		"preferred-install": "dist",
+		"process-timeout": 500
+	},
+
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
