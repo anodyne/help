@@ -1,0 +1,12 @@
+.DS_Store
+
+.env.local.php
+.env.php
+bootstrap/compiled.php
+vendor
+
+*.sublime-project
+*.sublime-workspace
+config.codekit
+
+Help/assets/*
