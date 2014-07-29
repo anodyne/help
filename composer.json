@@ -17,14 +17,15 @@
 
 	"autoload": {
 		"classmap": [
-			"Help/database/migrations",
-			"Help/database/seeds"
+			"Anodyne/Help/database/migrations",
+			"Anodyne/Help/database/seeds"
 		],
 		
 		"psr-4": {
-			"Help\\": "Help\\Web",
-			"Help\\Api\\": "Help\\Api",
-			"Help\\Extensions\\": "Help\\Extensions"
+			"Help\\": "Anodyne\\Help\\Web",
+			"Help\\Api\\": "Anodyne\\Help\\Api",
+			"Help\\Extensions\\": "Anodyne\\Help\\Extensions",
+			"Help\\Foundation\\": "Anodyne\\Help\\Foundation"
 		}
 	},
 	
