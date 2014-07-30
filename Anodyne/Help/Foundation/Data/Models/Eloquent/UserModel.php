@@ -2,7 +2,6 @@
 
 use Str,
 	Hash,
-	Model,
 	Config;
 use Zizaco\Entrust\HasRole;
 use Illuminate\Auth\UserTrait,
@@ -12,7 +11,7 @@ use Illuminate\Auth\UserTrait,
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class UserModel extends Model implements UserInterface, RemindableInterface {
+class UserModel extends \Model implements UserInterface, RemindableInterface {
 
 	use HasRole;
 	use UserTrait;
@@ -31,7 +30,7 @@ class UserModel extends Model implements UserInterface, RemindableInterface {
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-	protected $presenter = 'Help\Presenters\UserPresenter';
+	protected $presenter = 'Help\Foundation\Data\Presenters\UserPresenter';
 
 	// Hash the password automatically
 	public static $passwordAttributes  = ['password'];
