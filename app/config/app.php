@@ -189,7 +189,16 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
-		'Date'		=> 'Carbon\Carbon',
+		'Date'				=> 'Carbon\Carbon',
+		'Model'				=> 'Help\Extensions\Laravel\Database\Eloquent\Model',
+
+		'ArticleModel'		=> 'Help\Foundation\Data\Models\Eloquent\ArticleModel',
+		'CommentModel'		=> 'Help\Foundation\Data\Models\Eloquent\CommentModel',
+		'FlagModel'			=> 'Help\Foundation\Data\Models\Eloquent\FlagModel',
+		'QuestionModel'		=> 'Help\Foundation\Data\Models\Eloquent\QuestionModel',
+		'RatingModel'		=> 'Help\Foundation\Data\Models\Eloquent\RatingModel',
+		'TagModel'			=> 'Help\Foundation\Data\Models\Eloquent\TagModel',
+		'UserModel'			=> 'Help\Foundation\Data\Models\Eloquent\UserModel',
 
 	),
 
