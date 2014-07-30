@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'paths' => array(__DIR__.'/../../Help/Web/views'),
+	'paths' => array(__DIR__.'/../../Anodyne/Help/Web/views'),
 
 	/*
 	|--------------------------------------------------------------------------

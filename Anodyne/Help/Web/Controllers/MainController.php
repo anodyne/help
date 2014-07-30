@@ -1,3 +1,12 @@
 <?php namespace Help\Controllers;
 
-class MainController extends BaseController {}
+use View;
+
+class MainController extends BaseController {
+
+	public function index()
+	{
+		return View::make('pages.home');
+	}
+
+}
