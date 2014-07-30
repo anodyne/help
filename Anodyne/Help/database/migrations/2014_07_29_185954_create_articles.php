@@ -15,6 +15,8 @@ class CreateArticles extends Migration {
 		Schema::create('articles', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
+			$table->integer('product_id')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->string('title');
 			$table->string('summary');
 			$table->string('slug');
