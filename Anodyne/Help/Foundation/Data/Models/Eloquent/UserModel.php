@@ -2,14 +2,14 @@
 
 use Str,
 	Hash,
-	Config;
+	Config,
+	SoftDeletingTrait;
 use Zizaco\Entrust\HasRole;
 use Illuminate\Auth\UserTrait,
 	Illuminate\Auth\UserInterface,
 	Illuminate\Auth\Reminders\RemindableTrait,
 	Illuminate\Auth\Reminders\RemindableInterface;
 use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class UserModel extends \Model implements UserInterface, RemindableInterface {
 

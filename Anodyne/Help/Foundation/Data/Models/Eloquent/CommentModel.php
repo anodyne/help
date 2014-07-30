@@ -1,7 +1,7 @@
 <?php namespace Help\Foundation\Data\Models\Eloquent;
 
+use SoftDeletingTrait;
 use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class CommentModel extends \Model {
 

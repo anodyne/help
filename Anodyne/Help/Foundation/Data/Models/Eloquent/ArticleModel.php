@@ -1,8 +1,7 @@
 <?php namespace Help\Foundation\Data\Models\Eloquent;
 
-use Str;
+use Str, SoftDeletingTrait;
 use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class ArticleModel extends \Model {
 
