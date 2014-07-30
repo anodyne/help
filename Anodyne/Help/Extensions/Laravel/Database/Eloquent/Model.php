@@ -3,14 +3,14 @@
 use Date;
 use LaravelBook\Ardent\Ardent;
 
-class Model extends Ardent {
+abstract class Model extends Ardent {
 
 	// Hydrate models from the input array
-	public $autoHydrateEntityFromInput = true;
-	public $forceEntityHydrationFromInput = true;
+	public $autoHydrateEntityFromInput = false;
+	public $forceEntityHydrationFromInput = false;
 
 	// Get rid of attributes we don't need
-	public $autoPurgeRedundantAttributes = true;
+	public $autoPurgeRedundantAttributes = false;
 	
 	/*
 	|--------------------------------------------------------------------------
