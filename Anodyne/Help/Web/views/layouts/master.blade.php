@@ -6,7 +6,7 @@
 		<meta name="description" content="AnodyneXtras is a one-stop-shop for skins, MODs, and rank sets for Anodyne Productions' Nova software.">
 		<meta name="author" content="Anodyne Productions">
 		<meta name="viewport" content="width=device-width">
-		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v2') }}">
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v1') }}">
 		<link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon.png') }}">
 
 		<!--[if lt IE 9]>
