@@ -1,9 +1,9 @@
-<!doctype html>
-<html lang="en" ng-app="xtrasApp">
+<!DOCTYPE html>
+<html lang="en" ng-app="helpApp">
 	<head>
 		<meta charset="utf-8">
 		<title>@yield('title') &bull; Anodyne Help Center</title>
-		<meta name="description" content="AnodyneXtras is a one-stop-shop for skins, MODs, and rank sets for Anodyne Productions' Nova software.">
+		<meta name="description" content="The Anodyne Help Center is a knowledge base for information and articles relating to the services and products offered by Anodyne Productions.">
 		<meta name="author" content="Anodyne Productions">
 		<meta name="viewport" content="width=device-width">
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v1') }}">
@@ -34,18 +34,16 @@
 
 						@if (Auth::check())
 							<li class="dropdown">
-								<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{{ $_icons['user'] }}</span> {{ Auth::user()->present()->name }} <span class="caret"></span></a>
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{{ $_icons['user'] }}</span> {{ $_currentUser->present()->name }} <span class="caret"></span></a>
 								<ul class="dropdown-menu dropdown-menu-right dd">
-									<li><a href="{{ route('account.xtras', [$_currentUser->slug]) }}">My Xtras</a></li>
-									
-									@if ($_currentUser->can('xtras.item.create'))
-										<li><a href="{{ route('item.create') }}">Create New Xtra</a></li>
+									@if ($_currentUser->can('help.article.create'))
+										<li><a href="{{ route('item.create') }}">Create New Article</a></li>
+										<li class="divider"></li>
 									@endif
-									<li class="divider"></li>
 									<li><a href="{{ route('account.profile', [$_currentUser->slug]) }}">My Profile</a></li>
 									<li><a href="{{ route('account.edit', [$_currentUser->slug]) }}">Edit My Profile</a></li>
 
-									@if ($_currentUser->can('xtras.admin'))
+									@if ($_currentUser->can('help.admin'))
 										<li class="divider"></li>
 										<li><a href="{{ route('admin') }}">Admin</a></li>
 									@endif
@@ -54,6 +52,8 @@
 									<li><a href="{{ route('logout') }}">Logout</a></li>
 								</ul>
 							</li>
+						@else
+							<li><a href="{{ route('login') }}">Log In</a></li>
 						@endif
 					</ul>
 
@@ -86,13 +86,13 @@
 						</div>
 
 						<div class="col-md-4">
-							{{ Form::open(['url' => '']) }}
+							{{ Form::open(['route' => 'search.do']) }}
 								<div class="header-search">
 									<div class="input-group">
-										{{ Form::text('search', null, array('placeholder' => 'Search Help Center', 'class' => 'input-sm form-control search-field')) }}
-										<span class="input-group-btn">{{ Form::button('Search', array('class' => 'btn btn-default btn-sm', 'type' => 'submit')) }}</span>
+										{{ Form::text('search', null, ['placeholder' => 'Search the Help Center', 'class' => 'input-sm form-control search-field']) }}
+										<span class="input-group-btn">{{ Form::button('Search', ['class' => 'btn btn-default btn-sm', 'type' => 'submit']) }}</span>
 									</div>
-									<a href="#" class="search-advanced">Advanced Search</a>
+									<a href="{{ route('search.advanced') }}" class="search-advanced">Advanced Search</a>
 								</div>
 							{{ Form::close() }}
 						</div>
@@ -159,8 +159,6 @@
 			<!--<![endif]-->
 
 			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-			<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
-			<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular-sanitize.min.js"></script>
 			<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 			<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 		@else
@@ -172,8 +170,6 @@
 			<!--<![endif]-->
 
 			<script src="//localhost/global/bootstrap/3.2/js/bootstrap.min.js"></script>
-			<script src="//localhost/global/angular/1.3/angular.min.js"></script>
-			<script src="//localhost/global/angular/1.3/angular-sanitize.min.js"></script>
 			<script src="//localhost/global/jquery.validate/1.13/jquery.validate.min.js"></script>
 			<script src="//localhost/global/jquery.validate/1.13/additional-methods.min.js"></script>
 		@endif
