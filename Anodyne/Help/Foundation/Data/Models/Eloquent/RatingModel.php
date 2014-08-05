@@ -2,7 +2,7 @@
 
 use Laracasts\Presenter\PresentableTrait;
 
-class ItemRatingModel extends \Model {
+class RatingModel extends \Model {
 
 	use PresentableTrait;
 
