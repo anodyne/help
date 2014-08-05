@@ -9,13 +9,12 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		//$this->call('ProductSeeder');
-		//$this->call('TagSeeder');
+		$this->call('ProductSeeder');
+		$this->call('TagSeeder');
 
 		if (App::environment() != 'production')
 		{
-			//$this->call('ArticleSeeder');
-			//$this->call('FeedbackSeeder');
+			$this->call('ArticleSeeder');
 			//$this->call('QuestionSeeder');
 		}
 	}
