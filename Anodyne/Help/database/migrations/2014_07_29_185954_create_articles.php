@@ -22,6 +22,7 @@ class CreateArticles extends Migration {
 			$table->string('slug');
 			$table->text('content');
 			$table->integer('status');
+			$table->float('rating')->default(0);
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -11,7 +11,7 @@ class ArticleModel extends \Model {
 	protected $table = 'articles';
 
 	protected $fillable = ['user_id', 'product_id', 'title', 'summary', 'slug',
-		'content', 'status'];
+		'content', 'status', 'rating'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -64,6 +64,29 @@ class ArticleModel extends \Model {
 		$this->attributes['slug'] = ( ! empty($value)) 
 			? $value 
 			: Str::slug(Str::lower($this->attributes['title']));
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Methods
+	|---------------------------------------------------------------------------
+	*/
+
+	public function getRating()
+	{
+		$rating = 0;
+
+		if ($this->ratings->count() > 0)
+		{
+			foreach ($this->ratings as $r)
+			{
+				$rating += $r->rating;
+			}
+
+			return (float) round($rating/$this->ratings->count(), 2);
+		}
+
+		return $rating;
 	}
 
 }
