@@ -227,16 +227,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.1.4",
+            "version": "4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "5ae164dae6e65784286a698800190bc094407f7c"
+                "reference": "e49ad58038b46a0d7739627a72f6d998cd92d3d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/5ae164dae6e65784286a698800190bc094407f7c",
-                "reference": "5ae164dae6e65784286a698800190bc094407f7c",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/e49ad58038b46a0d7739627a72f6d998cd92d3d6",
+                "reference": "e49ad58038b46a0d7739627a72f6d998cd92d3d6",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-07-23 00:52:39"
+            "time": "2014-08-03 20:38:45"
         },
         {
             "name": "guzzlehttp/streams",
@@ -527,16 +527,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "11c1b47b365be02beab3e5aca2306aaa08203d8e"
+                "reference": "e60ea917ab862254a6db37fa9cb8933138c1e73c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/11c1b47b365be02beab3e5aca2306aaa08203d8e",
-                "reference": "11c1b47b365be02beab3e5aca2306aaa08203d8e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e60ea917ab862254a6db37fa9cb8933138c1e73c",
+                "reference": "e60ea917ab862254a6db37fa9cb8933138c1e73c",
                 "shasum": ""
             },
             "require": {
@@ -638,7 +638,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-07-22 20:25:45"
+            "time": "2014-08-05 19:52:17"
         },
         {
             "name": "laravelbook/ardent",
@@ -919,16 +919,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.24",
+            "version": "v1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "40f552c019956f446553b19f7de2da2f9c74d730"
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/40f552c019956f446553b19f7de2da2f9c74d730",
-                "reference": "40f552c019956f446553b19f7de2da2f9c74d730",
+                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
                 "shasum": ""
             },
             "require": {
@@ -941,6 +941,11 @@
                 "ext-mbstring": "Use Mbstring for best performance"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Patchwork": "class/",
@@ -966,7 +971,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-06-17 08:23:06"
+            "time": "2014-08-05 08:00:32"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1067,16 +1072,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v0.8.6",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "239864d9a0929f29bf8c5a8370ef743537c4953d"
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/239864d9a0929f29bf8c5a8370ef743537c4953d",
-                "reference": "239864d9a0929f29bf8c5a8370ef743537c4953d",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/4123fcd85d61354c6c9900db76c9597dbd129bf6",
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6",
                 "shasum": ""
             },
             "require": {
@@ -1113,7 +1118,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2014-07-15 09:54:33"
+            "time": "2014-08-01 09:43:10"
         },
         {
             "name": "psr/log",
@@ -2061,16 +2066,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "cedbfb4f7c0c43b7eea4498c0a85f906e7972652"
+                "reference": "7077e50c24f814440e6abba5a9963def8315d0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/cedbfb4f7c0c43b7eea4498c0a85f906e7972652",
-                "reference": "cedbfb4f7c0c43b7eea4498c0a85f906e7972652",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/7077e50c24f814440e6abba5a9963def8315d0cd",
+                "reference": "7077e50c24f814440e6abba5a9963def8315d0cd",
                 "shasum": ""
             },
             "require": {
@@ -2080,8 +2085,9 @@
             },
             "require-dev": {
                 "illuminate/database": "~4.0",
-                "mockery/mockery": "~0.8",
-                "zizaco/factory-muff": "~1.5"
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "symfony/process": "~2.3"
             },
             "suggest": {
                 "zizaco/confide": "Confide is an authentication solution for Laravel 4 that couples very well with Entrust"
@@ -2096,8 +2102,8 @@
                 "classmap": [
                     "src/commands"
                 ],
-                "psr-0": {
-                    "Zizaco\\Entrust": "src/"
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2106,13 +2112,12 @@
             ],
             "authors": [
                 {
-                    "name": "Zizaco Zizuini",
-                    "email": "zizaco@gmail.com",
-                    "homepage": "http://www.zizaco.net"
-                },
-                {
                     "name": "Andrew Elkins",
                     "homepage": "http://www.andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
                 }
             ],
             "description": "This package provides a flexible way to add Role-based Permissions to Laravel 4",
@@ -2122,7 +2127,7 @@
                 "laravel",
                 "roles"
             ],
-            "time": "2014-07-18 04:57:57"
+            "time": "2014-08-03 21:35:45"
         }
     ],
     "packages-dev": [
@@ -2182,12 +2187,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/raveren/kint.git",
-                "reference": "590e3fcc3fd4234a8d5e844ce783c82464401d7f"
+                "reference": "cd801406b28cfa74d257bbd4f9e9fdddf59390c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raveren/kint/zipball/590e3fcc3fd4234a8d5e844ce783c82464401d7f",
-                "reference": "590e3fcc3fd4234a8d5e844ce783c82464401d7f",
+                "url": "https://api.github.com/repos/raveren/kint/zipball/cd801406b28cfa74d257bbd4f9e9fdddf59390c5",
+                "reference": "cd801406b28cfa74d257bbd4f9e9fdddf59390c5",
                 "shasum": ""
             },
             "require": {
@@ -2220,7 +2225,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2014-03-20 13:38:44"
+            "time": "2014-08-04 19:57:55"
         }
     ],
     "aliases": [
