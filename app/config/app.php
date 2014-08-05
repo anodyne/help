@@ -122,6 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		'Help\HelpServiceProvider',
+		'Help\HelpRoutingServiceProvider',
+
 	),
 
 	/*
@@ -190,15 +193,22 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 
 		'Date'				=> 'Carbon\Carbon',
+		'Flash'				=> 'Help\Foundation\Facades\FlashFacade',
+		'Markdown'			=> 'Help\Foundation\Facades\MarkdownFacade',
 		'Model'				=> 'Help\Extensions\Laravel\Database\Eloquent\Model',
 
 		'ArticleModel'		=> 'Help\Foundation\Data\Models\Eloquent\ArticleModel',
 		'CommentModel'		=> 'Help\Foundation\Data\Models\Eloquent\CommentModel',
 		'FlagModel'			=> 'Help\Foundation\Data\Models\Eloquent\FlagModel',
+		'ProductModel'		=> 'Help\Foundation\Data\Models\Eloquent\ProductModel',
 		'QuestionModel'		=> 'Help\Foundation\Data\Models\Eloquent\QuestionModel',
 		'RatingModel'		=> 'Help\Foundation\Data\Models\Eloquent\RatingModel',
 		'TagModel'			=> 'Help\Foundation\Data\Models\Eloquent\TagModel',
 		'UserModel'			=> 'Help\Foundation\Data\Models\Eloquent\UserModel',
+
+		'ArticleRepositoryInterface'	=> 'Help\Foundation\Data\Interfaces\ArticleRepositoryInterface',
+
+		'ArticleRepository'		=> 'Help\Foundation\Data\Repositories\Eloquent\ArticleRepository',
 
 	),
 
