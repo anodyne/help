@@ -12,7 +12,8 @@
 
 	"require-dev": {
 		"raveren/kint": "dev-master",
-		"fzaninotto/faker": "*"
+		"fzaninotto/faker": "*",
+		"barryvdh/laravel-debugbar": "1.*"
 	},
 
 	"autoload": {
@@ -35,5 +36,9 @@
 	},
 
 	"minimum-stability": "dev",
-	"prefer-stable": true
+	"prefer-stable": true,
+
+	"post-update-cmd": [
+		"php artisan debugbar:publish"
+	]
 }
