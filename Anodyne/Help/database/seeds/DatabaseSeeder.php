@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		$this->call('ProductSeeder');
 		$this->call('TagSeeder');
+		$this->call('RoleSeeder');
 
 		if (App::environment() != 'production')
 		{
