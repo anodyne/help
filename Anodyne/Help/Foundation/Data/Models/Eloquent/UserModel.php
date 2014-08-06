@@ -42,10 +42,10 @@ class UserModel extends \Model implements UserInterface, RemindableInterface {
 	|--------------------------------------------------------------------------
 	*/
 
-	public static $relationsData = [
-		'items'		=> [self::HAS_MANY, 'ItemModel', 'foreignKey' => 'user_id'],
-		'orders'	=> [self::HAS_MANY, 'OrderModel', 'foreignKey' => 'user_id'],
-	];
+	public function articles()
+	{
+		return $this->hasMany('ArticleModel', 'user_id');
+	}
 
 	/*
 	|---------------------------------------------------------------------------
@@ -79,7 +79,7 @@ class UserModel extends \Model implements UserInterface, RemindableInterface {
 
 	public function roles()
     {
-        return $this->belongsToMany(
+    	return $this->belongsToMany(
         	Config::get('entrust::role'),
         	Config::get('entrust::assigned_roles_table'),
         	'user_id',

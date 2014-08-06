@@ -37,7 +37,7 @@
 								<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{{ $_icons['user'] }}</span> {{ $_currentUser->present()->name }} <span class="caret"></span></a>
 								<ul class="dropdown-menu dropdown-menu-right dd">
 									@if ($_currentUser->can('help.article.create'))
-										<li><a href="{{ route('item.create') }}">Create New Article</a></li>
+										<li><a href="{{ route('article.create') }}">Create New Article</a></li>
 										<li class="divider"></li>
 									@endif
 									<li><a href="{{ route('account.profile', [$_currentUser->slug]) }}">My Profile</a></li>
@@ -128,10 +128,10 @@
 							<li><a href="{{ route('home') }}">Home</a></li>
 
 							@if (Auth::check())
-								<li><a href="{{ route('account.xtras') }}">My Xtras</a></li>
-								<li><a href="{{ route('skins') }}">Skins</a></li>
-								<li><a href="{{ route('ranks') }}">Ranks</a></li>
-								<li><a href="{{ route('mods') }}">MODs</a></li>
+								<li><a href="#">My Xtras</a></li>
+								<li><a href="#">Skins</a></li>
+								<li><a href="#">Ranks</a></li>
+								<li><a href="#">MODs</a></li>
 							@endif
 						</ul>
 					</div>

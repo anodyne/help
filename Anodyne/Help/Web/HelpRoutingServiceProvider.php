@@ -17,6 +17,7 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 		$this->accountRoutes();
 		$this->miscRoutes();
 		$this->adminRoutes();
+		$this->articleRoutes();
 	}
 
 	protected function routeProtections()
@@ -144,6 +145,18 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 			Route::resource('products', 'ProductsController', ['except' => ['show']]);
 			Route::resource('types', 'TypesController', ['except' => ['show']]);
 			Route::resource('items', 'ItemsController', ['except' => ['show']]);
+		});
+	}
+
+	protected function articleRoutes()
+	{
+		$groupOptions = [
+			'namespace' => 'Xtras\Controllers\Admin'
+		];
+
+		Route::group($groupOptions, function()
+		{
+			Route::resource('article', 'ArticleController');
 		});
 	}
 

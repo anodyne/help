@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/New_York',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => $_ENV['APP_KEY'],
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -124,6 +124,8 @@ return array(
 
 		'Help\HelpServiceProvider',
 		'Help\HelpRoutingServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 
@@ -193,6 +195,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 
 		'Date'				=> 'Carbon\Carbon',
+		'Debugbar'			=> 'Barryvdh\Debugbar\Facade',
 		'Flash'				=> 'Help\Foundation\Facades\FlashFacade',
 		'Markdown'			=> 'Help\Foundation\Facades\MarkdownFacade',
 		'Model'				=> 'Help\Extensions\Laravel\Database\Eloquent\Model',
@@ -200,9 +203,11 @@ return array(
 		'ArticleModel'		=> 'Help\Foundation\Data\Models\Eloquent\ArticleModel',
 		'CommentModel'		=> 'Help\Foundation\Data\Models\Eloquent\CommentModel',
 		'FlagModel'			=> 'Help\Foundation\Data\Models\Eloquent\FlagModel',
+		'PermissionModel'	=> 'Help\Foundation\Data\Models\Eloquent\PermissionModel',
 		'ProductModel'		=> 'Help\Foundation\Data\Models\Eloquent\ProductModel',
 		'QuestionModel'		=> 'Help\Foundation\Data\Models\Eloquent\QuestionModel',
 		'RatingModel'		=> 'Help\Foundation\Data\Models\Eloquent\RatingModel',
+		'RoleModel'			=> 'Help\Foundation\Data\Models\Eloquent\RoleModel',
 		'TagModel'			=> 'Help\Foundation\Data\Models\Eloquent\TagModel',
 		'UserModel'			=> 'Help\Foundation\Data\Models\Eloquent\UserModel',
 
