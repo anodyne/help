@@ -9,4 +9,7 @@ vendor
 *.sublime-workspace
 config.codekit
 
-Help/assets/*
+app/config/packages/barryvdh/*
+app/storage/debugbar/
+public/packages/barryvdh/*
+public/packages/maximebf/*
