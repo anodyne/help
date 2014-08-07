@@ -2309,6 +2309,7 @@
     "stability-flags": {
         "raveren/kint": 20
     },
+    "prefer-stable": true,
     "platform": [
 
     ],
