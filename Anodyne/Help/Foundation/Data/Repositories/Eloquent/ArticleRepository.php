@@ -5,14 +5,22 @@ use ArticleModel,
 
 class ArticleRepository implements ArticleRepositoryInterface {
 
-	public function getPopularArticles($number)
+	public function getByProduct($product)
 	{
-		return ArticleModel::orderBy('rating', 'desc')->take($number)->get();
+		return ArticleModel::with('tags', 'product')
+			->product($product)->orderBy('rating', 'desc')->get();
 	}
 
-	public function getLatestArticles($number)
+	public function getPopular($number)
 	{
-		return ArticleModel::orderBy('created_at', 'desc')->take($number)->get();
+		return ArticleModel::with('tags', 'product')
+			->orderBy('rating', 'desc')->take($number)->get();
+	}
+
+	public function getLatest($number)
+	{
+		return ArticleModel::with('tags', 'product')
+			->orderBy('created_at', 'desc')->take($number)->get();
 	}
 
 }

@@ -55,14 +55,26 @@ class ArticleModel extends \Model {
 
 	/*
 	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeProduct($query, $product)
+	{
+		$query->join('products', 'articles.product_id', '=', 'products.id')
+			->where('products.name', 'like', "%{$product}%");
+	}
+
+	/*
+	|---------------------------------------------------------------------------
 	| Model Accessors/Mutators
 	|---------------------------------------------------------------------------
 	*/
 
 	public function setSlugAttribute($value)
 	{
-		$this->attributes['slug'] = ( ! empty($value)) 
-			? $value 
+		$this->attributes['slug'] = ( ! empty($value))
+			? $value
 			: Str::slug(Str::lower($this->attributes['title']));
 	}
 

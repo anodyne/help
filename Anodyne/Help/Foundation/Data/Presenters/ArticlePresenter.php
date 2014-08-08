@@ -1,6 +1,6 @@
 <?php namespace Help\Foundation\Data\Presenters;
 
-use URL, HTML, View, Markdown;
+use URL, HTML, View, Config, Markdown;
 use Laracasts\Presenter\Presenter;
 
 class ArticlePresenter extends Presenter {
@@ -23,6 +23,29 @@ class ArticlePresenter extends Presenter {
 	public function productLabel()
 	{
 		return View::make('partials.product')->withContent($this->product());
+	}
+
+	public function rating()
+	{
+		return (float) $this->entity->rating;
+	}
+
+	public function ratingLabel()
+	{
+		$type = 'danger';
+
+		if ($this->rating() >= 4)
+		{
+			$type = 'info';
+		}
+		elseif ($this->rating() >= 2)
+		{
+			$type = 'warning';
+		}
+
+		return View::make('partials.label')
+			->withType($type)
+			->withContent(Config::get('icons.star').' '.$this->rating());
 	}
 
 	public function summary()

@@ -2,7 +2,8 @@
 
 interface ArticleRepositoryInterface {
 
-	public function getPopularArticles($number);
-	public function getLatestArticles($number);
+	public function getByProduct($product);
+	public function getPopular($number);
+	public function getLatest($number);
 
 }
