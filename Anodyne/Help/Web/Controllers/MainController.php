@@ -21,8 +21,8 @@ class MainController extends BaseController {
 	public function index()
 	{
 		return View::make('pages.home')
-			->withLatest($this->articles->getLatestArticles(5))
-			->withHelpful($this->articles->getPopularArticles(5));
+			->withLatest($this->articles->getLatest(5))
+			->withHelpful($this->articles->getPopular(5));
 	}
 
 	public function login()
@@ -60,7 +60,7 @@ class MainController extends BaseController {
 			{
 				return Redirect::intended('home');
 			}
-			
+
 			return Redirect::route('home');
 		}
 
@@ -73,7 +73,7 @@ class MainController extends BaseController {
 	public function logout()
 	{
 		Auth::logout();
-		
+
 		return Redirect::route('home');
 	}
 
