@@ -37,7 +37,7 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 		Route::get('logout', [
 			'as'	=> 'logout',
 			'uses'	=> 'Help\Controllers\MainController@logout']);
-		
+
 		Route::get('register', [
 			'as'	=> 'register',
 			'uses'	=> 'Help\Controllers\MainController@register']);
@@ -153,6 +153,10 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 		$groupOptions = [
 			'namespace' => 'Xtras\Controllers\Admin'
 		];
+
+		Route::get('product/{product}', [
+			'as'	=> 'article.product',
+			'uses'	=> 'Help\Controllers\ArticleController@product']);
 
 		Route::group($groupOptions, function()
 		{
