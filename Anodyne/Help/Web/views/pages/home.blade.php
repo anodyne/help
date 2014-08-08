@@ -32,7 +32,7 @@
 
 			<dl>
 				@foreach ($latest as $article)
-					{{ partial('article', ['article' => $article]) }}
+					{{ partial('article', ['article' => $article, 'rating' => false]) }}
 				@endforeach
 			</dl>
 		</div>
@@ -42,7 +42,7 @@
 
 			<dl>
 				@foreach ($helpful as $article)
-					{{ partial('article', ['article' => $article]) }}
+					{{ partial('article', ['article' => $article, 'rating' => false]) }}
 				@endforeach
 			</dl>
 		</div>
