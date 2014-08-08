@@ -39,6 +39,7 @@ return array(
 
 	'remove' => '<span class="icn" data-icon="-"></span>',
 
+	'star' => '<span class="octicon octicon-star"></span>',
 	'starFull' => '<span class="icn" data-icon="s"></span>',
 	'starEmpty' => '<span class="icn" data-icon="r"></span>',
 	'settings' => '<span class="icn" data-icon="g"></span>',
