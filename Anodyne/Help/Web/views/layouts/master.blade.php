@@ -79,8 +79,9 @@
 						<div class="col-md-4">
 							<nav class="nav-sub">
 								<ul>
-									<li><a href="#">Nova 2</a></li>
-									<li><a href="#">Nova 3</a></li>
+									<li><a href="{{ route('article.product', ['Nova+2']) }}">Nova 2</a></li>
+									<li><a href="{{ route('article.product', ['Nova+3']) }}">Nova 3</a></li>
+									<li><a href="{{ route('article.product', ['AnodyneXtras']) }}">AnodyneXtras</a></li>
 								</ul>
 							</nav>
 						</div>
