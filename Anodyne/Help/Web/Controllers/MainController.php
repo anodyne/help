@@ -21,8 +21,8 @@ class MainController extends BaseController {
 	public function index()
 	{
 		return View::make('pages.home')
-			->withLatest($this->articles->getLatest(5))
-			->withHelpful($this->articles->getPopular(5));
+			->withLatest($this->articles->getLatest(10))
+			->withHelpful($this->articles->getPopular(10));
 	}
 
 	public function login()
