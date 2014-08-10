@@ -16,6 +16,7 @@ class CreateProducts extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name', 100);
+			$table->string('slug');
 			$table->text('desc')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
