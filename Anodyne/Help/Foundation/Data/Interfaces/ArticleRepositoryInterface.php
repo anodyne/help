@@ -7,5 +7,7 @@ interface ArticleRepositoryInterface {
 	public function getComments($id);
 	public function getPopular($number);
 	public function getLatest($number);
+	public function search($term);
+	public function searchAdvanced(array $terms);
 
 }
