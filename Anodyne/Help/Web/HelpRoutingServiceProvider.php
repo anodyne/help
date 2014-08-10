@@ -117,10 +117,10 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 
 	protected function miscRoutes()
 	{
-		Route::group(['before' => 'auth', 'namespace' => 'Xtras\Controllers'], function()
+		Route::group(['before' => 'auth', 'namespace' => 'Help\Controllers'], function()
 		{
-			Route::get('comments/{itemId}', 'CommentController@index');
-			Route::post('comments/{itemId}', 'CommentController@store');
+			Route::get('comments/{articleId}', 'CommentController@index');
+			Route::post('comments/{articleId}', 'CommentController@store');
 		});
 	}
 
@@ -151,16 +151,20 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 	protected function articleRoutes()
 	{
 		$groupOptions = [
-			'namespace' => 'Xtras\Controllers\Admin'
+			'namespace' => 'Help\Controllers'
 		];
-
-		Route::get('product/{product}', [
-			'as'	=> 'article.product',
-			'uses'	=> 'Help\Controllers\ArticleController@product']);
 
 		Route::group($groupOptions, function()
 		{
+			Route::get('product/{product}', [
+				'as'	=> 'article.product',
+				'uses'	=> 'ArticleController@product']);
+
 			Route::resource('article', 'ArticleController');
+
+			Route::get('article/{product}/{slug}', [
+				'as'	=> 'article.show',
+				'uses'	=> 'ArticleController@show']);
 		});
 	}
 
