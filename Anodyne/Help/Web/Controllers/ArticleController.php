@@ -32,9 +32,17 @@ class ArticleController extends BaseController {
 		//
 	}
 
-	public function show($id)
+	public function show($product, $slug)
 	{
-		//
+		// Get the article
+		$article = $this->articles->findByProductAndSlug($product, $slug);
+
+		if ($article->count() > 1)
+		{
+			//
+		}
+
+		return View::make('pages.article.show')->withArticle($article->first());
 	}
 
 	public function edit($id)
@@ -55,10 +63,10 @@ class ArticleController extends BaseController {
 	public function product($product)
 	{
 		// Clean up the product name
-		$productName = str_replace('+', ' ', $product);
+		$productName = $this->parseProductName($product);
 
 		// Grab the articles
-		$articles = $this->articles->getByProduct($productName);
+		$articles = $this->articles->getByProduct($product);
 
 		// Build the paginator
 		$paginator = Paginator::make($articles->toArray(), $articles->count(), 25);
@@ -67,6 +75,11 @@ class ArticleController extends BaseController {
 			->withArticles($articles)
 			->withCount($articles->count())
 			->withProduct($productName);
+	}
+
+	protected function parseProductName($product)
+	{
+		return str_replace('+', ' ', $product);
 	}
 
 }
