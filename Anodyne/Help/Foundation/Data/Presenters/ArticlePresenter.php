@@ -77,7 +77,9 @@ class ArticlePresenter extends Presenter {
 
 	public function titleWithLink()
 	{
-		return HTML::link(URL::to('#'), $this->title());
+		return HTML::link(URL::route('article.show', [
+			$this->entity->product->slug, $this->entity->slug
+		]), $this->title());
 	}
 
 }
