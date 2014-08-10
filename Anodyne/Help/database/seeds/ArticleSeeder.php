@@ -15,11 +15,11 @@ class ArticleSeeder extends Seeder {
 		{
 			$article = ArticleModel::create([
 				'product_id'	=> $faker->numberBetween(1, 5),
-				'user_id'		=> 1,
+				'user_id'		=> $faker->numberBetween(1, 25),
 				'title'			=> ucwords(implode(' ', $faker->words($faker->numberBetween(3, 10)))),
 				'summary'		=> $faker->sentence(10),
 				'slug'			=> '',
-				'content'		=> $faker->text(1000),
+				'content'		=> implode("\r\n\r\n", $faker->paragraphs($faker->numberBetween(1, 10))),
 			]);
 
 			$tagLoops = $faker->numberBetween(1, 3);
@@ -39,6 +39,18 @@ class ArticleSeeder extends Seeder {
 			}
 
 			$article->update(['rating' => $article->getRating()]);
+
+			$commentsLoop = $faker->numberBetween(0, 10);
+
+			for ($c = 1; $c <= $commentsLoop; $c++)
+			{
+				$comment = CommentModel::create([
+					'user_id'	=> $faker->numberBetween(2, 25),
+					'content'	=> $faker->text($faker->numberBetween(100, 500))
+				]);
+
+				$article->comments()->save($comment);
+			}
 		}
 	}
 
