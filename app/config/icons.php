@@ -44,6 +44,7 @@ return array(
 	'starEmpty' => '<span class="icn" data-icon="r"></span>',
 	'settings' => '<span class="icn" data-icon="g"></span>',
 	'site' => '<span class="icn" data-icon="3"></span>',
+	'share' => '<span class="icn" data-icon="a"></span>',
 
 	'tag' => '<span class="icn" data-icon="t"></span>',
 	'twitter' => '<span class="icn" data-icon="1"></span>',
