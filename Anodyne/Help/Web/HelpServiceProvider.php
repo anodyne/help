@@ -53,6 +53,8 @@ class HelpServiceProvider extends ServiceProvider {
 
 		// Set up bindings from the interface to their concrete classes
 		App::bind($a['ArticleRepositoryInterface'], $a['ArticleRepository']);
+		App::bind($a['ProductRepositoryInterface'], $a['ProductRepository']);
+		App::bind($a['TagRepositoryInterface'], $a['TagRepository']);
 
 		// Make sure we some variables available on all views
 		View::share('_currentUser', Auth::user());
