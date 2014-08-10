@@ -160,6 +160,8 @@
 			<!--<![endif]-->
 
 			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.16/angular.min.js"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.16/angular-sanitize.min.js"></script>
 			<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 			<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 		@else
@@ -171,6 +173,8 @@
 			<!--<![endif]-->
 
 			<script src="//localhost/global/bootstrap/3.2/js/bootstrap.min.js"></script>
+			<script src="//localhost/global/angular/1.3/angular.min.js"></script>
+			<script src="//localhost/global/angular/1.3/angular-sanitize.min.js"></script>
 			<script src="//localhost/global/jquery.validate/1.13/jquery.validate.min.js"></script>
 			<script src="//localhost/global/jquery.validate/1.13/additional-methods.min.js"></script>
 		@endif
