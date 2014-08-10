@@ -215,6 +215,8 @@ return array(
 
 		'ArticleRepository'		=> 'Help\Foundation\Data\Repositories\Eloquent\ArticleRepository',
 
+		'CommentTransformer'	=> 'Help\Foundation\Data\Transformers\CommentTransformer',
+
 	),
 
 );
