@@ -212,8 +212,12 @@ return array(
 		'UserModel'			=> 'Help\Foundation\Data\Models\Eloquent\UserModel',
 
 		'ArticleRepositoryInterface'	=> 'Help\Foundation\Data\Interfaces\ArticleRepositoryInterface',
+		'ProductRepositoryInterface'	=> 'Help\Foundation\Data\Interfaces\ProductRepositoryInterface',
+		'TagRepositoryInterface'		=> 'Help\Foundation\Data\Interfaces\TagRepositoryInterface',
 
 		'ArticleRepository'		=> 'Help\Foundation\Data\Repositories\Eloquent\ArticleRepository',
+		'ProductRepository'		=> 'Help\Foundation\Data\Repositories\Eloquent\ProductRepository',
+		'TagRepository'			=> 'Help\Foundation\Data\Repositories\Eloquent\TagRepository',
 
 		'CommentTransformer'	=> 'Help\Foundation\Data\Transformers\CommentTransformer',
 
