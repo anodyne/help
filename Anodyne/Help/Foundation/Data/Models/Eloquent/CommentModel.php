@@ -32,4 +32,15 @@ class CommentModel extends \Model {
 		return $this->belongsTo('UserModel', 'user_id');
 	}
 
+	/*
+	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeArticle($query, $id)
+	{
+		$query->where('article_id', $id);
+	}
+
 }

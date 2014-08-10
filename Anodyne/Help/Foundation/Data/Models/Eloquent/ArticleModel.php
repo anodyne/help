@@ -1,6 +1,6 @@
 <?php namespace Help\Foundation\Data\Models\Eloquent;
 
-use Str, SoftDeletingTrait;
+use Str, ProductModel, SoftDeletingTrait;
 use Laracasts\Presenter\PresentableTrait;
 
 class ArticleModel extends \Model {
@@ -53,16 +53,29 @@ class ArticleModel extends \Model {
 		return $this->hasMany('RatingModel', 'article_id');
 	}
 
+	public function comments()
+	{
+		return $this->hasMany('CommentModel', 'article_id')->orderBy('created_at');
+	}
+
 	/*
 	|---------------------------------------------------------------------------
 	| Model Scopes
 	|---------------------------------------------------------------------------
 	*/
 
+	public function scopeSlug($query, $slug)
+	{
+		$query->where('articles.slug', 'like', "%{$slug}%");
+	}
+
 	public function scopeProduct($query, $product)
 	{
-		$query->join('products', 'articles.product_id', '=', 'products.id')
-			->where('products.name', 'like', "%{$product}%");
+		// Find the product ID
+		$product = ProductModel::where('slug', $product)->first();
+
+		// Do the query
+		$query->where('product_id', $product->id);
 	}
 
 	/*
