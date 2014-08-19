@@ -5,7 +5,7 @@ use View,
 	Password,
 	Redirect;
 
-class RemindersController extends BaseController {
+class RemindersController extends \Controller {
 
 	public function remind()
 	{
