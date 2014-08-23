@@ -16,7 +16,7 @@ class CreateFeedback extends Migration {
 		{
 			$table->increments('id');
 			$table->bigInteger('article_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->text('content');
 			$table->timestamps();
 			$table->softDeletes();

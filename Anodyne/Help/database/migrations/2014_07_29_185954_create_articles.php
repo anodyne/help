@@ -16,7 +16,7 @@ class CreateArticles extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->integer('product_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->string('title');
 			$table->string('summary');
 			$table->string('slug');
@@ -31,7 +31,7 @@ class CreateArticles extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->bigInteger('article_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->string('type');
 			$table->text('notes')->nullable();
 			$table->boolean('resolved')->default((int) false);
