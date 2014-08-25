@@ -20,6 +20,8 @@
 	- Version: 1.2.3
 - [Ardent](https://github.com/laravelbook/ardent)
 	- Version: 2.4.2
+- [Gravatar](https://github.com/forxer/gravatar)
+	- Version: 1.2.0
 
 ## Javascript
 
