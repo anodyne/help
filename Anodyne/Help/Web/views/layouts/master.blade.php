@@ -40,8 +40,8 @@
 										<li><a href="{{ route('article.create') }}">Create New Article</a></li>
 										<li class="divider"></li>
 									@endif
-									<li><a href="{{ route('account.profile', [$_currentUser->slug]) }}">My Profile</a></li>
-									<li><a href="{{ route('account.edit', [$_currentUser->slug]) }}">Edit My Profile</a></li>
+									<li><a href="{{ route('account.profile', [$_currentUser->username]) }}">My Profile</a></li>
+									<li><a href="http://anodyne-productions.com/admin/users/{{ $_currentUser->username }}/edit">Edit My Profile</a></li>
 
 									@if ($_currentUser->can('help.admin'))
 										<li class="divider"></li>
