@@ -104,13 +104,6 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'account.profile',
 				'uses'	=> 'UserController@show'
 			));
-			Route::get('account/edit/{slug}', array(
-				'as'	=> 'account.edit',
-				'uses'	=> 'UserController@edit'
-			));
-			Route::get('my-xtras', [
-				'as'	=> 'account.xtras',
-				'uses'	=> 'UserController@xtras']);
 			Route::resource('account', 'UserController');
 		});
 	}
