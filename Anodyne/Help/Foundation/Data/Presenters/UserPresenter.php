@@ -10,11 +10,14 @@ class UserPresenter extends Presenter {
 
 	public function avatar(array $options)
 	{
-		// Figure out what the avatar file is
-		$url = ($this->entity->avatar) ?: 'no-avatar.jpg';
+		// Figure out the fallback image
+		$defaultImg = (\App::environment() == 'local') ? 'retro' : asset('images/avatars/no-avatar.jpg');
+
+		// Build the URL for the avatar
+		$url = Gravatar::image($this->entity->email, 500, $defaultImg, 'pg');
 
 		// Merge all the options to pass them to the partial
-		$mergedOptions = $options + ['url' => URL::asset('images/avatars/'.$url)];
+		$mergedOptions = $options + ['url' => $url];
 
 		return View::make('partials.image')->with($mergedOptions);
 	}
