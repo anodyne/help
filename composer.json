@@ -1,15 +1,16 @@
 {
 	"require": {
 		"laravel/framework": "4.2.*",
-		"league/flysystem": "~0.4",
-		"league/fractal": "~0.8",
 		"erusev/parsedown": "~1.0",
 		"ikimea/browser": "~1.0",
 		"laracasts/presenter": "~0.1",
 		"guzzlehttp/guzzle": "~4.0",
 		"zizaco/entrust": "1.2.*",
 		"forxer/Gravatar": "~1.2",
-		"intervention/image": "~2.0"
+		
+		"intervention/image": "~2.0",
+		"league/flysystem": "~0.4",
+		"league/fractal": "~0.8"
 	},
 
 	"require-dev": {
@@ -38,9 +39,5 @@
 	},
 
 	"minimum-stability": "dev",
-	"prefer-stable": true,
-
-	"post-update-cmd": [
-		"php artisan debugbar:publish"
-	]
+	"prefer-stable": true
 }
