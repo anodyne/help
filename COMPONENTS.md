@@ -4,8 +4,10 @@
 
 - [Laravel](http://laravel.com)
 	- Version: 4.2.8
+- [Flysystem](http://flysystem.thephpleague.com/)
+	- Version: 0.5.5
 - [Fractal](http://fractal.thephpleague.com/)
-	- Version: 0.9.1
+	- Version: 0.8.3
 - [Parsedown](http://parsedown.org/)
 	- Version: 1.0.1
 - [Browser](https://github.com/Ikimea/Browser)
@@ -13,15 +15,13 @@
 - [Presenter](https://github.com/laracasts/Presenter)
 	- Version: 0.1.4
 - [Guzzle](http://guzzlephp.org/)
-	- Version: 4.2.1
-- [Sanitizer](https://github.com/daylerees/sanitizer)
-	- Version: 1.0.1
+	- Version: 4.2.2
 - [Entrust](https://github.com/Zizaco/entrust)
 	- Version: 1.2.3
-- [Ardent](https://github.com/laravelbook/ardent)
-	- Version: 2.4.2
 - [Gravatar](https://github.com/forxer/gravatar)
 	- Version: 1.2.0
+- [Image](http://image.intervention.io/)
+	- Version: 2.0.9
 
 ## Javascript
 
