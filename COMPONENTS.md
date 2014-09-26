@@ -11,13 +11,13 @@
 - [Parsedown](http://parsedown.org/)
 	- Version: 1.0.1
 - [Browser](https://github.com/Ikimea/Browser)
-	- Version: 1.10.1
+	- Version: 1.11
 - [Presenter](https://github.com/laracasts/Presenter)
 	- Version: 0.1.4
 - [Guzzle](http://guzzlephp.org/)
 	- Version: 4.2.2
 - [Entrust](https://github.com/Zizaco/entrust)
-	- Version: 1.2.3
+	- Version: 1.2.5
 - [Gravatar](https://github.com/forxer/gravatar)
 	- Version: 1.2.0
 - [Image](http://image.intervention.io/)
