@@ -11,7 +11,7 @@
 |
 */
 
-ClassLoader::addDirectories(array());
+ClassLoader::addDirectories([]);
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +46,11 @@ App::error(function(Exception $exception, $code)
 	Log::error($exception);
 });
 
+App::error(function(Help\Exceptions\FormValidationException $exception, $code)
+{
+	return Redirect::back()->withInput()->withErrors($exception->getErrors());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
@@ -59,7 +64,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return View::make('pages.maintenance');
 });
 
 /*
