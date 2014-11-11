@@ -1,5 +1,13 @@
 <?php
 
+if ( ! function_exists('config'))
+{
+	function config($key)
+	{
+		return Config::get($key);
+	}
+}
+
 if ( ! function_exists('partial'))
 {
 	function partial($view, $data = false)
@@ -33,6 +41,24 @@ if ( ! function_exists('alert'))
 	{
 		return View::make('partials.alert')
 			->withType($level)
+			->withContent($message);
+	}
+}
+
+if ( ! function_exists('flash'))
+{
+	function flash($level, $message)
+	{
+		return alert($level, $message);
+	}
+}
+
+if ( ! function_exists('label'))
+{
+	function label($level, $message)
+	{
+		return View::make('partials.label')
+			->withClass($level)
 			->withContent($message);
 	}
 }
