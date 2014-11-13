@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f21c50f5846a666b9a7bcedac4135a9a",
+    "hash": "8217a449759921f8a024bd5b64ed4cf7",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -391,16 +391,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "38dfffeb09e6a7b170dbbb525e925c88c9cab2fb"
+                "reference": "0c9db3220bfdf4de2b17fd85676d824cfdc908c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/38dfffeb09e6a7b170dbbb525e925c88c9cab2fb",
-                "reference": "38dfffeb09e6a7b170dbbb525e925c88c9cab2fb",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/0c9db3220bfdf4de2b17fd85676d824cfdc908c6",
+                "reference": "0c9db3220bfdf4de2b17fd85676d824cfdc908c6",
                 "shasum": ""
             },
             "require": {
@@ -443,7 +443,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-10-18 09:53:09"
+            "time": "2014-11-09 11:54:16"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -754,16 +754,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "0.5.10",
+            "version": "0.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "96fe7ec1ebed35e3dc1e1dce4bbdab2eca0140a2"
+                "reference": "e046fe60d761e30691c642c9cc6a4089f724e805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/96fe7ec1ebed35e3dc1e1dce4bbdab2eca0140a2",
-                "reference": "96fe7ec1ebed35e3dc1e1dce4bbdab2eca0140a2",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e046fe60d761e30691c642c9cc6a4089f724e805",
+                "reference": "e046fe60d761e30691c642c9cc6a4089f724e805",
                 "shasum": ""
             },
             "require": {
@@ -838,20 +838,20 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2014-10-28 11:35:42"
+            "time": "2014-11-05 13:39:29"
         },
         {
             "name": "league/fractal",
-            "version": "0.10.0",
+            "version": "0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/fractal.git",
-                "reference": "557e1803dabe8ce252a4549a29da6d439f62d3c2"
+                "reference": "a91cdcfe399a6d330a9285885a9a2a1a7855a915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/557e1803dabe8ce252a4549a29da6d439f62d3c2",
-                "reference": "557e1803dabe8ce252a4549a29da6d439f62d3c2",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/a91cdcfe399a6d330a9285885a9a2a1a7855a915",
+                "reference": "a91cdcfe399a6d330a9285885a9a2a1a7855a915",
                 "shasum": ""
             },
             "require": {
@@ -869,7 +869,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10-dev"
+                    "dev-master": "0.9-dev"
                 }
             },
             "autoload": {
@@ -884,8 +884,8 @@
             "authors": [
                 {
                     "name": "Phil Sturgeon",
-                    "email": "me@philsturgeon.uk",
-                    "homepage": "http://philsturgeon.uk/",
+                    "email": "email@philsturgeon.co.uk",
+                    "homepage": "http://philsturgeon.co.uk/",
                     "role": "Developer"
                 }
             ],
@@ -897,7 +897,7 @@
                 "league",
                 "rest"
             ],
-            "time": "2014-10-17 17:12:38"
+            "time": "2014-07-06 16:48:26"
         },
         {
             "name": "monolog/monolog",
@@ -1064,16 +1064,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.25",
+            "version": "v1.1.26",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
+                "url": "https://github.com/tchwork/utf8.git",
+                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
-                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
+                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
                 "shasum": ""
             },
             "require": {
@@ -1104,32 +1104,32 @@
             "authors": [
                 {
                     "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com",
-                    "role": "Developer"
+                    "email": "p@tchwork.com"
                 }
             ],
-            "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
-            "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
+            "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
+            "homepage": "https://github.com/tchwork/utf8",
             "keywords": [
+                "grapheme",
                 "i18n",
                 "unicode",
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-08-05 08:00:32"
+            "time": "2014-11-08 10:13:25"
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "0.3.8",
+            "version": "0.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "5085202f1f37769aae59f9711c423f28159c9b29"
+                "reference": "c6e88ca6e81bc5a2d7161658e16a95b7ef8d6ad1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/5085202f1f37769aae59f9711c423f28159c9b29",
-                "reference": "5085202f1f37769aae59f9711c423f28159c9b29",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c6e88ca6e81bc5a2d7161658e16a95b7ef8d6ad1",
+                "reference": "c6e88ca6e81bc5a2d7161658e16a95b7ef8d6ad1",
                 "shasum": ""
             },
             "require": {
@@ -1214,7 +1214,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-09-13 02:42:45"
+            "time": "2014-11-10 03:08:59"
         },
         {
             "name": "predis/predis",
@@ -2185,25 +2185,25 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "1.2.5",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "e3145e2435bbc095f8af85218b78d5fc5d5faf0f"
+                "reference": "04f6f35c27b1d963fd9ee905957b1a2c07bdb485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/e3145e2435bbc095f8af85218b78d5fc5d5faf0f",
-                "reference": "e3145e2435bbc095f8af85218b78d5fc5d5faf0f",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/04f6f35c27b1d963fd9ee905957b1a2c07bdb485",
+                "reference": "04f6f35c27b1d963fd9ee905957b1a2c07bdb485",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~4.0|~5.0",
+                "illuminate/support": "~4.0|5.0.*@dev",
                 "laravelbook/ardent": "~2.4",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "illuminate/database": "~4.0",
+                "illuminate/database": "~4.0|5.0.*@dev",
                 "mockery/mockery": "~0.9",
                 "phpunit/phpunit": "~4.0",
                 "symfony/process": "~2.3"
@@ -2214,7 +2214,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -2246,7 +2246,7 @@
                 "laravel",
                 "roles"
             ],
-            "time": "2014-09-24 02:20:26"
+            "time": "2014-09-26 15:53:59"
         }
     ],
     "packages-dev": [
