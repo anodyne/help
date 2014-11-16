@@ -186,16 +186,16 @@
         },
         {
             "name": "forxer/gravatar",
-            "version": "1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/forxer/gravatar.git",
-                "reference": "9bb46b8bad661aa978d50a7415af1d0f79975188"
+                "reference": "eb4e29e3c92994b0b0ccb74e0733d929af892048"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/forxer/gravatar/zipball/9bb46b8bad661aa978d50a7415af1d0f79975188",
-                "reference": "9bb46b8bad661aa978d50a7415af1d0f79975188",
+                "url": "https://api.github.com/repos/forxer/gravatar/zipball/eb4e29e3c92994b0b0ccb74e0733d929af892048",
+                "reference": "eb4e29e3c92994b0b0ccb74e0733d929af892048",
                 "shasum": ""
             },
             "require": {
@@ -214,14 +214,15 @@
             "authors": [
                 {
                     "name": "Vincent Garnier",
-                    "email": "contact@okatea.org"
+                    "email": "forxer@gmail.org",
+                    "homepage": "http://forx.fr"
                 }
             ],
             "description": "A library providing easy gravatar integration.",
             "keywords": [
                 "gravatar"
             ],
-            "time": "2014-08-22 17:33:45"
+            "time": "2014-11-15 20:59:17"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2252,16 +2253,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v1.8.0",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "97d92e663c5e8e391f701629a515951280e1b724"
+                "reference": "5eb06e09a2086c0254b4b808cb5544d140284374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/97d92e663c5e8e391f701629a515951280e1b724",
-                "reference": "97d92e663c5e8e391f701629a515951280e1b724",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/5eb06e09a2086c0254b4b808cb5544d140284374",
+                "reference": "5eb06e09a2086c0254b4b808cb5544d140284374",
                 "shasum": ""
             },
             "require": {
@@ -2273,7 +2274,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -2302,7 +2303,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2014-10-31 20:36:44"
+            "time": "2014-11-14 07:51:09"
         },
         {
             "name": "fzaninotto/faker",

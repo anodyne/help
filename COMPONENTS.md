@@ -19,7 +19,7 @@
 - [Entrust](https://github.com/Zizaco/entrust)
 	- Version: 1.3.0
 - [Gravatar](https://github.com/forxer/gravatar)
-	- Version: 1.2.0
+	- Version: 1.2.1
 - [Image](http://image.intervention.io/)
 	- Version: 2.0.13
 
