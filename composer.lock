@@ -2253,16 +2253,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v1.8.1",
+            "version": "v1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "5eb06e09a2086c0254b4b808cb5544d140284374"
+                "reference": "c73003721a408cb59ec33c6901257838246dd2eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/5eb06e09a2086c0254b4b808cb5544d140284374",
-                "reference": "5eb06e09a2086c0254b4b808cb5544d140284374",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/c73003721a408cb59ec33c6901257838246dd2eb",
+                "reference": "c73003721a408cb59ec33c6901257838246dd2eb",
                 "shasum": ""
             },
             "require": {
@@ -2303,7 +2303,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2014-11-14 07:51:09"
+            "time": "2014-11-18 14:03:50"
         },
         {
             "name": "fzaninotto/faker",
