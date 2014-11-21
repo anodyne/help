@@ -73,7 +73,7 @@ class HelpServiceProvider extends ServiceProvider {
 	{
 		$this->app['markdown'] = $this->app->share(function($app)
 		{
-			return new \Help\Services\MarkdownService(new \Parsedown);
+			return new \Help\Services\MarkdownService(new \ParsedownExtra);
 		});
 	}
 
