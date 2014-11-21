@@ -120,7 +120,7 @@ return array(
 	|
 	*/
 
-	'domain' => '.anodyne-productions.net',
+	'domain' => '.anodyne-productions.com',
 
 	'expire_on_close' => false,
 
