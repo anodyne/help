@@ -1,33 +1,33 @@
 {
 	"require": {
-		"laravel/framework": "4.2.*",
-		"league/fractal": "~0.8",
-		"erusev/parsedown": "~1.0",
+		"laravel/framework": "~4.2.0",
+		"erusev/parsedown": "~1.1.0",
+		"erusev/parsedown-extra": "~0.2",
 		"ikimea/browser": "~1.0",
-		"laracasts/presenter": "~0.1",
-		"guzzlehttp/guzzle": "~4.0",
-		"daylerees/sanitizer": "*",
-		"zizaco/entrust": "1.2.*",
-		"forxer/Gravatar": "~1.2"
+		"laracasts/presenter": "~0.1.0",
+		"guzzlehttp/guzzle": "~4.2.0",
+		"zizaco/entrust": "~1.3.0",
+		"forxer/Gravatar": "~1.2.0",
+		
+		"intervention/image": "~2.0.0",
+		"league/flysystem": "~0.5.0",
+		"league/fractal": "~0.9.0"
 	},
 
 	"require-dev": {
 		"raveren/kint": "dev-master",
-		"fzaninotto/faker": "*",
-		"barryvdh/laravel-debugbar": "1.*"
+		"fzaninotto/faker": "~1.0",
+		"barryvdh/laravel-debugbar": "~1.0"
 	},
 
 	"autoload": {
 		"classmap": [
-			"Anodyne/Help/database/migrations",
-			"Anodyne/Help/database/seeds"
+			"Anodyne/database/migrations",
+			"Anodyne/database/seeds"
 		],
 		
 		"psr-4": {
-			"Help\\": "Anodyne\\Help\\Web",
-			"Help\\Api\\": "Anodyne\\Help\\Api",
-			"Help\\Extensions\\": "Anodyne\\Help\\Extensions",
-			"Help\\Foundation\\": "Anodyne\\Help\\Foundation"
+			"Help\\": "Anodyne\\Help"
 		}
 	},
 	
@@ -37,9 +37,5 @@
 	},
 
 	"minimum-stability": "dev",
-	"prefer-stable": true,
-
-	"post-update-cmd": [
-		"php artisan debugbar:publish"
-	]
+	"prefer-stable": true
 }

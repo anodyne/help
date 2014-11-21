@@ -63,7 +63,7 @@ return array(
 			'prefix'    => 'help_',
 		),
 
-		'anodyneUsers' => array(
+		'users' => array(
 			'driver'    => 'mysql',
 			'host'      => $_ENV['DB_USERS_HOST'],
 			'database'  => $_ENV['DB_USERS_NAME'],
