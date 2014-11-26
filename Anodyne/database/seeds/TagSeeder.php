@@ -10,15 +10,15 @@ class TagSeeder extends Seeder {
 	public function run()
 	{
 		$tags = [
-			['name' => 'Getting Started'],
-			['name' => 'Install Guide'],
-			['name' => 'Update Guide'],
-			['name' => 'Upgrade Guide'],
-			['name' => 'Developers'],
-			['name' => 'Skinning'],
-			['name' => 'Help'],
-			['name' => 'Tutorial'],
-			['name' => 'FAQ'],
+			['name' => 'Getting Started', 'slug' => ''],
+			['name' => 'Install Guide', 'slug' => ''],
+			['name' => 'Update Guide', 'slug' => ''],
+			['name' => 'Upgrade Guide', 'slug' => ''],
+			['name' => 'Developers', 'slug' => ''],
+			['name' => 'Skinning', 'slug' => ''],
+			['name' => 'Help', 'slug' => ''],
+			['name' => 'Tutorial', 'slug' => ''],
+			['name' => 'FAQ', 'slug' => ''],
 		];
 
 		foreach ($tags as $tag)
