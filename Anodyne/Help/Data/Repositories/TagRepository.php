@@ -3,16 +3,13 @@
 use Tag,
 	TagRepositoryInterface;
 
-class TagRepository implements TagRepositoryInterface {
+class TagRepository extends BaseRepository implements TagRepositoryInterface {
 
-	public function all($value = false, $id = false)
+	protected $model;
+
+	public function __construct(Tag $model)
 	{
-		if ( ! $value)
-		{
-			return Tag::with('product', 'articles')->get();
-		}
-
-		return Tag::lists($value, $id);
+		$this->model = $model;
 	}
 
 }
