@@ -20,4 +20,9 @@ class TagPresenter extends Presenter {
 		return $this->entity->name;
 	}
 
+	public function slug()
+	{
+		return $this->entity->slug;
+	}
+
 }

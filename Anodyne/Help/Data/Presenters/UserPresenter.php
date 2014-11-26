@@ -1,8 +1,10 @@
 <?php namespace Help\Data\Presenters;
 
-use URL,
+use App,
+	URL,
 	HTML,
 	View,
+	Gravatar,
 	Markdown;
 use Laracasts\Presenter\Presenter;
 
@@ -67,6 +69,17 @@ class UserPresenter extends Presenter {
 	public function name()
 	{
 		return $this->entity->name;
+	}
+
+	public function nameWithAvatar($size = 'sm')
+	{
+		$output = "<div>";
+		$output.= $this->avatar(['type' => false, 'class' => "avatar avatar-{$size} img-circle pull-left"]);
+		$output.= "<div class='avatar-text avatar-text-".$size."'>".$this->name()."</div>";
+		$output.= "</div>";
+
+		return $output;
+		return $this->avatar(['type' => false, 'class' => 'avatar avatar-sm img-circle pull-left'])." ".$this->name();
 	}
 
 	public function siteBtn()

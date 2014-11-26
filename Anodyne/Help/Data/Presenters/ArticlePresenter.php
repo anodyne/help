@@ -20,6 +20,14 @@ class ArticlePresenter extends Presenter {
 		return $this->entity->created_at->format('d F Y');
 	}
 
+	public function helpfulFull()
+	{
+		$helpful = 9;
+		$total = 11;
+
+		return "{$helpful} out of {$total}";
+	}
+
 	public function product()
 	{
 		return $this->entity->product->present()->name;
@@ -27,7 +35,8 @@ class ArticlePresenter extends Presenter {
 
 	public function productLabel()
 	{
-		return View::make('partials.product')->withContent($this->product());
+		return View::make('partials.product')
+			->withContent(HTML::linkRoute('product', $this->product(), [$this->entity->product->slug]));
 	}
 
 	public function rating()
@@ -58,18 +67,14 @@ class ArticlePresenter extends Presenter {
 		return Markdown::parse($this->entity->summary);
 	}
 
-	public function tags()
-	{
-		//
-	}
-
 	public function tagsLabel($newline = false)
 	{
 		$output = '';
 
 		foreach ($this->entity->tags as $tag)
 		{
-			$output.= View::make('partials.tag')->withContent($tag->name)." ";
+			$output.= View::make('partials.tag')
+				->withContent(HTML::linkRoute('tag', $tag->present()->name, [$tag->slug]))." ";
 			$output.= ($newline) ? "<br>" : "";
 		}
 
