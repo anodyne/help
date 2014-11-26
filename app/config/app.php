@@ -195,6 +195,7 @@ return array(
 
 		'Date'				=> 'Carbon\Carbon',
 		'Flash'				=> 'Help\Facades\FlashFacade',
+		'Gravatar'			=> 'forxer\Gravatar\Gravatar',
 		'Markdown'			=> 'Help\Facades\MarkdownFacade',
 		'Model'				=> 'Help\Services\Model',
 
