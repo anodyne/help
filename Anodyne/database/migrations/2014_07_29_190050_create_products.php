@@ -21,6 +21,23 @@ class CreateProducts extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
+
+		Schema::create('products_tags', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('product_id')->unsigned();
+			$table->integer('tag_id')->unsigned();
+		});
+
+		Schema::create('tags', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('slug');
+			$table->text('desc')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+		});
 	}
 
 	/**
@@ -30,7 +47,9 @@ class CreateProducts extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('products');
+		Schema::dropIfExists('tags');
+		Schema::dropIfExists('products');
+		Schema::dropIfExists('products_tags');
 	}
 
 }

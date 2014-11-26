@@ -21,13 +21,14 @@ class CreateArticles extends Migration {
 			$table->string('summary');
 			$table->string('slug');
 			$table->text('content');
-			$table->integer('status');
 			$table->float('rating')->default(0);
+			$table->boolean('status')->default((int) true);
+			$table->boolean('admin_status')->default((int) true);
 			$table->timestamps();
 			$table->softDeletes();
 		});
 
-		Schema::create('articles_flags', function(Blueprint $table)
+		Schema::create('articles_reviews', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
 			$table->bigInteger('article_id')->unsigned();
@@ -38,6 +39,31 @@ class CreateArticles extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
+
+		Schema::create('articles_tags', function(Blueprint $table)
+		{
+			$table->bigIncrements('id');
+			$table->bigInteger('article_id')->unsigned();
+			$table->integer('tag_id')->unsigned();
+		});
+
+		Schema::create('comments', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->bigInteger('article_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
+			$table->text('content');
+			$table->timestamps();
+			$table->softDeletes();
+		});
+
+		Schema::create('ratings', function(Blueprint $table)
+		{
+			$table->bigIncrements('id');
+			$table->bigInteger('article_id')->unsigned();
+			$table->integer('rating');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -47,8 +73,11 @@ class CreateArticles extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('articles');
-		Schema::drop('articles_flags');
+		Schema::dropIfExists('articles');
+		Schema::dropIfExists('articles_reviews');
+		Schema::dropIfExists('articles_tags');
+		Schema::dropIfExists('comments');
+		Schema::dropIfExists('ratings');
 	}
 
 }
