@@ -15,7 +15,7 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 		$this->pagesRoutes();
 		$this->searchRoutes();
 		$this->accountRoutes();
-		$this->miscRoutes();
+		//$this->miscRoutes();
 		$this->adminRoutes();
 		$this->articleRoutes();
 	}
@@ -30,36 +30,14 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 	{
 		Route::get('login', [
 			'as'	=> 'login',
-			'uses'	=> 'Help\Controllers\MainController@login']);
+			'uses'	=> 'Help\Controllers\LoginController@index']);
 		Route::post('login', [
 			'as'	=> 'login.do',
-			'uses'	=> 'Help\Controllers\MainController@doLogin']);
+			'uses'	=> 'Help\Controllers\LoginController@doLogin']);
 		Route::get('logout', [
-			'as'	=> 'logout',
-			'uses'	=> 'Help\Controllers\MainController@logout']);
-
-		Route::get('register', [
-			'as'	=> 'register',
-			'uses'	=> 'Help\Controllers\MainController@register']);
-		Route::post('register', [
-			'as'	=> 'register.do',
-			'uses'	=> 'Help\Controllers\MainController@doRegistration']);
-
-		Route::group(['prefix' => 'password', 'namespace' => 'Help\Controllers'], function()
-		{
-			Route::get('remind', [
-				'as'	=> 'password.remind',
-				'uses'	=> 'RemindersController@remind']);
-			Route::post('remind', [
-				'as'	=> 'password.remind.do',
-				'uses'	=> 'RemindersController@doRemind']);
-			Route::get('reset/{token}', [
-				'as'	=> 'password.reset',
-				'uses'	=> 'RemindersController@reset']);
-			Route::post('reset', [
-				'as'	=> 'password.reset.do',
-				'uses'	=> 'RemindersController@doReset']);
-		});
+			'before'	=> 'auth',
+			'as'		=> 'logout',
+			'uses'		=> 'Help\Controllers\LoginController@logout']);
 	}
 
 	protected function pagesRoutes()
@@ -67,8 +45,16 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 		Route::group(['namespace' => 'Help\Controllers'], function()
 		{
 			Route::get('/', [
-				'as'		=> 'home',
-				'uses'		=> 'MainController@index']);
+				'as'	=> 'home',
+				'uses'	=> 'MainController@index']);
+
+			Route::get('product/{product}', [
+				'as'	=> 'product',
+				'uses'	=> 'MainController@product']);
+
+			Route::get('tag/{tag}', [
+				'as'	=> 'tag',
+				'uses'	=> 'MainController@tag']);
 		});
 	}
 
@@ -81,63 +67,15 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 
 		Route::group($groupOptions, function()
 		{
-			Route::post('/', [
+			Route::get('/', [
 				'as'	=> 'search.do',
 				'uses'	=> 'SearchController@doSearch']);
-			Route::get('results', [
-				'as'	=> 'search.results',
-				'uses'	=> 'SearchController@results']);
 			Route::get('advanced', [
 				'as'	=> 'search.advanced',
 				'uses'	=> 'SearchController@advanced']);
-			Route::post('advanced', [
+			Route::get('advanced-results', [
 				'as'	=> 'search.doAdvanced',
 				'uses'	=> 'SearchController@doAdvancedSearch']);
-		});
-	}
-
-	protected function accountRoutes()
-	{
-		Route::group(['before' => 'auth', 'namespace' => 'Xtras\Controllers'], function()
-		{
-			Route::get('profile/{name}', array(
-				'as'	=> 'account.profile',
-				'uses'	=> 'UserController@show'
-			));
-			Route::resource('account', 'UserController');
-		});
-	}
-
-	protected function miscRoutes()
-	{
-		Route::group(['before' => 'auth', 'namespace' => 'Help\Controllers'], function()
-		{
-			Route::get('comments/{articleId}', 'CommentController@index');
-			Route::post('comments/{articleId}', 'CommentController@store');
-		});
-	}
-
-	protected function adminRoutes()
-	{
-		$groupOptions = [
-			'before'	=> 'auth',
-			'prefix'	=> 'admin',
-			'namespace' => 'Xtras\Controllers\Admin'
-		];
-
-		Route::group($groupOptions, function()
-		{
-			Route::get('/', [
-				'as'	=> 'admin',
-				'uses'	=> 'AdminController@index']);
-
-			Route::get('products/{id}/remove', 'ProductsController@remove');
-			Route::get('types/{id}/remove', 'TypesController@remove');
-
-			Route::resource('users', 'UsersController', ['except' => ['show']]);
-			Route::resource('products', 'ProductsController', ['except' => ['show']]);
-			Route::resource('types', 'TypesController', ['except' => ['show']]);
-			Route::resource('items', 'ItemsController', ['except' => ['show']]);
 		});
 	}
 
@@ -149,15 +87,55 @@ class HelpRoutingServiceProvider extends ServiceProvider {
 
 		Route::group($groupOptions, function()
 		{
-			Route::get('product/{product}', [
-				'as'	=> 'article.product',
-				'uses'	=> 'ArticleController@product']);
-
 			Route::resource('article', 'ArticleController');
 
 			Route::get('article/{product}/{slug}', [
 				'as'	=> 'article.show',
 				'uses'	=> 'ArticleController@show']);
+		});
+	}
+
+	protected function accountRoutes()
+	{
+		Route::group(['namespace' => 'Help\Controllers'], function()
+		{
+			Route::get('profile/{username}', [
+				'as'	=> 'account.profile',
+				'uses'	=> 'UserController@show']);
+			Route::get('my-articles', [
+				'before'	=> 'auth',
+				'as'		=> 'account.xtras',
+				'uses'		=> 'UserController@articles']);
+			Route::get('notifications', [
+				'before'	=> 'auth',
+				'as'		=> 'account.notifications',
+				'uses'		=> 'UserController@notifications']);
+			Route::post('notifications/add', [
+				'before'	=> 'auth',
+				'as'		=> 'account.notifications.add',
+				'uses'		=> 'UserController@addNotification']);
+			Route::post('notifications/remove', [
+				'before'	=> 'auth',
+				'as'		=> 'account.notifications.remove',
+				'uses'		=> 'UserController@removeNotification']);
+		});
+	}
+
+	protected function adminRoutes()
+	{
+		$groupOptions = [
+			'before'	=> 'auth',
+			'prefix'	=> 'admin',
+			'namespace' => 'Help\Controllers\Admin'
+		];
+
+		Route::group($groupOptions, function()
+		{
+			Route::resource('products', 'ProductsController', ['except' => ['show']]);
+			//Route::resource('types', 'TypesController', ['except' => ['show']]);
+
+			Route::get('products/{id}/remove', 'ProductsController@remove');
+			//Route::get('types/{id}/remove', 'TypesController@remove');
 		});
 	}
 
