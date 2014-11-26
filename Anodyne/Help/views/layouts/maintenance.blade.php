@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Anodyne Help Center</title>
+		<title>AnodyneXtras</title>
 		<meta name="description" content="AnodyneXtras is a one-stop-shop for skins, MODs, and rank sets for Anodyne Productions' Nova software.">
 		<meta name="author" content="Anodyne Productions">
 		<meta name="viewport" content="width=device-width">
@@ -19,21 +19,26 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<header>
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="brand text-center">AnodyneXtras</div>
+			<div class="visible-xs visible-sm">
+				{{ View::make('pages.mobile') }}
+			</div>
+			<div class="visible-md visible-lg">
+				<header>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="brand text-center">AnodyneXtras</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</header>
+				</header>
 
-			<section>
-				<div class="container">
-					@yield('content')
-				</div>
-			</section>
+				<section>
+					<div class="container">
+						@yield('content')
+					</div>
+				</section>
+			</div>
 
 			<div class="push"></div>
 		</div>
@@ -41,7 +46,7 @@
 		<footer>
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-md-12">
 						<h2>AnodyneXtras</h2>
 
 						<p class="text-muted">Every game is unique; it has its own players, characters, missions, and driving force. Why shouldn't each game accurately reflect its distinctiveness through its look and feel and functionality? We've created AnodyneXtras as a one-stop-shop for skins, MODs, and rank sets for Nova so you can make your version of Nova as unique as the game being played with it.</p>

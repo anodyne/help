@@ -67,31 +67,35 @@
 							<a href="{{ route('home') }}" class="brand">Anodyne Help Center</a>
 						</div>
 
-						<div class="col-md-4">
+						<div class="col-md-8">
 							<nav class="nav-sub">
 								<ul>
-									<li><a href="{{ route('article.product', ['nova-1']) }}">Nova 1</a></li>
-									<li><a href="{{ route('article.product', ['nova-2']) }}">Nova 2</a></li>
-									<!--<li><a href="{{ route('article.product', ['nova-3']) }}">Nova 3</a></li>-->
-									<li><a href="{{ route('article.product', ['anodynextras']) }}">AnodyneXtras</a></li>
+									<li><a href="{{ route('product', ['nova-1']) }}">Nova 1</a></li>
+									<li><a href="{{ route('product', ['nova-2']) }}">Nova 2</a></li>
+									<!--<li><a href="{{ route('product', ['nova-3']) }}">Nova 3</a></li>-->
+									<li><a href="{{ route('product', ['anodynextras']) }}">AnodyneXtras</a></li>
+									<li><a href="{{ route('search.advanced') }}">Advanced Search</a></li>
 								</ul>
 							</nav>
-						</div>
-
-						<div class="col-md-4">
-							{{ Form::open(['route' => 'search.do']) }}
-								<div class="header-search">
-									<div class="input-group">
-										{{ Form::text('search', null, ['placeholder' => 'Search the Help Center', 'class' => 'input-sm form-control search-field']) }}
-										<span class="input-group-btn">{{ Form::button('Search', ['class' => 'btn btn-default btn-sm', 'type' => 'submit']) }}</span>
-									</div>
-									<a href="{{ route('search.advanced') }}" class="search-advanced">Advanced Search</a>
-								</div>
-							{{ Form::close() }}
 						</div>
 					</div>
 				</div>
 			</header>
+
+			<div class="search-help">
+				<div class="container">
+					{{ Form::open(['route' => 'search.do']) }}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="input-group">
+								<span class="input-group-addon">{{ $_icons['search-lg'] }}</span>
+								{{ Form::text('search', null, ['placeholder' => 'Search the Help Center', 'class' => 'input-lg form-control search-field']) }}
+							</div>
+						</div>
+					</div>
+					{{ Form::close() }}
+				</div>
+			</div>
 
 			<section>
 				<div class="container">
@@ -155,11 +159,7 @@
 			{
 				e.preventDefault();
 
-				var contactUrl = "http://localhost/anodyne/www/public/contact";
-
-				@if (App::environment() == 'production')
-					contactUrl = "http://anodyne-productions.com/contact";
-				@endif
+				var contactUrl = "{{ config('anodyne.links.www') }}contact";
 
 				$('#contactModal').modal({
 					remote: contactUrl
