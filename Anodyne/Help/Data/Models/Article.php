@@ -71,11 +71,18 @@ class Article extends Model {
 
 	public function scopeProduct($query, $product)
 	{
-		// Find the product ID
-		$product = Product::where('slug', $product)->first();
+		$query->whereHas('product', function($q) use ($product)
+		{
+			$q->where('products.slug', '=', $product);
+		});
+	}
 
-		// Do the query
-		$query->where('product_id', $product->id);
+	public function scopeTag($query, $tag)
+	{
+		$query->whereHas('tags', function($q) use ($tag)
+		{
+			$q->where('tags.slug', '=', $tag);
+		});
 	}
 
 	/*

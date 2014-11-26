@@ -1,6 +1,6 @@
 <?php namespace Help\Data\Models;
 
-use Model, SoftDeletingTrait;
+use Str, Model, SoftDeletingTrait;
 use Laracasts\Presenter\PresentableTrait;
 
 class Tag extends Model {
@@ -10,7 +10,7 @@ class Tag extends Model {
 
 	protected $table = 'tags';
 
-	protected $fillable = ['name', 'desc'];
+	protected $fillable = ['name', 'slug', 'desc'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -30,6 +30,19 @@ class Tag extends Model {
 	public function products()
 	{
 		return $this->belongsToMany('Product', 'products_tags', 'tag_id', 'product_id');
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Accessors/Mutators
+	|---------------------------------------------------------------------------
+	*/
+
+	public function setSlugAttribute($value)
+	{
+		$this->attributes['slug'] = ( ! empty($value))
+			? $value
+			: Str::slug(Str::lower($this->attributes['name']));
 	}
 
 }
