@@ -1,10 +1,9 @@
-<?php namespace Help\Controllers;
+<?php namespace Xtras\Controllers;
 
 use View,
 	Input,
-	Session,
-	Redirect,
-	TagRepositoryInterface,
+	BaseController,
+	TagsRepositoryInterface,
 	ArticleRepositoryInterface,
 	ProductRepositoryInterface;
 
@@ -15,41 +14,35 @@ class SearchController extends BaseController {
 	protected $products;
 
 	public function __construct(ArticleRepositoryInterface $articles,
-			TagRepositoryInterface $tags, ProductRepositoryInterface $products)
+			ProductRepositoryInterface $products,
+			TagRepositoryInterface $tags)
 	{
 		parent::__construct();
 
-		$this->tags = $tags;
 		$this->articles = $articles;
+		$this->tags = $tags;
 		$this->products = $products;
 	}
 
 	public function advanced()
 	{
 		return View::make('pages.search_advanced')
-			->withProducts($this->products->all('name', 'id'))
-			->withTags($this->tags->all('name', 'id'));
+			->withTypes($this->types->listAll())
+			->withProducts($this->products->listAll());
 	}
 
 	public function doAdvancedSearch()
 	{
-		return Redirect::route('search.results')
-			->withTerm(Input::get('search'))
-			->withResults($this->articles->searchAdvanced(Input::all()));
+		return View::make('pages.search_results')
+			->withTerm(Input::get('q'))
+			->withResults($this->items->searchAdvanced(Input::all()));
 	}
 
 	public function doSearch()
 	{
 		return View::make('pages.search_results')
-			->withTerm(Input::get('search'))
-			->withResults($this->articles->search(Input::get('search')));
-	}
-
-	public function results()
-	{
-		return View::make('pages.search_results')
-			->withTerm(Session::get('term'))
-			->withResults(Session::get('results'));
+			->withTerm(Input::get('q'))
+			->withResults($this->items->search(Input::get('q')));
 	}
 
 }
