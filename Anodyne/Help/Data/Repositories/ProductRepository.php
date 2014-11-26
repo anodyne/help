@@ -3,16 +3,13 @@
 use Product,
 	ProductRepositoryInterface;
 
-class ProductRepository implements ProductRepositoryInterface {
+class ProductRepository extends BaseRepository implements ProductRepositoryInterface {
 
-	public function all($value = false, $id = false)
+	protected $model;
+
+	public function __construct(Product $model)
 	{
-		if ( ! $value)
-		{
-			return Product::with('tags')->get();
-		}
-
-		return Product::lists($value, $id);
+		$this->model = $model;
 	}
 
 }
