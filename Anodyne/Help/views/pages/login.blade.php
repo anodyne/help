@@ -9,26 +9,27 @@
 		<div class="col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
 			<h1>Log In</h1>
 
-			<p>AnodyneXtras is the one-stop-shop to find skins, MODs, and rank sets created by Anodyne Productions and the wider Anodyne community. From here you can share, search for, and download items to make your Nova sim more unique.</p>
+			<p>The Anodyne Help Center is the one-stop-shop to get support for any of Anodyne's products. Whether you're looking for tutorials, frequently asked questions, or guides for how to do things, make sure you search through the Help Center to get the answers you need!</p>
 
 			<hr>
 
-			{{ Form::open(array('url' => 'login')) }}
+			{{ Form::open(['url' => 'login']) }}
 				<div class="form-group{{ ($errors->has('email')) ? ' has-error' : '' }}">
-					<label>Email Address</label>
-					{{ Form::text('email', null, array('type' => 'email', 'class' => 'form-control input-with-feedback input-lg')) }}
+					<label class="control-label">Email Address</label>
+					{{ Form::text('email', null, ['type' => 'email', 'class' => 'form-control input-with-feedback input-lg']) }}
 					{{ $errors->first('email', '<p class="help-block">:message</p>') }}
 				</div>
 
 				<div class="form-group{{ ($errors->has('password')) ? ' has-error' : '' }}">
-					<label>Password</label>
-					{{ Form::password('password', array('class' => 'form-control input-with-feedback input-lg')) }}
+					<label class="control-label">Password</label>
+					{{ Form::password('password', ['class' => 'form-control input-with-feedback input-lg']) }}
 					{{ $errors->first('password', '<p class="help-block">:message</p>') }}
 				</div>
 
 				<div class="form-group">
 					{{ Form::button('Log In', ['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-primary']) }}
-					<a href="{{ route('register') }}" class="btn btn-block btn-link">Register Now</a>
+					<a href="http://anodyne-productions.com/register" class="btn btn-block btn-link">Register Now</a>
+					<a href="http://anodyne-productions.com/password/remind" class="btn btn-block btn-link">Forgot Password?</a>
 				</div>
 			{{ Form::close() }}
 		</div>
