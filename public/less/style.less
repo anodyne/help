@@ -437,7 +437,7 @@ form {
 	}
 
 	&.btn-success {
-		.btn-pseudo-states(@color-white, @color-success-light, @color-success-light);
+		.btn-pseudo-states(@color-white, @color-success, @color-success);
 	}
 
 	&.btn-info {
@@ -467,9 +467,17 @@ form {
 
 	.rounded(2px);
 
+	a, a:hover, a:link, a:active, a:visited {
+		color: @color-white;
+	}
+
 	&.label-warning {
 		color: @color-warning-dark;
 		background-color: @color-warning-bright;
+
+		a {
+			color: @color-warning-dark;
+		}
 	}
 
 	&.label-success {
@@ -759,6 +767,11 @@ form {
 	background-size: contain;
 	background-position: center;
 
+	&.avatar-xs {
+		height: 36px;
+		width: 36px;
+	}
+
 	&.avatar-sm {
 		height: 50px;
 		width: 50px;
@@ -768,6 +781,18 @@ form {
 		height: 200px;
 		width: 200px;
 	}
+}
+
+.avatar-text {
+	margin-left: 120px;
+
+	font-weight: 600;
+}
+.avatar-text-xs {
+	margin-left: 46px;
+}
+.avatar-text-sm {
+	margin-left: 65px;
 }
 
 .item-preview {
@@ -874,4 +899,76 @@ blockquote {
 hr.partial-split {
 	width: 70%;
 	margin: @spacing-lg auto;
+}
+
+.search-help {
+	padding: @spacing 0;
+
+	background: lighten(@color-primary, 45%);
+	border-bottom: 1px solid lighten(@color-primary, 35%);
+	font-family: @font-special;
+	font-weight: 500;
+	font-size: @font-size-lg;
+	font-style: italic;
+	color: @color-primary-dark;
+
+	a {
+		color: @color-primary;
+		outline: none;
+		text-decoration: underline;
+
+		&:hover {
+			color: @color-primary-light;
+		}
+
+		&:active {
+			color: @color-primary;
+			outline: none;
+		}
+	}
+
+	.form-control {
+		border: none;
+		background: transparent;
+		color: @color-primary-dark;
+
+		.box-shadow(~"0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent");
+
+		&::-webkit-input-placeholder {
+		    color: @color-primary-light;
+		}
+		&:-moz-placeholder {
+		   color: @color-primary-light;
+		   opacity: 1;
+		}
+		&::-moz-placeholder {
+		   color: @color-primary-light;
+		   opacity: 1;
+		}
+		&:-ms-input-placeholder {
+		   color: @color-primary-light;
+		}
+	}
+
+	.input-group-addon {
+		background: transparent;
+		border: none;
+		color: @color-primary;
+	}
+}
+
+.author-metadata {
+	position: relative;
+	margin: @spacing 0 @spacing-lg 0;
+
+	.author-avatar {
+		float: left;
+		margin-right: @spacing;
+	}
+	.author-name {
+		font-weight: 600;
+	}
+	.article-date {
+		font-size: @font-size-sm;
+	}
 }
