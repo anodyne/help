@@ -23,7 +23,7 @@
 - [Gravatar](https://github.com/forxer/gravatar)
 	- Version: 1.2.1
 - [Image](http://image.intervention.io/)
-	- Version: 2.0.13
+	- Version: 2.0.14
 
 ## Javascript
 
