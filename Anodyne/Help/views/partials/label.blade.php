@@ -1,1 +1,1 @@
-<span class="label label-{{ $class }}">{{ $content }}</span>
+<span class="label label-{{ $type }}">{{ $content }}</span>
