@@ -193,6 +193,49 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		/**
+		 * Classes & Facades
+		 */
+		'Date'			=> 'Carbon\Carbon',
+		'Form'			=> 'Collective\Html\FormFacade',
+		'Flash'			=> 'Help\Services\FlashNotifierFacade',
+		'HTML'			=> 'Collective\Html\HtmlFacade',
+		'Markdown'		=> 'Help\Services\MarkdownParserFacade',
+		'Str'			=> 'Illuminate\Support\Str',
+
+		/**
+		 * Models
+		 */
+		'Article'		=> 'Help\Data\Article',
+		'Comment'		=> 'Help\Data\Comment',
+		'Flag'			=> 'Help\Data\Flag',
+		'Permission'	=> 'Help\Data\Permission',
+		'Product'		=> 'Help\Data\Product',
+		'Question'		=> 'Help\Data\Question',
+		'Rating'		=> 'Help\Data\Rating',
+		'Role'			=> 'Help\Data\Role',
+		'Tag'			=> 'Help\Data\Tag',
+		'User'			=> 'Help\Data\User',
+
+		/**
+		 * Repository Interfaces
+		 */
+		'ArticleRepositoryInterface'	=> 'Help\Data\Interfaces\ArticleRepositoryInterface',
+		'ProductRepositoryInterface'	=> 'Help\Data\Interfaces\ProductRepositoryInterface',
+		'TagRepositoryInterface'		=> 'Help\Data\Interfaces\TagRepositoryInterface',
+
+		/**
+		 * Repositories
+		 */
+		'ArticleRepository'		=> 'Help\Data\Repositories\ArticleRepository',
+		'ProductRepository'		=> 'Help\Data\Repositories\ProductRepository',
+		'TagRepository'			=> 'Help\Data\Repositories\TagRepository',
+
+		/**
+		 * Transformers
+		 */
+		'CommentTransformer'	=> 'Help\Data\Transformers\CommentTransformer',
+
 	],
 
 ];
