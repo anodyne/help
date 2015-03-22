@@ -139,6 +139,7 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		'Collective\Html\HtmlServiceProvider',
 		'Help\Providers\AppServiceProvider',
 		'Help\Providers\BusServiceProvider',
 		'Help\Providers\ConfigServiceProvider',
@@ -192,6 +193,11 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Date'	=> 'Carbon\Carbon',
+		'Form'	=> 'Collective\Html\FormFacade',
+		'HTML'	=> 'Collective\Html\HtmlFacade',
+		'Model'	=> 'Illuminate\Database\Eloquent\Model',
 
 	],
 
