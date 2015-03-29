@@ -11,9 +11,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		// Make sure we some variables available on all views
-		//view()->share('_currentUser', Auth::user());
-		view()->share('_icons', config('icons'));
+		//
 	}
 
 	/**

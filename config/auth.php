@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'Help\User',
+	'model' => 'Help\Data\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
 
 	'password' => [
 		'email' => 'emails.password',
-		'table' => 'password_resets',
+		'table' => 'password_reminders',
 		'expire' => 60,
 	],
 

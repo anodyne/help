@@ -6,8 +6,16 @@ Route::get('/', [
 
 Route::get('login', [
 	'as'	=> 'login',
-	'uses'	=> '']);
+	'uses'	=> 'Auth\AuthController@getLogin']);
+Route::get('logout', [
+	'as'	=> 'logout',
+	'uses'	=> 'Auth\AuthController@getLogout']);
+Route::post('login', 'Auth\AuthController@postLogin');
 
-Route::post('login', [
+Route::post('search', [
 	'as'	=> 'search.do',
 	'uses'	=> '']);
+
+Route::get('admin/article/create', ['as' => 'article.create']);
+Route::get('profile/{username}', ['as' => 'account.profile']);
+Route::get('admin', ['as' => 'admin']);

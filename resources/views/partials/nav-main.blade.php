@@ -41,22 +41,16 @@
 				<li class="dropdown">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{!! $_icons['user'] !!}</span> {{ $_currentUser->present()->name }} <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-menu-right dd">
-						<li><a href="{{ route('admin.users.edit', [$_currentUser->username]) }}">Edit My Account</a></li>
-
-						@if ($_currentUser->can('www.admin'))
+						@if ($_currentUser->can('help.article.create'))
+							<li><a href="{{ route('article.create') }}">Create New Article</a></li>
 							<li class="divider"></li>
+						@endif
+						<li><a href="{{ route('account.profile', [$_currentUser->username]) }}">My Profile</a></li>
+						<li><a href="{{ Config::get('anodyne.links.www') }}admin/users/{{ $_currentUser->username }}/edit">Edit My Profile</a></li>
 
-							@if ($_currentUser->can('www.admin'))
-								<li><a href="{{ route('wardrobe.admin.index') }}">Manage News</a></li>
-							@endif
-
-							@if ($_currentUser->can('www.admin.users'))
-								<li><a href="{{ route('admin.users.index') }}">Manage Users</a></li>
-							@endif
-
-							@if ($_currentUser->can('www.admin.permissions'))
-								<li><a href="{{ route('admin.roles.index') }}">Manage Roles</a></li>
-							@endif
+						@if ($_currentUser->can('help.admin'))
+							<li class="divider"></li>
+							<li><a href="{{ route('admin') }}">Admin</a></li>
 						@endif
 
 						<li class="divider"></li>

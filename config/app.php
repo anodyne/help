@@ -140,6 +140,7 @@ return [
 		 * Application Service Providers...
 		 */
 		'Collective\Html\HtmlServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 		'Help\Providers\AppServiceProvider',
 		'Help\Providers\BusServiceProvider',
 		'Help\Providers\ConfigServiceProvider',
@@ -194,10 +195,15 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Date'	=> 'Carbon\Carbon',
-		'Form'	=> 'Collective\Html\FormFacade',
-		'HTML'	=> 'Collective\Html\HtmlFacade',
-		'Model'	=> 'Illuminate\Database\Eloquent\Model',
+		'Date'				=> 'Carbon\Carbon',
+		'Form'				=> 'Collective\Html\FormFacade',
+		'HTML'				=> 'Collective\Html\HtmlFacade',
+		'Model'				=> 'Illuminate\Database\Eloquent\Model',
+		'SoftDeletingTrait'	=> 'Illuminate\Database\Eloquent\SoftDeletingTrait',
+
+		'Permission'	=> 'Help\Data\Permission',
+		'Role'			=> 'Help\Data\Role',
+		'User'			=> 'Help\Data\User',
 
 	],
 

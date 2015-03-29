@@ -1,61 +1,37 @@
-@extends('app')
+@extends('layouts.master')
+
+@section('title')
+	Log In
+@stop
 
 @section('content')
-<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+		<div class="col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+			<h1>Log In</h1>
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<p>The Anodyne Help Center is the one-stop-shop to get support for any of Anodyne's products. Whether you're looking for tutorials, frequently asked questions, or guides for how to do things, make sure you search through the Help Center to get the answers you need!</p>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+			<hr>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
+			{!! Form::open(['url' => 'login']) !!}
+				<div class="form-group{{ ($errors->has('email')) ? ' has-error' : '' }}">
+					<label class="control-label">Email Address</label>
+					{!! Form::text('email', null, ['type' => 'email', 'class' => 'form-control input-lg']) !!}
+					{!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 				</div>
-			</div>
+
+				<div class="form-group{{ ($errors->has('password')) ? ' has-error' : '' }}">
+					<label class="control-label">Password</label>
+					{!! Form::password('password', ['class' => 'form-control input-lg']) !!}
+					{!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+				</div>
+
+				<div class="form-group">
+					{!! Form::button('Log In', ['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-primary']) !!}
+					<a href="{{ config('anodyne.links.www') }}register" class="btn btn-block btn-link">Register Now</a>
+					<a href="{{ config('anodyne.links.www') }}password/remind" class="btn btn-block btn-link">Forgot Password?</a>
+				</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
-</div>
-@endsection
+@stop
