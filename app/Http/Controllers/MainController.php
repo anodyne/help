@@ -1,86 +1,51 @@
 <?php namespace Help\Http\Controllers;
 
+use TagRepositoryInterface,
+	ArticleRepositoryInterface,
+	ProductRepositoryInterface;
 use Help\Http\Requests;
 use Help\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MainController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	protected $repo;
+
+	public function __construct(ArticleRepositoryInterface $repo)
+	{
+		parent::__construct();
+		
+		$this->repo = $repo;
+	}
+
 	public function index()
 	{
-		$latest = [];
+		$latest = $this->repo->getLatestArticles();
 		$helpful = [];
 
 		return view('pages.main', compact('latest', 'helpful'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function showProduct(ProductRepositoryInterface $productRepo, $product)
 	{
-		//
+		// Get the product
+		$product = $productRepo->getBySlug($product);
+
+		// Get the product's articles
+		$articles = $productRepo->getProductArticles($product);
+
+		return view('pages.product', compact('articles', 'product'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function showTag(TagRepositoryInterface $tagRepo, $tag)
 	{
-		//
-	}
+		// Get the tag
+		$tag = $tagRepo->getBySlug($tag);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		// Get the tag's articles
+		$articles = $tagRepo->getTagArticles($tag);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return view('pages.tag', compact('articles', 'tag'));
 	}
 
 }

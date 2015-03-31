@@ -32,6 +32,14 @@ if ( ! function_exists('flash'))
 	}
 }
 
+if ( ! function_exists('flash_success'))
+{
+	function flash_success($message, $header = false)
+	{
+		return Flash::success($message, $header);
+	}
+}
+
 if ( ! function_exists('icon'))
 {
 	function icon($icon, $size = 'sm', $additional = false)

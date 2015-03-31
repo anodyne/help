@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width">
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v1') }}">
 		<link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon.png') }}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!--[if lt IE 9]>
 			{!! HTML::script('js/html5shiv.js') !!}
@@ -16,6 +17,7 @@
 		{!! partial('global_styles') !!}
 		{!! HTML::style('css/style.css') !!}
 		{!! HTML::style('css/fonts.css') !!}
+		{!! HTML::style('css/responsive.css') !!}
 		@yield('styles')
 	</head>
 	<body>
@@ -25,17 +27,17 @@
 			<header>
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-sm-5">
+						<div class="col-xs-12 col-md-5">
 							<a href="{{ route('home') }}" class="brand">Anodyne Help Center</a>
 						</div>
 
-						<div class="col-xs-12 col-sm-7">
+						<div class="col-xs-12 col-md-7">
 							<nav class="nav-sub">
 								<ul>
-									<li><a href="#">Nova 1</a></li>
-									<li><a href="#">Nova 2</a></li>
-									<li><a href="#">Nova 3</a></li>
-									<li><a href="#">AnodyneXtras</a></li>
+									<li><a href="{{ route('product', ['nova-1']) }}">Nova 1</a></li>
+									<li><a href="{{ route('product', ['nova-2']) }}">Nova 2</a></li>
+									<li><a href="{{ route('product', ['nova-3']) }}">Nova 3</a></li>
+									<li><a href="{{ route('product', ['xtras']) }}">AnodyneXtras</a></li>
 									<li><a href="#">Advanced Search</a></li>
 								</ul>
 							</nav>
@@ -103,6 +105,13 @@
 		
 		{!! partial('global_scripts') !!}
 		<script>
+			// Setup the CSRF token on Ajax requests
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			
 			// Destroy all modals when they're hidden
 			$('.modal').on('hidden.bs.modal', function()
 			{

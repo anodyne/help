@@ -1,0 +1,1 @@
+<span class="label label-primary"><div class="icon">{!! $_icons['thumbsUp'] !!}</div> {{ $content }}</span>

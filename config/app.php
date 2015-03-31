@@ -195,15 +195,28 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Date'				=> 'Carbon\Carbon',
-		'Form'				=> 'Collective\Html\FormFacade',
-		'HTML'				=> 'Collective\Html\HtmlFacade',
-		'Model'				=> 'Illuminate\Database\Eloquent\Model',
-		'SoftDeletingTrait'	=> 'Illuminate\Database\Eloquent\SoftDeletingTrait',
+		'Date'		=> 'Carbon\Carbon',
+		'Flash'		=> 'Help\Services\FlashNotifierFacade',
+		'Form'		=> 'Collective\Html\FormFacade',
+		'HTML'		=> 'Collective\Html\HtmlFacade',
+		'Markdown'	=> 'Help\Services\MarkdownParserFacade',
+		'Model'		=> 'Illuminate\Database\Eloquent\Model',
+		'Str'		=> 'Illuminate\Support\Str',
 
+		'Article'		=> 'Help\Data\Article',
 		'Permission'	=> 'Help\Data\Permission',
+		'Product'		=> 'Help\Data\Product',
 		'Role'			=> 'Help\Data\Role',
+		'Tag'			=> 'Help\Data\Tag',
 		'User'			=> 'Help\Data\User',
+
+		'ArticleRepositoryInterface'	=> 'Help\Data\Interfaces\ArticleRepositoryInterface',
+		'ProductRepositoryInterface'	=> 'Help\Data\Interfaces\ProductRepositoryInterface',
+		'TagRepositoryInterface'		=> 'Help\Data\Interfaces\TagRepositoryInterface',
+
+		'ArticleRepository'	=> 'Help\Data\Repositories\ArticleRepository',
+		'ProductRepository'	=> 'Help\Data\Repositories\ProductRepository',
+		'TagRepository'		=> 'Help\Data\Repositories\TagRepository',
 
 	],
 

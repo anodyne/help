@@ -1,4 +1,4 @@
-<nav class="nav-main visible-xs">
+<nav class="nav-main visible-xs visible-sm">
 	<div class="container">
 		<ul>
 			<li><a href="#" class="active" data-toggle="modal" data-target="#navGlobalMobile">Help<div class="arrow"></div></a></li>
@@ -32,7 +32,7 @@
 	</div>
 </div>
 
-<nav class="nav-main hidden-xs">
+<nav class="nav-main visible-md visible-lg">
 	<div class="container">
 		<ul class="visible-md visible-lg pull-right">
 			<li><a href="#" class="js-contact">Contact</a></li>
@@ -42,15 +42,16 @@
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{!! $_icons['user'] !!}</span> {{ $_currentUser->present()->name }} <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-menu-right dd">
 						@if ($_currentUser->can('help.article.create'))
-							<li><a href="{{ route('article.create') }}">Create New Article</a></li>
+							<li><a href="{{ route('admin.article.create') }}">Create New Article</a></li>
 							<li class="divider"></li>
 						@endif
-						<li><a href="{{ route('account.profile', [$_currentUser->username]) }}">My Profile</a></li>
 						<li><a href="{{ Config::get('anodyne.links.www') }}admin/users/{{ $_currentUser->username }}/edit">Edit My Profile</a></li>
 
 						@if ($_currentUser->can('help.admin'))
 							<li class="divider"></li>
-							<li><a href="{{ route('admin') }}">Admin</a></li>
+							<li><a href="{{ route('admin.article.index') }}">Manage Articles</a></li>
+							<li><a href="{{ route('admin.product.index') }}">Manage Products</a></li>
+							<li><a href="{{ route('admin.tag.index') }}">Manage Tags</a></li>
 						@endif
 
 						<li class="divider"></li>
