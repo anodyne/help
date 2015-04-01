@@ -12,6 +12,11 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface {
 		$this->model = $model;
 	}
 
+	public function allWithTrashed()
+	{
+		return $this->model->withTrashed()->get();
+	}
+
 	public function create(array $data)
 	{
 		return $this->model->create($data);
@@ -20,7 +25,7 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface {
 	public function delete($id)
 	{
 		// Get the tag
-		$tag = $this->getById($id);
+		$tag = $this->find($id);
 
 		if ($tag)
 		{
@@ -33,9 +38,19 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface {
 		return false;
 	}
 
+	public function find($id)
+	{
+		$query = $this->make(['articles']);
+
+		return $query->where('id', '=', $id)->withTrashed()->first();
+	}
+
 	public function getBySlug($slug)
 	{
-		return $this->getFirstBy('slug', $slug, ['articles', 'articles.product', 'articles.tags']);
+		return $this->make(['articles', 'articles.product', 'articles.tags'])
+			->where('slug', '=', $slug)
+			->withTrashed()
+			->first();
 	}
 
 	public function getTagArticles(Model $tag)
@@ -43,10 +58,28 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface {
 		return $tag->articles;
 	}
 
+	public function restore($id)
+	{
+		// Get the tag
+		$tag = $this->find($id);
+
+		if ($tag)
+		{
+			if ($tag->trashed())
+			{
+				$item = $tag->restore();
+
+				return $tag;
+			}
+		}
+
+		return false;
+	}
+
 	public function update($id, array $data)
 	{
 		// Get the tag
-		$tag = $this->getById($id);
+		$tag = $this->find($id);
 
 		if ($tag)
 		{

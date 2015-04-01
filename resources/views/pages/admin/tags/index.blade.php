@@ -28,16 +28,28 @@
 				<div class="col-md-3">
 					<div class="visible-xs visible-sm">
 						<p><a href="{{ route('admin.tag.edit', [$tag->id]) }}" class="btn btn-default btn-lg btn-block">Edit</a></p>
-						<p><a href="#" class="btn btn-danger btn-lg btn-block js-tagAction" data-id="{{ $tag->id }}" data-action="remove">Remove</a></p>
+
+						@if ($tag->trashed())
+							<p><a href="#" class="btn btn-success btn-lg btn-block js-tagAction" data-id="{{ $tag->id }}" data-action="restore">Restore</a></p>
+						@else
+							<p><a href="#" class="btn btn-danger btn-lg btn-block js-tagAction" data-id="{{ $tag->id }}" data-action="remove">Remove</a></p>
+						@endif
 					</div>
 					<div class="visible-md visible-lg">
 						<div class="btn-toolbar pull-right">
 							<div class="btn-group">
 								<a href="{{ route('admin.tag.edit', [$tag->id]) }}" class="btn btn-default">Edit</a>
 							</div>
-							<div class="btn-group">
-								<a href="#" class="btn btn-danger js-tagAction" data-id="{{ $tag->id }}" data-action="remove">Remove</a>
-							</div>
+
+							@if ($tag->trashed())
+								<div class="btn-group">
+									<a href="#" class="btn btn-success js-tagAction" data-id="{{ $tag->id }}" data-action="restore">Restore</a>
+								</div>
+							@else
+								<div class="btn-group">
+									<a href="#" class="btn btn-danger js-tagAction" data-id="{{ $tag->id }}" data-action="remove">Remove</a>
+								</div>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -51,6 +63,7 @@
 
 @section('modals')
 	{!! modal(['id' => 'removeTag', 'header' => "Remove Tag"]) !!}
+	{!! modal(['id' => 'restoreTag', 'header' => "Restore Tag"]) !!}
 @stop
 
 @section('scripts')
@@ -66,6 +79,13 @@
 			{
 				$('#removeTag').modal({
 					remote: "{{ url('admin/tag') }}/" + id + "/remove"
+				}).modal('show');
+			}
+
+			if (action == 'restore')
+			{
+				$('#restoreTag').modal({
+					remote: "{{ url('admin/tag') }}/" + id + "/restore"
 				}).modal('show');
 			}
 		});

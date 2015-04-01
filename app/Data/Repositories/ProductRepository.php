@@ -12,6 +12,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 		$this->model = $model;
 	}
 
+	public function allWithTrashed()
+	{
+		return $this->model->withTrashed()->get();
+	}
+
 	public function create(array $data)
 	{
 		return $this->model->create($data);
@@ -20,7 +25,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 	public function delete($id)
 	{
 		// Get the product
-		$product = $this->getById($id);
+		$product = $this->find($id);
 
 		if ($product)
 		{
@@ -33,9 +38,19 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 		return false;
 	}
 
+	public function find($id)
+	{
+		$query = $this->make(['articles']);
+
+		return $query->where('id', '=', $id)->withTrashed()->first();
+	}
+
 	public function getBySlug($slug)
 	{
-		return $this->getFirstBy('slug', $slug, ['articles', 'articles.product', 'articles.tags']);
+		return $this->make(['articles', 'articles.product', 'articles.tags'])
+			->where('slug', '=', $slug)
+			->withTrashed()
+			->first();
 	}
 
 	public function getProductArticles(Model $product)
@@ -43,10 +58,28 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 		return $product->articles;
 	}
 
+	public function restore($id)
+	{
+		// Get the tag
+		$tag = $this->find($id);
+
+		if ($tag)
+		{
+			if ($tag->trashed())
+			{
+				$item = $tag->restore();
+
+				return $tag;
+			}
+		}
+
+		return false;
+	}
+
 	public function update($id, array $data)
 	{
 		// Get the product
-		$product = $this->getById($id);
+		$product = $this->find($id);
 
 		if ($product)
 		{

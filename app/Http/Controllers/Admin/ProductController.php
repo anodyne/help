@@ -21,7 +21,7 @@ class ProductController extends Controller {
 	public function index()
 	{
 		// Get all the products
-		$products = $this->repo->all();
+		$products = $this->repo->allWithTrashed();
 
 		return view('pages.admin.products.index', compact('products'));
 	}
@@ -103,6 +103,37 @@ class ProductController extends Controller {
 	public function setSlug()
 	{
 		return json_encode(['slug' => Str::slug(Input::get('value'))]);
+	}
+
+	public function confirmRestore($id)
+	{
+		// Grab the product we're restoring
+		$product = $this->repo->find($id);
+
+		// Build the body based on whether we found the product or not
+		$body = ($product)
+			? view('pages.admin.products.restore', compact('product'))
+			: alert('danger', "Product not found.");
+
+		return partial('modal-content', [
+			'header' => "Restore Product",
+			'body' => $body,
+			'footer' => false,
+		]);
+	}
+
+	public function restore($id)
+	{
+		// Restore the product
+		$product = $this->repo->restore($id);
+
+		// Fire the event
+		event(new Events\ProductWasUpdated($product));
+
+		// Set the flash message
+		flash_success("Product was restored.");
+
+		return redirect()->route('admin.product.index');
 	}
 
 }

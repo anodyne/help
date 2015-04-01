@@ -43,12 +43,12 @@ class Article extends Model {
 
 	public function product()
 	{
-		return $this->belongsTo('Product');
+		return $this->belongsTo('Product')->withTrashed();
 	}
 
 	public function tags()
 	{
-		return $this->belongsToMany('Tag', 'articles_tags');
+		return $this->belongsToMany('Tag', 'articles_tags')->withTrashed();
 	}
 
 }

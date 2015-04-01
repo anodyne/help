@@ -21,7 +21,7 @@ class TagController extends Controller {
 	public function index()
 	{
 		// Get all the tags
-		$tags = $this->repo->all();
+		$tags = $this->repo->allWithTrashed();
 
 		return view('pages.admin.tags.index', compact('tags'));
 	}
@@ -48,7 +48,7 @@ class TagController extends Controller {
 	public function edit($id)
 	{
 		// Get the tag
-		$tag = $this->repo->getById($id);
+		$tag = $this->repo->find($id);
 
 		if ($tag)
 		{
@@ -75,7 +75,7 @@ class TagController extends Controller {
 	public function remove($id)
 	{
 		// Grab the tag we're removing
-		$tag = $this->repo->getById($id);
+		$tag = $this->repo->find($id);
 
 		// Build the body based on whether we found the tag or not
 		$body = ($tag)
@@ -103,6 +103,37 @@ class TagController extends Controller {
 	public function setSlug()
 	{
 		return json_encode(['slug' => Str::slug(Input::get('value'))]);
+	}
+
+	public function confirmRestore($id)
+	{
+		// Grab the tag we're restoring
+		$tag = $this->repo->find($id);
+
+		// Build the body based on whether we found the tag or not
+		$body = ($tag)
+			? view('pages.admin.tags.restore', compact('tag'))
+			: alert('danger', "Tag not found.");
+
+		return partial('modal-content', [
+			'header' => "Restore Tag",
+			'body' => $body,
+			'footer' => false,
+		]);
+	}
+
+	public function restore($id)
+	{
+		// Restore the tag
+		$tag = $this->repo->restore($id);
+
+		// Fire the event
+		event(new Events\TagWasUpdated($tag));
+
+		// Set the flash message
+		flash_success("Tag was restored.");
+
+		return redirect()->route('admin.tag.index');
 	}
 
 }
