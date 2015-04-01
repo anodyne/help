@@ -3,8 +3,8 @@
 use TagRepositoryInterface,
 	ArticleRepositoryInterface,
 	ProductRepositoryInterface;
-use Help\Http\Requests;
-use Help\Http\Controllers\Controller;
+use Help\Http\Requests,
+	Help\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MainController extends Controller {
