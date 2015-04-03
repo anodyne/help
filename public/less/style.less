@@ -529,15 +529,21 @@ form {
 }
 
 .panel {
+	margin: @spacing 0;
+
 	.rounded(@border-radius);
 
 	.panel-heading {
-		.border-radius(@border-radius, @border-radius, 0, 0);
+		.border-radius(@border-radius - 1, @border-radius - 1, 0, 0);
 
 		.panel-title {
 			font-weight: 600;
 			font-family: @font-special;
 		}
+	}
+
+	.panel-footer {
+		.border-radius(0, 0, @border-radius - 1, @border-radius - 1);
 	}
 
 	&.panel-default {
@@ -973,4 +979,31 @@ hr.partial-split {
 	.article-date {
 		font-size: @font-size-sm;
 	}
+}
+
+.uk-htmleditor-navbar {
+	background: @color-subtle !important;
+	border-color: #ccc !important;
+
+	.border-radius(@border-radius, @border-radius, 0, 0);
+}
+.uk-htmleditor-navbar-nav {
+	>li {
+		margin-bottom: 0;
+
+		&.uk-active {
+			>a {
+				border-color: #ccc !important;
+			}
+		}
+	}
+}
+.uk-htmleditor-content {
+	border-color: #ccc !important;
+
+	.border-radius(0, 0, @border-radius, @border-radius);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
 }
