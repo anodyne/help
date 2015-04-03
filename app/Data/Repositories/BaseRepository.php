@@ -2,9 +2,11 @@
 
 abstract class BaseRepository {
 
-	public function all()
+	public function all(array $with = [])
 	{
-		return $this->model->all();
+		$query = $this->make($with);
+
+		return $query->get();
 	}
 
 	public function countBy($key, $value, array $with = [])
