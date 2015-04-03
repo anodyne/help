@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<title>@yield('title') &bull; Anodyne Help Center</title>
