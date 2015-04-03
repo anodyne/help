@@ -44,6 +44,13 @@ Route::group($adminOptions, function()
 		'as'	=> 'admin.tag.restore',
 		'uses'	=> 'Admin\TagController@restore']);
 
+	Route::get('article/{id}/remove', 'Admin\ArticleController@remove');
+	Route::post('article/set-slug', 'Admin\ArticleController@setSlug');
+	Route::get('article/{id}/restore', 'Admin\ArticleController@confirmRestore');
+	Route::put('article/{id}/restore', [
+		'as'	=> 'admin.article.restore',
+		'uses'	=> 'Admin\ArticleController@restore']);
+
 	Route::resource('product', 'Admin\ProductController', ['except' => ['show']]);
 	Route::resource('tag', 'Admin\TagController', ['except' => ['show']]);
 	Route::resource('article', 'Admin\ArticleController', ['except' => ['show']]);
