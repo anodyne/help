@@ -12,6 +12,13 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		$this->model = $model;
 	}
 
+	public function allWithTrashed(array $with = [])
+	{
+		$query = $this->make($with);
+
+		return $query->withTrashed()->get();
+	}
+
 	public function getLatestArticles($number = 5)
 	{
 		return $this->model->with(['tags', 'product', 'author'])
