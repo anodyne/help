@@ -1,84 +1,75 @@
 <?php namespace Help\Http\Controllers\Admin;
 
+use ArticleRepositoryInterface;
 use Help\Http\Requests;
-use Help\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use Help\Http\Controllers\Controller;
 
 class ArticleController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	protected $repo;
+
+	public function __construct(ArticleRepositoryInterface $repo)
+	{
+		parent::__construct();
+
+		$this->repo = $repo;
+	}
+
 	public function index()
 	{
-		//
+		return view('pages.admin.articles.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
-		//
+		// Get the products
+		$products = app('ProductRepository')->listAll('name', 'id');
+
+		// Get the tags
+		$tags = app('TagRepository')->listAll('name', 'id');
+
+		return view('pages.admin.articles.create', compact('products', 'tags'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		//
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
 		//
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	public function remove($id)
+	{
+		//
+	}
+
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function confirmRestore($id)
+	{
+		# code...
+	}
+
+	public function restore($id)
+	{
+		# code...
+	}
+
+	public function setSlug()
+	{
+		# code...
 	}
 
 }
