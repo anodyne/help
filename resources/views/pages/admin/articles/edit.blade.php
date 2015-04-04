@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-	Add an Article
+	Edit an Article
 @stop
 
 @section('content')
-	<h1>Add an Article</h1>
+	<h1>Edit an Article</h1>
 
 	<div class="visible-xs visible-sm">
 		<p><a href="{{ route('admin.article.index') }}" class="btn btn-default btn-lg btn-block">Back to Articles</a></p>
@@ -18,7 +18,7 @@
 		</div>
 	</div>
 
-	{!! Form::open(['route' => 'admin.article.store', 'class' => 'form-horizontal']) !!}
+	{!! Form::model($article, ['route' => ['admin.article.update', $article->id], 'method' => 'put', 'class' => 'form-horizontal']) !!}
 		<div class="form-group{{ ($errors->has('product_id')) ? ' has-error' : '' }}">
 			<label class="control-label col-md-2">Product</label>
 			<div class="col-md-9">
@@ -40,9 +40,10 @@
 			<div class="col-md-9">
 				<div class="row">
 				@foreach ($tags as $id => $tag)
+					<?php $checked = (bool) in_array($id, $articleTags);?>
 					<div class="col-sm-6 col-md-4">
 						<div class="checkbox">
-							<label>{!! Form::checkbox('tags[]', $id) !!} {{ $tag }}</label>
+							<label>{!! Form::checkbox('tag[]', $id, $checked) !!} {{ $tag }}</label>
 						</div>
 					</div>
 				@endforeach
@@ -85,10 +86,10 @@
 		<div class="form-group">
 			<div class="col-md-5 col-md-offset-2">
 				<div class="visible-xs visible-sm">
-					{!! Form::button("Add Article", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}
+					{!! Form::button("Update Article", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}
 				</div>
 				<div class="visible-md visible-lg">
-					{!! Form::button("Add Article", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg']) !!}
+					{!! Form::button("Update Article", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg']) !!}
 				</div>
 			</div>
 		</div>
@@ -112,28 +113,27 @@
 	{!! HTML::script('uikit/js/core/core.min.js') !!}
 	{!! HTML::script('uikit/js/components/htmleditor.min.js') !!}
 	<script>
-		$('[name="title"]').on('change', function(e)
+		$('[name="slug"]').on('change', function(e)
 		{
+			var $field = $(this);
+
 			if ($('[name="product_id"]:checked').length == 0)
 			{
-				$(this).val("");
 				alert("Please select a product");
 			}
 			else
 			{
-				var $slug = $('[name="slug"]');
-
 				$.ajax({
 					url: "{{ url('admin/article/set-slug') }}",
 					dataType: "json",
 					type: "POST",
 					data: {
-						value: $(this).val(),
+						value: $field.val(),
 						product: $('[name="product_id"]:checked').val()
 					},
 					success: function (data)
 					{
-						$slug.val(data.slug);
+						$field.val(data.slug);
 
 						if (data.code == 0)
 							alert("An article with this slug already exists. Please enter a unique slug.");
