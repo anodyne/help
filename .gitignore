@@ -1,4 +1,9 @@
-/vendor
+.DS_Store
+Thumbs.db
+
 .env
+/vendor
+storage/debugbar
+
 *.sublime-project
 *.sublime-workspace
