@@ -324,11 +324,13 @@ footer {
 
 	h2 {
 		margin-top: 0;
+		line-height: @line-height;
 
 		font-family: @font-special;
 		font-weight: 500;
 		font-size: @font-size-lg;
 		font-style: italic;
+		color: @color-white;
 	}
 
 	a {
@@ -370,6 +372,13 @@ form {
 	.help-block {
 		font-size: @font-size-sm;
 	}
+}
+
+.checkbox input[type=checkbox],
+.checkbox-inline input[type=checkbox],
+.radio input[type=radio],
+.radio-inline input[type=radio] {
+	margin-top: 9px;
 }
 
 .has-warning .help-block,
