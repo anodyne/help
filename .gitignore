@@ -4,6 +4,7 @@ Thumbs.db
 .env
 /vendor
 storage/debugbar
+storage/framework/compiled.php
 
 *.sublime-project
 *.sublime-workspace
