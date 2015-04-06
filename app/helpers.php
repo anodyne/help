@@ -58,9 +58,9 @@ if ( ! function_exists('icon'))
 
 if ( ! function_exists('label'))
 {
-	function label($type, $content)
+	function label($class, $content)
 	{
-		return partial('label', compact('type', 'content'));
+		return partial('label', compact('class', 'content'));
 	}
 }
 
