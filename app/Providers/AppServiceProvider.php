@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider {
 	protected function setRepositoryBindings()
 	{
 		// Build a list of repositories that should be built
-		$bindings = ['Article', 'Product', 'Tag'];
+		$bindings = ['Article', 'Product', 'Review', 'Tag'];
 
 		// Loop through the repositories and do the binding
 		foreach ($bindings as $binding)
