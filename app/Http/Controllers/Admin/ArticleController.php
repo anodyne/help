@@ -15,6 +15,9 @@ class ArticleController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
+
+		// Before filter to check if the user has permissions
+		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
@@ -99,22 +102,64 @@ class ArticleController extends Controller {
 
 	public function remove($id)
 	{
-		//
+		// Grab the article we're removing
+		$article = $this->repo->getById($id);
+
+		// Build the body based on whether we found the article or not
+		$body = ($article)
+			? view('pages.admin.articles.remove', compact('article'))
+			: alert('danger', "Article not found.");
+
+		return partial('modal-content', [
+			'header' => "Remove Article",
+			'body' => $body,
+			'footer' => false,
+		]);
 	}
 
 	public function destroy($id)
 	{
-		//
+		// Remove the article
+		$article = $this->repo->delete($id);
+
+		// Fire the event
+		event(new Events\ArticleWasDeleted($article->id, $article->title));
+
+		// Set the flash message
+		flash_success("Article was removed.");
+
+		return redirect()->route('admin.article.index');
 	}
 
 	public function confirmRestore($id)
 	{
-		# code...
+		// Grab the article we're restoring
+		$article = $this->repo->find($id);
+
+		// Build the body based on whether we found the article or not
+		$body = ($article)
+			? view('pages.admin.articles.restore', compact('article'))
+			: alert('danger', "Article not found.");
+
+		return partial('modal-content', [
+			'header' => "Restore Article",
+			'body' => $body,
+			'footer' => false,
+		]);
 	}
 
 	public function restore($id)
 	{
-		# code...
+		// Restore the article
+		$article = $this->repo->restore($id);
+
+		// Fire the event
+		event(new Events\ArticleWasUpdated($article));
+
+		// Set the flash message
+		flash_success("Article was restored.");
+
+		return redirect()->route('admin.article.index');
 	}
 
 	public function setSlug()
@@ -133,6 +178,14 @@ class ArticleController extends Controller {
 		}
 
 		return json_encode(['code' => 1, 'slug' => $slug]);
+	}
+
+	public function checkPermissions()
+	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
 	}
 
 }

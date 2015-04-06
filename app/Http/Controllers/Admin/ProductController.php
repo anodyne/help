@@ -16,6 +16,9 @@ class ProductController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
+
+		// Before filter to check if the user has permissions
+		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
@@ -134,6 +137,14 @@ class ProductController extends Controller {
 		flash_success("Product was restored.");
 
 		return redirect()->route('admin.product.index');
+	}
+
+	public function checkPermissions()
+	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
 	}
 
 }

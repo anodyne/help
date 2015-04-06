@@ -16,6 +16,9 @@ class TagController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
+
+		// Before filter to check if the user has permissions
+		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
@@ -134,6 +137,14 @@ class TagController extends Controller {
 		flash_success("Tag was restored.");
 
 		return redirect()->route('admin.tag.index');
+	}
+
+	public function checkPermissions()
+	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage tags!");
+		}
 	}
 
 }
