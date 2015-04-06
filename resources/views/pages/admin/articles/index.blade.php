@@ -15,11 +15,15 @@
 		<div ng-cloak>
 			<div class="visible-xs visible-sm">
 				<p><a href="{{ route('admin.article.create') }}" class="btn btn-primary btn-lg btn-block">Add an Article</a></p>
+				<p><a href="{{ route('admin.article.create') }}" class="btn btn-default btn-lg btn-block">Article Review Queue</a></p>
 			</div>
 			<div class="visible-md visible-lg">
 				<div class="btn-toolbar">
 					<div class="btn-group">
 						<a href="{{ route('admin.article.create') }}" class="btn btn-primary">Add an Article</a>
+					</div>
+					<div class="btn-group">
+						<a href="{{ route('admin.article.create') }}" class="btn btn-default">Article Review Queue</a>
 					</div>
 				</div>
 			</div>
@@ -70,7 +74,7 @@
 					<div class="data-table data-table-bordered data-table-striped">
 						<div class="row" ng-repeat="article in filteredArticles | filter:search">
 							<div class="col-md-9">
-								<p class="lead"><strong>{% article.title %}</strong></p>
+								<p class="lead">{% article.title %}</p>
 								<p>
 									<span class="label label-success">{% article.product %}</span>
 									<span ng-repeat="tag in article.tags">
@@ -115,12 +119,13 @@
 @stop
 
 @section('modals')
+	{!! modal(['id' => 'removeArticle', 'header' => "Remove Article"]) !!}
+	{!! modal(['id' => 'restoreArticle', 'header' => "Restore Article"]) !!}
 @stop
 
 @section('scripts')
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	{!! HTML::script('js/angular/articles.js') !!}
-
 	<script>
 		var baseUrl = "{{ Request::root() }}";
 
@@ -133,8 +138,15 @@
 
 			if (action == 'remove')
 			{
-				$('#removePage').modal({
+				$('#removeArticle').modal({
 					remote: "{{ url('admin/article') }}/" + id + "/remove"
+				}).modal('show');
+			}
+
+			if (action == 'restore')
+			{
+				$('#restoreArticle').modal({
+					remote: "{{ url('admin/article') }}/" + id + "/restore"
 				}).modal('show');
 			}
 		});
