@@ -1,5 +1,6 @@
 <?php namespace Help\Data\Presenters;
 
+use Markdown;
 use Laracasts\Presenter\Presenter;
 
 class ArticlePresenter extends Presenter {
@@ -36,6 +37,11 @@ class ArticlePresenter extends Presenter {
 	public function ratingAsLabel()
 	{
 		return partial('rating', ['content' => 15]);
+	}
+
+	public function summary()
+	{
+		return Markdown::parse($this->entity->summary);
 	}
 
 	public function tags()
