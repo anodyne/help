@@ -34,11 +34,10 @@
 						<div class="col-xs-12 col-md-7">
 							<nav class="nav-sub">
 								<ul>
-									<li><a href="{{ route('product', ['nova-1']) }}">Nova 1</a></li>
 									<li><a href="{{ route('product', ['nova-2']) }}">Nova 2</a></li>
 									<li><a href="{{ route('product', ['nova-3']) }}">Nova 3</a></li>
 									<li><a href="{{ route('product', ['xtras']) }}">AnodyneXtras</a></li>
-									<li><a href="#">Advanced Search</a></li>
+									<li><a href="{{ route('search.advanced') }}">Advanced Search</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -48,12 +47,12 @@
 
 			<div class="search-help">
 				<div class="container">
-					{!! Form::open(['route' => 'search.do']) !!}
+					{!! Form::open(['route' => 'search.do', 'method' => 'get']) !!}
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="input-group">
 								<span class="input-group-addon">{!! $_icons['search-lg'] !!}</span>
-								{!! Form::text('search', null, ['placeholder' => 'Search the Help Center', 'class' => 'input-lg form-control search-field']) !!}
+								{!! Form::text('q', null, ['placeholder' => 'Search the Help Center', 'class' => 'input-lg form-control search-field']) !!}
 							</div>
 						</div>
 					</div>
