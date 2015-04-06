@@ -47,7 +47,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
 	public function getBySlug($slug)
 	{
-		return $this->make(['articles', 'articles.product', 'articles.tags'])
+		return $this->make(['articles', 'articles.product', 'articles.tags', 'articles.author'])
 			->where('slug', '=', $slug)
 			->withTrashed()
 			->first();
@@ -60,16 +60,16 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
 	public function restore($id)
 	{
-		// Get the tag
-		$tag = $this->find($id);
+		// Get the product
+		$product = $this->find($id);
 
-		if ($tag)
+		if ($product)
 		{
-			if ($tag->trashed())
+			if ($product->trashed())
 			{
-				$item = $tag->restore();
+				$item = $product->restore();
 
-				return $tag;
+				return $product;
 			}
 		}
 
