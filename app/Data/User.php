@@ -43,6 +43,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('Article');
 	}
 
+	public function reviews()
+	{
+		return $this->hasMany('Review')->withTrashed();
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Model Scopes

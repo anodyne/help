@@ -46,6 +46,11 @@ class Article extends Model {
 		return $this->belongsTo('Product')->withTrashed();
 	}
 
+	public function reviews()
+	{
+		return $this->hasMany('Review')->withTrashed();
+	}
+
 	public function tags()
 	{
 		return $this->belongsToMany('Tag', 'articles_tags')->withTrashed();
