@@ -12,9 +12,15 @@ Route::get('logout', [
 	'uses'	=> 'LoginController@logout']);
 Route::post('login', 'LoginController@doLogin');
 
-Route::post('search', [
+Route::get('advanced-search', [
+	'as'	=> 'search.advanced',
+	'uses'	=> 'SearchController@advanced']);
+Route::get('search', [
 	'as'	=> 'search.do',
-	'uses'	=> 'MainController@foo']);
+	'uses'	=> 'SearchController@doSearch']);
+Route::get('advanced-results', [
+	'as'	=> 'search.doAdvanced',
+	'uses'	=> 'SearchController@doAdvancedSearch']);
 
 Route::get('product/{product}', [
 	'as'	=> 'product',
@@ -54,4 +60,5 @@ Route::group($adminOptions, function()
 	Route::resource('product', 'Admin\ProductController', ['except' => ['show']]);
 	Route::resource('tag', 'Admin\TagController', ['except' => ['show']]);
 	Route::resource('article', 'Admin\ArticleController', ['except' => ['show']]);
+	Route::resource('review', 'Admin\ReviewController', ['except' => ['destroy']]);
 });
