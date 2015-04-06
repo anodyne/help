@@ -206,16 +206,19 @@ return [
 		'Article'		=> 'Help\Data\Article',
 		'Permission'	=> 'Help\Data\Permission',
 		'Product'		=> 'Help\Data\Product',
+		'Review'		=> 'Help\Data\Review',
 		'Role'			=> 'Help\Data\Role',
 		'Tag'			=> 'Help\Data\Tag',
 		'User'			=> 'Help\Data\User',
 
 		'ArticleRepositoryInterface'	=> 'Help\Data\Interfaces\ArticleRepositoryInterface',
 		'ProductRepositoryInterface'	=> 'Help\Data\Interfaces\ProductRepositoryInterface',
+		'ReviewRepositoryInterface'		=> 'Help\Data\Interfaces\ReviewRepositoryInterface',
 		'TagRepositoryInterface'		=> 'Help\Data\Interfaces\TagRepositoryInterface',
 
 		'ArticleRepository'	=> 'Help\Data\Repositories\ArticleRepository',
 		'ProductRepository'	=> 'Help\Data\Repositories\ProductRepository',
+		'ReviewRepository'	=> 'Help\Data\Repositories\ReviewRepository',
 		'TagRepository'		=> 'Help\Data\Repositories\TagRepository',
 
 	],

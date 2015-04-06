@@ -25,6 +25,19 @@ class CreateArticleTables extends Migration {
 			$table->softDeletes();
 		});
 
+		Schema::create('articles_reviews', function(Blueprint $table)
+		{
+			$table->bigIncrements('id');
+			$table->bigInteger('article_id')->unsigned();
+			$table->integer('user_id')->unsigned();
+			$table->string('type')->default('review');
+			$table->string('resolution')->nullable();
+			$table->text('notes')->nullable();
+			$table->text('comments')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+		});
+
 		Schema::create('articles_tags', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
@@ -41,6 +54,7 @@ class CreateArticleTables extends Migration {
 	public function down()
 	{
 		Schema::dropIfExists('articles');
+		Schema::dropIfExists('articles_reviews');
 		Schema::dropIfExists('articles_tags');
 	}
 
