@@ -55,6 +55,22 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		return $article;
 	}
 
+	public function delete($id)
+	{
+		// Get the article
+		$article = $this->find($id);
+
+		if ($article)
+		{
+			// Remove the article
+			$article->delete();
+
+			return $article;
+		}
+
+		return false;
+	}
+
 	public function find($id)
 	{
 		$query = $this->make(['tags', 'product', 'author']);
@@ -66,6 +82,65 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 	{
 		return $this->model->with(['tags', 'product', 'author'])
 			->latest()->limit($number)->get();
+	}
+
+	public function restore($id)
+	{
+		// Get the article
+		$article = $this->find($id);
+
+		if ($article)
+		{
+			if ($article->trashed())
+			{
+				$item = $article->restore();
+
+				return $article;
+			}
+		}
+
+		return false;
+	}
+
+	public function search($input)
+	{
+		return $this->model->with('author', 'product', 'tags')
+			->where(function($query) use ($input)
+			{
+				$query->where('title', 'like', "%{$input}%")
+					->orWhere('summary', 'like', "%{$input}%")
+					->orWhere('content', 'like', "%{$input}%");
+			})->paginate(25);
+	}
+
+	public function searchAdvanced(array $input)
+	{
+		$search = $this->make(['author', 'product', 'tags']);
+
+		if (array_key_exists('p', $input) and count($input['p']) > 0)
+		{
+			$search = $search->whereIn('product_id', $input['p']);
+		}
+
+		if (array_key_exists('t', $input) and count($input['t']) > 0)
+		{
+			$search = $search->whereHas('tags', function($query) use ($input)
+			{
+				$query->whereIn('id', $input['t']);
+			});
+		}
+
+		if ( ! empty($input['q']))
+		{
+			$search = $search->where(function($query) use ($input)
+			{
+				$query->where('title', 'like', "%{$input['q']}%")
+					->orWhere('summary', 'like', "%{$input['q']}%")
+					->orWhere('content', 'like', "%{$input['q']}%");
+			});
+		}
+
+		return $search->paginate(25);
 	}
 
 	public function update($id, array $data)
