@@ -206,6 +206,7 @@ return [
 		'Article'		=> 'Help\Data\Article',
 		'Permission'	=> 'Help\Data\Permission',
 		'Product'		=> 'Help\Data\Product',
+		'Rating'		=> 'Help\Data\Rating',
 		'Review'		=> 'Help\Data\Review',
 		'Role'			=> 'Help\Data\Role',
 		'Tag'			=> 'Help\Data\Tag',
@@ -213,11 +214,13 @@ return [
 
 		'ArticleRepositoryInterface'	=> 'Help\Data\Interfaces\ArticleRepositoryInterface',
 		'ProductRepositoryInterface'	=> 'Help\Data\Interfaces\ProductRepositoryInterface',
+		'RatingRepositoryInterface'		=> 'Help\Data\Interfaces\RatingRepositoryInterface',
 		'ReviewRepositoryInterface'		=> 'Help\Data\Interfaces\ReviewRepositoryInterface',
 		'TagRepositoryInterface'		=> 'Help\Data\Interfaces\TagRepositoryInterface',
 
 		'ArticleRepository'	=> 'Help\Data\Repositories\ArticleRepository',
 		'ProductRepository'	=> 'Help\Data\Repositories\ProductRepository',
+		'RatingRepository'	=> 'Help\Data\Repositories\RatingRepository',
 		'ReviewRepository'	=> 'Help\Data\Repositories\ReviewRepository',
 		'TagRepository'		=> 'Help\Data\Repositories\TagRepository',
 

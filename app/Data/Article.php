@@ -46,6 +46,11 @@ class Article extends Model {
 		return $this->belongsTo('Product')->withTrashed();
 	}
 
+	public function ratings()
+	{
+		return $this->hasMany('Rating');
+	}
+
 	public function reviews()
 	{
 		return $this->hasMany('Review')->withTrashed();
@@ -54,6 +59,24 @@ class Article extends Model {
 	public function tags()
 	{
 		return $this->belongsToMany('Tag', 'articles_tags')->withTrashed();
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeProduct($query, $product)
+	{
+		$id = ($product instanceof Product) ? $product->id : $product;
+
+		$query->where('product_id', $id);
+	}
+
+	public function scopeSlug($query, $slug)
+	{
+		$query->where('slug', $slug);
 	}
 
 }
