@@ -78,6 +78,20 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		return $query->where('id', '=', $id)->withTrashed()->first();
 	}
 
+	public function getByProductAndSlug($product, $slug)
+	{
+		// Get the product
+		$product = app('ProductRepository')->getBySlug($product);
+
+		if ($product)
+		{
+			return $this->model->with(['tags', 'product', 'author'])
+				->product($product)
+				->slug($slug)
+				->first();
+		}
+	}
+
 	public function getLatestArticles($number = 5)
 	{
 		return $this->model->with(['tags', 'product', 'author'])
