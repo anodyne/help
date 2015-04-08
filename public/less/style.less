@@ -2,10 +2,26 @@
 @import "mixins.less";
 @import "bs3-mixins.less";
 
-html,
-body {
+body, html {
+	margin: 0;
+	padding: 0;
 	height: 100%;
 }
+.wrapper {
+	min-height: 100%;
+	position: relative;
+}
+section {
+	padding-bottom: @footer-height + 40px;
+}
+footer {
+	width: 100%;
+	height: @footer-height;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
 body {
 	position: relative;
 	z-index: -100;
@@ -15,13 +31,6 @@ body {
 	font-size: @font-size;
 	background: @color-body;
 	color: @color-dark;
-}
-
-.wrapper {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -@footer-height;
 }
 
 nav.nav-main {
@@ -202,7 +211,7 @@ header {
 }
 
 section {
-	margin: @spacing 0;
+	margin: @spacing 0 0 0;
 
 	a  {
 		color: @color-primary;
@@ -318,11 +327,10 @@ section {
 	}
 }
 
-footer, .push {
-	height: @footer-height;
-	padding-top: 27px;
-}
 footer {
+	padding: @spacing-lg 0;
+	line-height: 1.75;
+	
 	background: @color-nav-main;
 	color: @color-white;
 	border-top: 1px solid rgba(0, 0, 0, .5);
@@ -460,7 +468,7 @@ form {
 	}
 
 	&.btn-warning {
-		.btn-pseudo-states(@color-warning-dark, @color-warning-bright, @color-warning-bright);
+		.btn-pseudo-states(@color-warning-dark, darken(@color-warning-bright, 5%), darken(@color-warning-bright, 5%));
 	}
 
 	&.btn-link {
@@ -993,6 +1001,18 @@ hr.partial-split {
 	}
 	.article-date {
 		font-size: @font-size-sm;
+	}
+}
+
+.well {
+	border-color: @color-gray-light;
+	background-color: @color-subtle;
+
+	.rounded(@border-radius);
+	.box-shadow(~"0 0 0 transparent, 0 0 0 transparent, inset 0 0 0 transparent");
+
+	hr {
+		border-color: @color-gray-light;
 	}
 }
 
