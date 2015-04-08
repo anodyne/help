@@ -73,7 +73,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 	public function find($id)
 	{
-		$query = $this->make(['tags', 'product', 'author']);
+		$query = $this->make(['tags', 'product', 'author', 'ratings']);
 
 		return $query->where('id', '=', $id)->withTrashed()->first();
 	}
@@ -85,7 +85,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 		if ($product)
 		{
-			return $this->model->with(['tags', 'product', 'author'])
+			return $this->model->with(['tags', 'product', 'author', 'ratings'])
 				->product($product)
 				->slug($slug)
 				->first();
