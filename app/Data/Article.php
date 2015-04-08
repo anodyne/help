@@ -79,4 +79,25 @@ class Article extends Model {
 		$query->where('slug', $slug);
 	}
 
+	/*
+	|---------------------------------------------------------------------------
+	| Model Methods
+	|---------------------------------------------------------------------------
+	*/
+
+	public function getUserRating(User $user)
+	{
+		return $this->ratings->filter(function($r) use ($user)
+		{
+			return (int) $r->user_id === (int) $user->id;
+		})->first();
+	}
+
+	public function userHasRated(User $user)
+	{
+		if ($this->getUserRating($user)) return true;
+
+		return false;
+	}
+
 }

@@ -33,16 +33,34 @@
 
 					<hr class="partial-split">
 
-					<div class="row">
-						<div class="col-xs-6">
-							<p class="visible-xs visible-sm"><a href="#" class="btn btn-success btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="1">{!! $_icons['thumbsUp'] !!}</a></p>
-							<p class="visible-md visible-lg"><a href="#" class="btn btn-success btn-block js-rate" data-article="{{ $article->id }}" data-rating="1">{!! $_icons['thumbsUp'] !!}</a></p>
+					@if ( ! $article->userHasRated($_currentUser))
+						<div class="row">
+							<div class="col-xs-6">
+								<p class="visible-xs visible-sm"><a href="#" class="btn btn-success btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="1">{!! $_icons['thumbsUp'] !!}</a></p>
+								<p class="visible-md visible-lg"><a href="#" class="btn btn-success btn-block js-rate" data-article="{{ $article->id }}" data-rating="1">{!! $_icons['thumbsUp'] !!}</a></p>
+							</div>
+							<div class="col-xs-6">
+								<p class="visible-xs visible-sm"><a href="#" class="btn btn-danger btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">{!! $_icons['thumbsDown'] !!}</a></p>
+								<p class="visible-md visible-lg"><a href="#" class="btn btn-danger btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">{!! $_icons['thumbsDown'] !!}</a></p>
+							</div>
 						</div>
-						<div class="col-xs-6">
-							<p class="visible-xs visible-sm"><a href="#" class="btn btn-danger btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">{!! $_icons['thumbsDown'] !!}</a></p>
-							<p class="visible-md visible-lg"><a href="#" class="btn btn-danger btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">{!! $_icons['thumbsDown'] !!}</a></p>
+					@else
+						<div class="row">
+							<div class="col-xs-12">
+								<p class="text-center">
+									@if ($article->getUserRating($_currentUser)->rating == 1)
+										<span class="icn-size-lg text-success">{!! $_icons['thumbsUp'] !!}</span>
+									@else
+										<span class="icn-size-lg text-danger">{!! $_icons['thumbsDown'] !!}</span>
+									@endif
+								</p>
+							</div>
+							<div class="col-xs-12">
+								<p class="visible-xs visible-sm"><a href="#" class="btn btn-default btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">Reset My Rating</a></p>
+								<p class="visible-md visible-lg"><a href="#" class="btn btn-default btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">Reset My Rating</a></p>
+							</div>
 						</div>
-					</div>
+					@endif
 
 					@if ($rating > 0)
 						<p class="text-sm text-muted text-center">{{ $rating }} {{ Str::plural('person', $rating) }} found this article helpful</p>
