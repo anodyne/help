@@ -17,7 +17,7 @@ abstract class Controller extends BaseController {
 	public function __construct()
 	{
 		$this->currentUser = (app('auth')->check())
-			? app('auth')->getUser()->load('roles', 'roles.perms')
+			? app('auth')->user()->load('roles', 'roles.perms')
 			: null;
 		$this->request = app('request')->instance();
 
