@@ -29,6 +29,14 @@ Route::get('tag/{tag}', [
 	'as'	=> 'tag',
 	'uses'	=> 'MainController@showTag']);
 
+Route::get('article/{product}/{slug}', [
+	'as'	=> 'article.show',
+	'uses'	=> 'ArticleController@show']);
+Route::post('article/rate', [
+	'as'		=> 'article.rate',
+	'uses'		=> 'ArticleController@rate',
+	'middleware'=> 'auth']);
+
 $adminOptions = [
 	'prefix'		=> 'admin',
 	'middleware'	=> 'auth',
