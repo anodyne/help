@@ -1,9 +1,6 @@
 <?php namespace Help\Data\Presenters;
 
-use App,
-	HTML,
-	View,
-	Gravatar,
+use Gravatar,
 	Markdown;
 use Laracasts\Presenter\Presenter;
 
@@ -12,7 +9,7 @@ class UserPresenter extends Presenter {
 	public function avatar(array $options)
 	{
 		// Figure out the default image
-		$defaultImage = (App::environment() != 'local') 
+		$defaultImage = (app('env') != 'local') 
 			? urlencode(asset('images/avatars/no-avatar.jpg')) 
 			: 'retro' ;
 
@@ -22,7 +19,7 @@ class UserPresenter extends Presenter {
 		// Merge all the options to pass them to the partial
 		$mergedOptions = $options + ['url' => $url];
 
-		return View::make('partials.image')->with($mergedOptions);
+		return view('partials.image')->with($mergedOptions);
 	}
 
 	public function bio()
@@ -44,7 +41,7 @@ class UserPresenter extends Presenter {
 	{
 		if ( ! empty($this->entity->facebook))
 		{
-			return HTML::link($this->entity->facebook, "Facebook", ['class' => $classes, 'target' => '_blank']);
+			return link_to($this->entity->facebook, "Facebook", ['class' => $classes, 'target' => '_blank']);
 		}
 
 		return false;
@@ -59,40 +56,10 @@ class UserPresenter extends Presenter {
 	{
 		if ( ! empty($this->entity->google))
 		{
-			return HTML::link($this->entity->google, "Google+", ['class' => $classes, 'target' => '_blank']);
+			return link_to($this->entity->google, "Google+", ['class' => $classes, 'target' => '_blank']);
 		}
 
 		return false;
-	}
-
-	public function itemsMods()
-	{
-		return $this->entity->items->filter(function($i)
-		{
-			return $i->type->name == 'MOD';
-		})->sortBy(function($s){
-			return $s->updated_at;
-		});
-	}
-
-	public function itemsRanks()
-	{
-		return $this->entity->items->filter(function($i)
-		{
-			return $i->type->name == 'Rank Set';
-		})->sortBy(function($s){
-			return $s->updated_at;
-		});
-	}
-
-	public function itemsSkins()
-	{
-		return $this->entity->items->filter(function($i)
-		{
-			return $i->type->name == 'Skin';
-		})->sortBy(function($s){
-			return $s->updated_at;
-		});
 	}
 
 	public function name()
@@ -104,7 +71,7 @@ class UserPresenter extends Presenter {
 	{
 		if ( ! empty($this->entity->url))
 		{
-			return HTML::link($this->entity->url, "Author's Website", ['class' => $classes, 'target' => '_blank']);
+			return link_to($this->entity->url, "Author's Website", ['class' => $classes, 'target' => '_blank']);
 		}
 
 		return false;
@@ -119,7 +86,7 @@ class UserPresenter extends Presenter {
 	{
 		if ( ! empty($this->entity->twitter))
 		{
-			return HTML::link('http://twitter.com/'.str_replace('@', '', $this->entity->twitter), 'Twitter', ['class' => $classes, 'target' => '_blank']);
+			return link_to('http://twitter.com/'.str_replace('@', '', $this->entity->twitter), 'Twitter', ['class' => $classes, 'target' => '_blank']);
 		}
 
 		return false;

@@ -10,6 +10,11 @@ class ArticlePresenter extends Presenter {
 		return $this->entity->author->present()->name;
 	}
 
+	public function content()
+	{
+		return Markdown::parse($this->entity->content);
+	}
+
 	public function product()
 	{
 		if ($this->entity->product) return $this->entity->product->present()->name;
@@ -80,7 +85,8 @@ class ArticlePresenter extends Presenter {
 
 	public function titleWithLink()
 	{
-		return link_to('#', $this->title());
+		return link_to_route('article.show', $this->title(), [$this->entity->product->slug, $this->entity->slug]);
+		//return link_to('#', $this->title());
 	}
 
 }
