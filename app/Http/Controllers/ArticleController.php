@@ -1,84 +1,46 @@
 <?php namespace Help\Http\Controllers;
 
-use Help\Http\Requests;
+use Input,
+	RatingRepositoryInterface,
+	ArticleRepositoryInterface;
 use Help\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	protected $repo;
+	protected $ratingRepo;
+
+	public function __construct(ArticleRepositoryInterface $repo,
+			RatingRepositoryInterface $ratingRepo)
 	{
-		//
+		parent::__construct();
+
+		$this->repo = $repo;
+		$this->ratingRepo = $ratingRepo;
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function show($product, $slug)
 	{
-		//
+		// Get the article
+		$article = $this->repo->getByProductAndSlug($product, $slug);
+
+		if ($article)
+		{
+			// Get the ratings
+			$rating = $this->ratingRepo->countHelpful($article);
+
+			return view('pages.article', compact('article', 'rating'));
+		}
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function rate()
 	{
-		//
-	}
+		// Get the article
+		$article = $this->repo->getById(Input::get('article'));
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		// Rate the article
+		$this->ratingRepo->create($article, $this->currentUser, Input::get('rating'));
 	}
 
 }
