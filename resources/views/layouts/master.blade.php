@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width">
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v1') }}">
 		<link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon.png') }}">
-		<meta name="csrf-token" content="{!! csrf_token() !!}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!--[if lt IE 9]>
 			{!! HTML::script('js/html5shiv.js') !!}
@@ -106,10 +106,16 @@
 		<script>
 			$.ajaxPrefilter(function(options, originalOptions, xhr)
 			{
-				var token = $('meta[name="csrf_token"]').attr('content');
+				var token = $('meta[name="csrf-token"]').attr('content');
 
 				if (token)
 					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+			});
+
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
 			});
 			
 			// Destroy all modals when they're hidden
