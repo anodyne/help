@@ -1,1 +1,0 @@
-{{ partial('label', ['type' => 'success', 'content' => $content]) }}

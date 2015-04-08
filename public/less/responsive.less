@@ -1,0 +1,198 @@
+@import "variables.less";
+@import "mixins.less";
+@import "bs3-mixins.less";
+
+@media (max-width: 767px) {
+	nav.nav-main {
+		ul {
+			li {
+				width: 100%;
+
+				text-align: center;
+
+				a {
+					&.active {
+						background: none;
+					}
+
+					.arrow {
+						border-left: 1px solid rgba(0, 0, 0, .2);
+						border-top: 1px solid rgba(0, 0, 0, .2);
+						background: @color-nav-main;
+					}
+				}
+			}
+		}
+	}
+
+	#navGlobalMobile {
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				margin: 0 0 @spacing 0;
+				padding: 0;
+
+				text-align: center;
+				list-style: none;
+
+				a {
+					font-family: @font-special;
+					font-size: @font-size-lg;
+					font-style: italic;
+				}
+			}
+		}
+	}
+
+	header {
+		height: auto;
+		
+		.brand {
+			display: block;
+
+			text-align: center;
+			height: auto;
+		}
+
+		nav.nav-sub {
+			width: 100%;
+			margin-top: 0;
+			margin-bottom: @spacing;
+
+			background: transparent;
+			border: none;
+
+			ul {
+				li {
+					display: block;
+					margin: 0;
+					float: none;
+
+					text-align: center;
+
+					a {
+						line-height: 2.5;
+					}
+				}
+			}
+		}
+	}
+
+	section {
+		h1 {
+			text-align: center;
+
+			small {
+				display: block;
+				margin-top: 8px;
+			}
+		}
+
+		dl {
+			dt {
+				font-size: 125%;
+			}
+		}
+	}
+
+	footer {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	nav.nav-main {
+		ul {
+			li {
+				width: 100%;
+
+				text-align: center;
+
+				a {
+					&.active {
+						background: none;
+					}
+
+					.arrow {
+						border-left: 1px solid rgba(0, 0, 0, .2);
+						border-top: 1px solid rgba(0, 0, 0, .2);
+						background: @color-nav-main;
+					}
+				}
+			}
+		}
+	}
+
+	#navGlobalMobile {
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				margin: 0 0 @spacing 0;
+				padding: 0;
+
+				text-align: center;
+				list-style: none;
+
+				a {
+					font-family: @font-special;
+					font-size: @font-size-lg;
+					font-style: italic;
+				}
+			}
+		}
+	}
+
+	header {
+		height: auto;
+		
+		.brand {
+			display: block;
+
+			text-align: center;
+			height: auto;
+		}
+
+		nav.nav-sub {
+			width: 100%;
+			margin-top: 0;
+			margin-bottom: @spacing;
+
+			background: transparent;
+			border: none;
+
+			ul {
+				li {
+					display: block;
+					margin: 0;
+					float: none;
+
+					text-align: center;
+
+					a {
+						line-height: 2.5;
+					}
+				}
+			}
+		}
+	}
+
+	section {
+		dl {
+			dt {
+				font-size: 125%;
+			}
+		}
+	}
+
+	footer {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 1200px) {}

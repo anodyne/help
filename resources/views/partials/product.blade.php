@@ -1,0 +1,1 @@
+{!! partial('label', ['class' => 'success', 'content' => $content]) !!}

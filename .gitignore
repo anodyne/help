@@ -1,15 +1,10 @@
 .DS_Store
+Thumbs.db
 
-.env.local.php
-.env.php
-bootstrap/compiled.php
-vendor
+.env
+/vendor
+storage/debugbar
+storage/framework/compiled.php
 
 *.sublime-project
 *.sublime-workspace
-config.codekit
-
-app/config/packages/barryvdh/*
-app/storage/debugbar/
-public/packages/barryvdh/*
-public/packages/maximebf/*
