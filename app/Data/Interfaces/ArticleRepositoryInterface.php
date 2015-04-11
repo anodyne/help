@@ -9,6 +9,7 @@ interface ArticleRepositoryInterface extends BaseRepositoryInterface {
 	public function find($id);
 	public function getByProductAndSlug($product, $slug);
 	public function getLatestArticles($number = 5);
+	public function getMostHelpfulArticles($number = 5);
 	public function restore($id);
 	public function search($input);
 	public function searchAdvanced(array $input);

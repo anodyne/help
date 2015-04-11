@@ -20,8 +20,11 @@ class MainController extends Controller {
 
 	public function index()
 	{
+		// Get the last 5 articles created
 		$latest = $this->repo->getLatestArticles();
-		$helpful = [];
+
+		// Get the most helpful articles
+		$helpful = $this->repo->getMostHelpfulArticles();
 
 		return view('pages.main', compact('latest', 'helpful'));
 	}

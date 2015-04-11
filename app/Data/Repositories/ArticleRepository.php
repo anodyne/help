@@ -98,6 +98,17 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 			->latest()->limit($number)->get();
 	}
 
+	public function getMostHelpfulArticles($number = 5)
+	{
+		// Get all the articles that have ratings
+		$articles = $this->model->has('ratings')->get();
+
+		return $articles->sortByDesc(function($a)
+		{
+			return $a->getHelpfulRatings()->count() / $a->ratings->count() * 100;
+		});
+	}
+
 	public function restore($id)
 	{
 		// Get the article

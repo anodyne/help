@@ -1,5 +1,22 @@
 <?php
 
+Route::get('test', function()
+{
+	$repo = app('ArticleRepository');
+
+	foreach ($repo->getMostHelpfulArticles() as $article)
+	{
+		if ($article->ratings->count() > 0)
+		{
+			$percentRating = sprintf("%.0f%%", $article->getHelpfulRatings()->count() / $article->ratings->count() * 100);
+
+			echo $article->id." - with ".$article->ratings->count()." ratings, ".$percentRating." found this article helpful<br>";
+		}
+	}
+
+	dd($repo->getMostHelpfulArticles());
+});
+
 Route::get('/', [
 	'as'	=> 'home',
 	'uses'	=> 'MainController@index']);

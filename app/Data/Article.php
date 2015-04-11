@@ -85,6 +85,14 @@ class Article extends Model {
 	|---------------------------------------------------------------------------
 	*/
 
+	public function getHelpfulRatings()
+	{
+		return $this->ratings->filter(function($r)
+		{
+			return (int) $r->rating > 0;
+		});
+	}
+
 	public function getUserRating(User $user)
 	{
 		return $this->ratings->filter(function($r) use ($user)
