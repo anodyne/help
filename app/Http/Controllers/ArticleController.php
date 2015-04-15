@@ -35,7 +35,7 @@ class ArticleController extends Controller {
 			return view('pages.article', compact('article', 'rating'));
 		}
 
-		return view('pages.article-not-found');
+		return abort(404);
 	}
 
 	public function rate()
