@@ -25,15 +25,17 @@
 						<p class="visible-md visible-lg"><a href="{{ route('admin.article.edit', [$article->id]) }}" class="btn btn-default btn-block">Edit Article</a></p>
 					@endif
 					
-					<p class="visible-xs visible-sm"><a href="#" class="btn btn-default btn-lg btn-block">Share</a></p>
-					<p class="visible-md visible-lg"><a href="#" class="btn btn-default btn-block">Share</a></p>
+					<p class="visible-xs visible-sm"><a href="#" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#share">Share</a></p>
+					<p class="visible-md visible-lg"><a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#share">Share</a></p>
 
-					<p class="visible-xs visible-sm"><a href="#" class="btn btn-warning btn-lg btn-block">Article Needs Review</a></p>
-					<p class="visible-md visible-lg"><a href="#" class="btn btn-warning btn-block">Article Needs Review</a></p>
+					<p class="visible-xs visible-sm"><a href="#" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#review">Article Needs Review</a></p>
+					<p class="visible-md visible-lg"><a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#review">Article Needs Review</a></p>
 
 					<hr class="partial-split">
 
 					@if ( ! $article->userHasRated($_currentUser))
+						<p class="text-center text-sm">Did you find this article helpful?</p>
+
 						<div class="row">
 							<div class="col-xs-6">
 								<p class="visible-xs visible-sm"><a href="#" class="btn btn-success btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="1">{!! $_icons['thumbsUp'] !!}</a></p>
@@ -52,12 +54,18 @@
 										<span class="icn-size-lg text-success">{!! $_icons['thumbsUp'] !!}</span>
 									@else
 										<span class="icn-size-lg text-danger">{!! $_icons['thumbsDown'] !!}</span>
+										<div class="visible-xs visible-sm">
+											<p><a href="#" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#review">Why Wasn't This Helpful?</a></p>
+										</div>
+										<div class="visible-md visible-lg">
+											<p><a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#review">Why Wasn't This Helpful?</a></p>
+										</div>
 									@endif
 								</p>
 							</div>
 							<div class="col-xs-12">
-								<p class="visible-xs visible-sm"><a href="#" class="btn btn-default btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">Reset My Rating</a></p>
-								<p class="visible-md visible-lg"><a href="#" class="btn btn-default btn-block js-rate" data-article="{{ $article->id }}" data-rating="0">Reset My Rating</a></p>
+								<p class="visible-xs visible-sm"><a href="#" class="btn btn-default btn-lg btn-block js-rate" data-article="{{ $article->id }}" data-rating="reset">Reset My Rating</a></p>
+								<p class="visible-md visible-lg"><a href="#" class="btn btn-default btn-block js-rate" data-article="{{ $article->id }}" data-rating="reset">Reset My Rating</a></p>
 							</div>
 						</div>
 					@endif
@@ -74,6 +82,8 @@
 @stop
 
 @section('modals')
+	{!! modal(['id' => 'review', 'header' => "Review Article Request", 'body' => view('pages.article-review', compact('article'))]) !!}
+	{!! modal(['id' => 'share', 'header' => "Share Article", 'body' => view('pages.article-share', compact('article'))]) !!}
 @stop
 
 @section('scripts')
@@ -92,8 +102,18 @@
 				},
 				success: function (data)
 				{
-					//
+					window.location.reload(true);
 				}
+			});
+		});
+
+		$('.js-review').on('click', function(e)
+		{
+			e.preventDefault();
+
+			$.ajax({
+				url: "{{ route('article.review') }}",
+				type: "POST"
 			});
 		});
 	</script>

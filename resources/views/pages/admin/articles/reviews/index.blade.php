@@ -16,7 +16,7 @@
 						{!! $review->present()->typeAsLabel !!}
 						{{ $review->present()->article }}
 					</p>
-					<div class="text-sm">{!! $review->present()->notes !!}</div>
+					<div class="text-sm">{!! $review->present()->comments !!}</div>
 				</div>
 				<div class="col-md-4 col-lg-3">
 					<div class="visible-xs visible-sm">

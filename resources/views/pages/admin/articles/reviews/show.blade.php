@@ -47,9 +47,9 @@
 		</div>
 
 		<div class="form-group">
-			<label class="control-label col-md-2">Notes</label>
+			<label class="control-label col-md-2">Comments</label>
 			<div class="col-md-5">
-				<div class="form-control-static">{!! $review->present()->notes !!}</div>
+				<div class="form-control-static">{!! $review->present()->comments !!}</div>
 			</div>
 		</div>
 
