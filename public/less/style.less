@@ -534,11 +534,21 @@ form {
 	}
 
 	&.label-primary {
-		background-color: @color-primary-bright;
+		background-color: @color-primary;
 	}
 
 	&.label-lg {
 		font-size: @font-size;
+	}
+
+	.icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		.icn {
+			font-size: 14px !important;
+		}
 	}
 }
 
@@ -559,6 +569,15 @@ form {
 	}
 
 	&.alert-danger {
+		a {
+			color: @color-danger-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-danger-bright, @color-danger-light, @color-danger-dark);
 	}
 }
