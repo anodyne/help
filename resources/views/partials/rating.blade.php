@@ -1,1 +1,1 @@
-<span class="label label-primary"><div class="icon">{!! $_icons['thumbsUp'] !!}</div> {{ $content }}</span>
+<span class="label label-primary"><span class="icon">{!! $_icons['thumbsUp'] !!}</span> {{ $content }}</span>
