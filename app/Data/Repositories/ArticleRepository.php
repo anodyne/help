@@ -101,11 +101,12 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 	public function getMostHelpfulArticles($number = 5)
 	{
 		// Get all the articles that have ratings
-		$articles = $this->model->has('ratings')->get();
+		$articles = $this->model->with(['tags', 'product', 'author', 'ratings'])
+			->has('ratings')->limit($number)->get();
 
 		return $articles->sortByDesc(function($a)
 		{
-			return $a->getHelpfulRatings()->count() / $a->ratings->count() * 100;
+			return $a->getHelpfulRatings()->count();
 		});
 	}
 
