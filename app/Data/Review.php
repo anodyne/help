@@ -28,9 +28,20 @@ class Review extends Model {
 		return $this->belongsTo('Article')->withTrashed();
 	}
 
-	public function author()
+	public function submitter()
 	{
 		return $this->belongsTo('User', 'user_id');
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeOpen($query)
+	{
+		$query->where('resolution', '=', null);
 	}
 
 }
