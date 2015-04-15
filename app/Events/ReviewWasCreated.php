@@ -15,4 +15,9 @@ class ReviewWasCreated extends Event {
 		$this->review = $review;
 	}
 
+	public function getReview()
+	{
+		return $this->review;
+	}
+
 }
