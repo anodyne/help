@@ -557,14 +557,44 @@ form {
 	font-weight: 500;
 	font-size: @font-size;
 
+	a {
+		color: @color-warning-dark;
+		border-bottom: 1px solid;
+
+		&:hover {
+			color: @color-warning-dark;
+			text-decoration: none;
+		}
+	}
+
 	.alert-variant(@color-warning-bright, @color-warning-light, @color-warning-dark);
 	.rounded(@border-radius);
 
 	&.alert-info {
+		a {
+			color: @color-info-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				color: @color-info-dark;
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-info-bright, @color-info-light, @color-info-dark);
 	}
 
 	&.alert-success {
+		a {
+			color: @color-success-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				color: @color-success-dark;
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-success-bright, @color-success-light, @color-success-dark);
 	}
 
@@ -574,6 +604,7 @@ form {
 			border-bottom: 1px solid;
 
 			&:hover {
+				color: @color-danger-dark;
 				text-decoration: none;
 			}
 		}
