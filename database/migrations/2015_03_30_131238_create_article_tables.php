@@ -39,9 +39,9 @@ class CreateArticleTables extends Migration {
 			$table->bigInteger('article_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->string('type')->default('review');
+			$table->text('comments')->nullable();
 			$table->string('resolution')->nullable();
 			$table->text('notes')->nullable();
-			$table->text('comments')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
