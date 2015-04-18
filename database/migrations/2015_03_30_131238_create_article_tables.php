@@ -21,6 +21,7 @@ class CreateArticleTables extends Migration {
 			$table->string('slug');
 			$table->text('summary');
 			$table->longText('content');
+			$table->text('keywords')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

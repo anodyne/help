@@ -135,6 +135,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 			{
 				$query->where('title', 'like', "%{$input}%")
 					->orWhere('summary', 'like', "%{$input}%")
+					->orWhere('keywords', 'like', "%{$input}%")
 					->orWhere('content', 'like', "%{$input}%");
 			})->paginate(25);
 	}
@@ -162,6 +163,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 			{
 				$query->where('title', 'like', "%{$input['q']}%")
 					->orWhere('summary', 'like', "%{$input['q']}%")
+					->orWhere('keywords', 'like', "%{$input['q']}%")
 					->orWhere('content', 'like', "%{$input['q']}%");
 			});
 		}
