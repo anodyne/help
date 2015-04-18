@@ -54,6 +54,7 @@ class CreateItemTables extends Migration {
 			['name' => "Nova 3", 'slug' => "nova-3"],
 			['name' => "AnodyneXtras", 'slug' => "xtras"],
 			['name' => "Anodyne Help Center", 'slug' => "help-center"],
+			['name' => "Anodyne Productions", 'slug' => "anodyne"],
 		];
 
 		foreach ($products as $product)
@@ -69,6 +70,7 @@ class CreateItemTables extends Migration {
 			['name' => "FAQ"],
 			['name' => "Skinning"],
 			['name' => "Developer Resource"],
+			['name' => "Changelog"],
 		];
 
 		foreach ($tags as $tag)
