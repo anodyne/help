@@ -25,6 +25,13 @@ class CreateArticleTables extends Migration {
 			$table->softDeletes();
 		});
 
+		Schema::create('articles_featured', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->bigInteger('article_id')->unsigned();
+			$table->integer('product_id')->unsigned();
+		});
+
 		Schema::create('articles_ratings', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
@@ -62,6 +69,7 @@ class CreateArticleTables extends Migration {
 	public function down()
 	{
 		Schema::dropIfExists('articles');
+		Schema::dropIfExists('articles_featured');
 		Schema::dropIfExists('articles_ratings');
 		Schema::dropIfExists('articles_reviews');
 		Schema::dropIfExists('articles_tags');

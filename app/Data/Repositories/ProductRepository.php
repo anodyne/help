@@ -58,6 +58,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 		return $product->articles;
 	}
 
+	public function getProductFeaturedArticles(Model $product)
+	{
+		return $product->featured->load('product', 'tags');
+	}
+
 	public function restore($id)
 	{
 		// Get the product

@@ -40,4 +40,9 @@ class Product extends Model {
 		return $this->hasMany('Article');
 	}
 
+	public function featured()
+	{
+		return $this->belongsToMany('Article', 'articles_featured');
+	}
+
 }

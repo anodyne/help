@@ -37,7 +37,10 @@ class MainController extends Controller {
 		// Get the product's articles
 		$articles = $productRepo->getProductArticles($product);
 
-		return view('pages.product', compact('articles', 'product'));
+		// Get the product's featured articles
+		$featured = $productRepo->getProductFeaturedArticles($product);
+
+		return view('pages.product', compact('articles', 'product', 'featured'));
 	}
 
 	public function showTag(TagRepositoryInterface $tagRepo, $tag)

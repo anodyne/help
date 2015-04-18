@@ -10,6 +10,7 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface {
 	public function find($id);
 	public function getBySlug($slug);
 	public function getProductArticles(Product $product);
+	public function getProductFeaturedArticles(Product $product);
 	public function restore($id);
 	public function update($id, array $data);
 
