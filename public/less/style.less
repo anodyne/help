@@ -366,7 +366,7 @@ footer {
 }
 
 form {
-	label {
+	.control-label {
 		font-weight: 600;
 		font-family: @font-special;
 		color: @color-gray-dark;
@@ -377,11 +377,11 @@ form {
 		.rounded(@border-radius);
 	}
 
-	.checkbox-inline, .radio-inline {
+	/*.checkbox-inline, .radio-inline {
 		font-weight: 400;
 		font-family: @font-base;
 		font-size: @font-size-sm;
-	}
+	}*/
 
 	.help-block {
 		font-size: @font-size-sm;
@@ -486,6 +486,10 @@ form {
 
 	&.btn-default {
 		border-color: @color-gray-light;
+	}
+
+	&.btn-dark {
+		.btn-pseudo-states(@color-white, @color-gray-blue, @color-gray-blue);
 	}
 }
 
@@ -926,12 +930,24 @@ form {
 	}
 }
 
+pre {
+	background-color: @color-subtle;
+	border: 1px solid @color-gray-light;
+
+	.rounded(@border-radius);
+}
+
 code {
 	background-color: @color-subtle;
 	border: 1px solid @color-gray-light;
 	color: @color-primary-light;
 
 	.rounded(@border-radius);
+}
+
+pre > code {
+	background: none;
+	border: none;
 }
 
 .img-rounded {
@@ -1075,6 +1091,19 @@ hr.partial-split {
 
 	hr {
 		border-color: @color-gray-light;
+	}
+}
+
+.list-group {
+	margin: @spacing 0;
+	
+	.list-group-item {
+		&:first-child {
+			.border-radius(@border-radius, @border-radius, 0, 0);
+		}
+		&:last-child {
+			.border-radius(0, 0, @border-radius, @border-radius);
+		}
 	}
 }
 
