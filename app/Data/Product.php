@@ -10,7 +10,7 @@ class Product extends Model {
 
 	protected $table = 'products';
 
-	protected $fillable = ['name', 'slug', 'display'];
+	protected $fillable = ['name', 'slug', 'display', 'description'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -38,11 +38,6 @@ class Product extends Model {
 	public function articles()
 	{
 		return $this->hasMany('Article');
-	}
-
-	public function featured()
-	{
-		return $this->belongsToMany('Article', 'articles_featured');
 	}
 
 }

@@ -11,7 +11,7 @@ class Article extends Model {
 	protected $table = 'articles';
 
 	protected $fillable = ['product_id', 'user_id', 'title', 'slug', 'summary',
-		'content', 'keywords'];
+		'content', 'keywords', 'featured'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
