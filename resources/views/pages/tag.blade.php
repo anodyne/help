@@ -5,9 +5,28 @@
 @stop
 
 @section('content')
-	<h1>{{ $tag->present()->name }} Articles <small>{{ $articles->count().' '.Str::plural('Article', $articles->count()) }}</small></h1>
+	<h1>{{ $tag->present()->name }} Articles</h1>
 
 	@if ($articles->count() > 0)
+		<hr class="partial-split">
+
+		{!! Form::open(['route' => 'search.doAdvanced', 'method' => 'get']) !!}
+			{!! Form::hidden('t[]', $tag->id) !!}
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-9 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2">
+						{!! Form::text('q', null, ['class' => 'form-control input-lg', 'placeholder' => "Search ".$tag->name." Articles..."]) !!}
+					</div>
+					<div class="col-sm-3 col-md-2 col-lg-2">
+						{!! Form::button("Search", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}
+					</div>
+				</div>
+			</div>
+		{!! Form::close() !!}
+
+		<hr class="partial-split">
+		
 		<dl>
 			@foreach ($articles as $article)
 				{!! partial('article', ['article' => $article, 'rating' => false]) !!}

@@ -48,7 +48,7 @@
 						@endif
 
 						<div class="btn-group">
-							<a href="#" class="btn btn-default">View</a>
+							<a href="{{ route('article.show', [$article->product->slug, $article->slug]) }}" class="btn btn-default">View</a>
 						</div>
 					</div>
 				</div>

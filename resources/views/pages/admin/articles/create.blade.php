@@ -83,6 +83,18 @@
 		</div>
 
 		<div class="form-group">
+			<label class="control-label col-md-2">Featured</label>
+			<div class="col-md-8">
+				<div class="radio">
+					<label>{!! Form::radio('featured', (int) true) !!} Yes</label>
+				</div>
+				<div class="radio">
+					<label>{!! Form::radio('featured', (int) false, true) !!} No</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
 			<label class="control-label col-md-2">Keywords</label>
 			<div class="col-md-8">
 				{!! Form::textarea('keywords', null, ['class' => 'form-control input-lg', 'rows' => 2]) !!}
