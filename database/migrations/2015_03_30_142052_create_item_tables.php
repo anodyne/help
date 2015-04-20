@@ -18,6 +18,7 @@ class CreateItemTables extends Migration {
 			$table->string('name');
 			$table->string('slug');
 			$table->boolean('display')->default((int) true);
+			$table->text('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
