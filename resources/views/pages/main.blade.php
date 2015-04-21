@@ -63,8 +63,13 @@
 
 		<div class="row">
 		@foreach ($newest as $new)
-			<div class="col-md-4">
-				<p><a href="{{ route('article.show', [$new->product->slug, $new->slug]) }}" class="btn btn-link btn-lg btn-block">{!! $new->present()->title !!}</a></p>
+			<div class="col-md-6">
+				<strong><a href="{{ route('article.show', [$new->product->slug, $new->slug]) }}">{!! $new->present()->title !!}</a></strong>
+				<p>
+					{!! $new->present()->productAsLabel !!}
+					{!! $new->present()->tagsAsLabel !!}
+				</p>
+				{!! $new->present()->summary !!}
 			</div>
 		@endforeach
 		</div>
@@ -74,13 +79,15 @@
 		<h2 class="hidden-header-helpful">Most Helpful Articles</h2>
 
 		@if ($helpful->count() > 0)
-			<div class="row">
+			<p>These articles are considered the best and most helpful on the Help Center based on feedback from the community. If you find these articles (or any others) helpful, be sure to provide that feedback by clicking on the {!! $_icons['thumbsUp'] !!} icon on the article page.</p>
+
+			<hr class="partial-split">
+
+			<dl>
 			@foreach ($helpful as $help)
-				<div class="col-md-6">
-					<p><a href="{{ route('article.show', [$help->product->slug, $help->slug]) }}" class="btn btn-link btn-lg btn-block">{!! $help->present()->title !!}</a></p>
-				</div>
+				{!! partial('article', ['article' => $help, 'rating' => true]) !!}
 			@endforeach
-			</div>
+			</dl>
 		@else
 			{!! alert('warning', "Not enough rated articles") !!}
 		@endif
