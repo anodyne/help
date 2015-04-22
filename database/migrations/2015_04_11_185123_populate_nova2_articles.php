@@ -42,31 +42,614 @@ class PopulateNova2Articles extends Migration {
 	public function articles()
 	{
 		return [
-			['title' => "Installing Nova 2", 'slug' => "fresh-install", 'summary' => "", 'content' => "", 'keywords' => 'install', 'featured' => 1, 'tags' => [1,3]],
-			
-			['title' => "Updating Nova 2", 'slug' => "update", 'summary' => "", 'content' => "## Backup\r\n\r\nBefore you attempt to update Nova 2, please make sure you backup both your files and database. While we don't anticipate any problems, if something does happen, you'll have a solid backup of your system to fall back to.\r\n\r\n## Remove\r\n\r\nOnce you've finished backing up all of your stuff, delete the `nova` directory in its entirety.\r\n\r\n<p class=\"alert alert-warning\">When we say delete, we mean it. Delete the directory and <strong>then</strong> upload the new copy.</p>\r\n\r\n## Upload\r\n\r\nWith the `nova` directory deleted, upload the new `nova` directory from the zip archive you downloaded from the Anodyne site to your site.\r\n\r\n## Update\r\n\r\nThe update process works just like the update process in Nova 1. The first step will try to do an automatic backup for you, but you don't have to worry about that too much since you manually backed up everything before you started. (You did back up everything before you started, right?)\r\n\r\nLet the update process do its thing and when you're done, you'll be back on the front Nova page and ready to use Nova again.", 'keywords' => 'update', 'featured' => 1, 'tags' => [1,4]],
-			
-			['title' => "Upgrading From Nova 1 to Nova 2", 'slug' => "upgrade", 'summary' => "", 'content' => "", 'keywords' => 'upgrade', 'tags' => [1,4]],
-			
-			['title' => "How to Backup Your Nova Site", 'slug' => "", 'summary' => "", 'content' => "", 'keywords' => 'backup, phpmyadmin', 'featured' => 1, 'tags' => [2]],
-			
-			['title' => "Nova 2 Requirements", 'slug' => "requirements", 'summary' => "", 'content' => "We've worked hard to make sure Nova's requirements are as broad as possible so as many people as possible can use it for their games. Still, there are a few requirements that you should verify before installing Nova 2. In the event the server you're going to be installing Nova on doesn't support some or all of these things, you should contact your hosting provider and ask them about the possibility of upgrading these items.\r\n\r\n## PHP\r\n\r\nYou will need a server that is running PHP, a dynamic web development language that Nova is built in. Nova 2 requires that your server has at least __PHP 5.1.6__ installed. If you have less than 5.1 installed, the installation will fail and you won't be allowed to continue. Some of the new features in Nova 2 take advantage of functions and methods built in to PHP 5.1.\r\n\r\n## MySQL\r\n\r\nYou will need a server (and account) that has MySQL available. Nova is a database-driven system which means it needs a database (MySQL) to run. As long as you have __MySQL 4.1__ or higher, you should be fine. (Additionally, you can connect to MySQL through PHP's MySQLi functions if your hosting provider mentions that as an option.)\r\n\r\n## A Browser\r\n\r\nSince Nova is web-based software, you'll need a browser in order to use it. These days, there are a lot of browsers out there and most of them should work, but some of the older generation browser aren't supported because of their lack of support for technologies and tools used in Nova. Our recommendation is to use __Firefox__ (version 4 or higher) or a newer build of __Google Chrome__ (version 10 or higher). In addition, we also support Firefox 3, Safari 4 and higher as well as Internet Explorer 7 and higher. Make sure you have JavaScript turned on as many of Nova's features require it.\r\n\r\n<p class=\"alert alert-warning\">Due to Internet Explorer's shortcomings, there are known visual issues with Nova in IE 7. We have no intention of addressing these presentation issues and encourage you to use a standards-compliant browser such as Firefox, Google Chrome or Safari. These visual issues do not affect IE 8 and higher.</p>", 'keywords' => 'requirements, php, mysql, browser, Google Chrome, Safari, Internet Explorer, server', 'tags' => [1]],
+			['title' => "Installing Nova 2", 'slug' => "install", 'summary' => "", 'content' => "Installing Nova 2 on your server is a painless process that should only take a few minutes if you have all the pieces you need at the start. In order to do a fresh install of Nova 2, you'll need the information below. If you don't know any of this, contact your host to get the information.
 
-			['title' => "What's New in Nova 2.3", 'slug' => "", 'summary' => "", 'content' => "## Character Metadata Available on Manifests\r\n\r\nUse the new character metadata setting for each manifest to tell Nova which fields to pull out of the character information and display on your manifest. You can choose as many fields as you want to display, so make the manifest show more of the information your users are looking for.\r\n\r\n## Updates to Dynamic Forms\r\n\r\nNo one likes seeing blank fields on a bio, so we've updated the dynamic forms to only display fields that have something in them. This will make your forms cleaner and easier to read, especially for entries that don't have a lot of data. We've also added a much-requested feature of being able to show inline help for forms when in create or edit mode.\r\n\r\n## More Sim Stats\r\n\r\nGet a better view at the stats for your game over its entire lifetime now with the expansion of the sim stats. In addition to being able to see stats for the current and previous months, there are also new metrics for the overall lifetime of the game including total posts, average posts per month and more.", 'keywords' => 'metadata, manifest, dynamic forms, bio, stats', 'tags' => [4,8]],
+* Your database location (localhost or some other means of connecting)
+* Your database name
+* Your database username and password (these may or may not be the same as your FTP username and password)
+* Your FTP username and password
+
+## Step 1 <small>Upload Nova</small>
+
+To begin the installation, you need to upload the Nova 2 files up to your server. If you're not sure how to upload the files to your server, contact your host for help with this step of the process or do a Google search.
+
+## Step 2 <small>Configure Nova</small>
+
+Before beginning the installation, you can choose to change any of Nova's configuration options in the config files located in the `app/config` directory. This is completely optional and Nova 2 will install fine without any changes to any files in the `config` directory.
+
+## Step 3 <small>Setting Up the Database Connection</small>
+
+This is the part where everyone panics and says it's too complicated and difficult to get started. This is also the part where we prove you wrong.
+
+Setting up your connection to the database is dead simple. All you need to do is open your browser and navigate to the location on your server where you uploaded the Nova files. If your server was __http://example.com__ and you uploaded Nova 2 to the root directory (often called `www` or `public_html`), then you'd navigate to __http://example.com__ and you'd be automatically redirected to the Config Setup page. From this page, you'll be able to tell Nova the information for connecting to your database and then Nova will 1) attempt to connect to the database and make sure it can, then 2) write that information to a connection file. Pretty easy, huh?
+
+If for some reason your server doesn't support creating files from a web script, the setup process will show you the code to copy and paste into the database connection file.
+
+### Explaining the Options
+
+* __Database Name__ - The name of the database you're trying to connect to and install Nova to in to. If you don't know the name of your database, contact your host.
+* __Username__ - The username used to connect to your database. This may or may not be the same as your FTP username, so if you don't know, contact your host.
+* __Password__ - The password used to connect to your database. This may or may not be the same as your FTP password, so if you don't know, contact your host.
+* __Database Host__ - This is where the database lives. 99% of the time, this will be _localhost_ though if your host has a different setup, they may have sent you a different host name. If you aren't sure about this, contact your host.
+* __Table Prefix__ - This is the word or initials that will prefix all table names. This helps to keep Nova's tables together and allows you to install other things in to the database without causing conflicts. This is set to _nova\__ by default.
+
+## Step 4 <small>Install the System</small>
+
+Once you've stepped through creating the config file, you'll be sent over to the Install Center where you'll be given all your available options for installing Nova 2. Select Fresh Install from the list and follow the prompts to install Nova 2 in to your database. The steps of the install process are as follows:
+
+1. Create Nova database tables
+2. Insert basic data into the tables
+3. Create genre-specific tables and insert data into them
+4. Set up your player account and the character name, rank and position of your primary character
+5. Set up some basic system settings
+
+## Step 5 <small>Post-Installation</small>
+
+At the end of the installation Nova will attempt to change several permissions in order to ensure all the backup and upload features work properly. It's possible that your host will have turned off the functions necessary to do this, so if you run in to any problems uploading to Nova, you'll need to change the file permissions on several directories to ensure they're writable (777). If you don't know how to change file permissions, contact your host. The following directories (and their sub-directories) need to be writable:
+
+* `app/assets/images`
+* `app/assets/backups`
+* `app/cache`
+* `app/logs`", 'keywords' => 'install', 'featured' => 1, 'tags' => [1,3]],
 			
-			['title' => "What's New in Nova 2.2", 'slug' => "", 'summary' => "", 'content' => "## Character Bio Linking in Author Lists\r\n\r\nForum member Jordan Jay rolled out a MOD for Nova that added links to the character bio for the list of authors for a mission post. We loved this idea so much that we talked to Jordan about rolling the functionality into the Nova core! We've taken his idea and expanded on it though, so in addition to mission posts, the same linking behavior will happen on personal logs, news items, wiki pages and any comments that are entered throughout the system.\r\n\r\n## Reply To on Emails\r\n\r\nSince making changes to emails from Nova to combat emails being marked as spam by hosts, we've heared several people want us to set the Reply To header on email messages so that users can just hit reply and send an email back to the author of the post/log/news items. We've rolled this functionality into _most_ emails that come from Nova. In some cases, it doesn't make sense to have a Reply To header there (password resets were one of the emails we didn't think it didn't make sense for).\r\n\r\n<p class=\"alert alert-warning\"><strong>Note:</strong> Replying to an email will <strong>not</strong> post that item back into Nova. If you want to reply to an item or comment on it, you have to do so from inside Nova.</p>", 'keywords' => 'bio, email', 'tags' => [4,8]],
+			['title' => "Updating Nova 2", 'slug' => "update", 'summary' => "", 'content' => "## Backup
+
+Before you attempt to update Nova 2, please make sure you backup both your files and database. While we don't anticipate any problems, if something does happen, you'll have a solid backup of your system to fall back to.
+
+## Remove
+
+Once you've finished backing up all of your stuff, delete the `nova` directory in its entirety.
+
+<p class=\"alert alert-warning\">When we say delete, we mean it. Delete the directory and <strong>then</strong> upload the new copy.</p>
+
+## Upload
+
+With the `nova` directory deleted, upload the new `nova` directory from the zip archive you downloaded from the Anodyne site to your site.
+
+## Update
+
+The update process works just like the update process in Nova 1. The first step will try to do an automatic backup for you, but you don't have to worry about that too much since you manually backed up everything before you started. (You did back up everything before you started, right?)
+
+Let the update process do its thing and when you're done, you'll be back on the front Nova page and ready to use Nova again.", 'keywords' => 'update', 'featured' => 1, 'tags' => [1,4]],
 			
-			['title' => "What's New in Nova 2.1", 'slug' => "", 'summary' => "", 'content' => "## Mission Note Update Notifications\r\n\r\nMission notes are an incredible useful feature that allow game masters to keep players updated on what's happening with the game, how players can best move things forward, and to give direction on how to post. The biggest challenge with mission notes though has always been accounting for the length of content (the big reason why notes are hidden by default). Users expressed concern that their updates to mission notes were going unnoticed by players because they didn't know changes had been made.\r\n\r\nNow, if mission notes have been updated within 72 hours, the mission notes content box will automatically be expanded and have an <span class=\"label label-warning\">UPDATED</span> label. If mission notes haven't been updated within 72 hours, the box will stay collapsed. Regardless of time though, the mission notes box will now always show the last time the notes were updated (unless, of course, they've never been updated).\r\n\r\n## Bug Fixes\r\n\r\n* The update page would always throw an error that it couldn't find Nova installed in the current database.\r\n* When a mission was updated, it was assumed mission notes updated as well. Now, there's greater precision in determining if the notes were actually updated.\r\n* Accepting or rejecting docking applications would throw a fatal error because the Messages model wasn't loaded before it was used.\r\n* Join timespan always showed as a user joining \"1 Second ago\" no matter when they joined.\r\n* Nova's `timespan_short` helper was missing the word \"ago\" when the time was less than an hour.\r\n* The Site Messages page didn't strip HTML tags from the content potentially allowing unclosed HTML tags to wreak havoc on the page.", 'keywords' => 'mission notes', 'tags' => [4,8]],
+			['title' => "Upgrading from Nova 1 to Nova 2", 'slug' => "upgrade", 'summary' => "", 'content' => "The process of updating from Nova 1 to Nova 2 is pretty simple and straightforward, but it's important that you follow these instructions otherwise something could go wrong and you'll have to start all over again, or worst-case scenario, you lose your data (yet another reason you should __always__ backup first).
+
+## 1. Getting Started
+
+### 1.1 Backing Up
+
+As with all updates to the system, you should backup both your database and your files to your desktop in the event something goes wrong. Without backups, there will be no way to revert back to an older version if something happens. It's also important to have a copy of all the changes you've made to Nova 1 since you'll have to manually re-apply those changes after the update is finished.
+
+### 1.2 Remove
+
+Once you've finished backing up all of your stuff, delete all of the Nova files in your site.
+
+<p class=\"alert alert-danger\">When we say delete, we mean it. Delete every Nova file on your server and <strong>then</strong> upload the new copy. There have been a massive number of changes to Nova since the release of 1.2.6 and if you don't delete all the files and upload fresh copies, there's no telling what your FTP client might do to the files (attempt to merge them, not overwrite them, etc.).</p>
+
+### 1.3 Upload
+
+Now that you've got an empty directory (kinda scary to hit that delete button, huh?), it's time to upload Nova 2 to your site.
+
+It'll likely take a few minutes to upload everything since there are a lot of files that'll need to be uploaded.
+						
+<p class=\"alert alert-warning\"><strong>Important:</strong> Don't try to cram all of your modifications and skins in at this point. Do the update from Nova 1 and <strong>then</strong> go back and do your modifications and skins after you know Nova 2 is up and running.</p>
+
+## 2. Updating
+
+### 2.1 Database Connection
+
+Wait, haven't I done this before?
+
+You have indeed, but don't worry, the new process is a breeze and takes less than a minute to complete.
+
+To get started, just open your browser and head to your site. From there, Nova will take over, push you in to the Setup Config page, and walk you through the process of setting up a connection to your database. Once you've put your information in, Nova will actually try to connect to the database and if there's a problem, will tell you right away so you can correct. After everything is correct, it'll write the database connection file to the right location on your server and you'll be on your way.
+
+<p class=\"alert alert-warning\">If you've forgotten some of the pieces of your connection, you can always refer to the database file from your backup (ah, see, bet you're glad you did a backup now). You'll find that in the <strong>app/config/database.php</strong> file wherever you backed Nova 1 up to.</p>
+
+### 2.2 Update
+
+Whew! That was easy. Now that the Setup Config process is finished, you have a couple of options for how to proceed. What we want to do right here is update Nova.
+
+The update process works just like the update process in Nova 1. The first step will try to do an automatic backup for you, but you don't have to worry about that too much since you manually backed up everything before you started. (You did back up everything before you started, right?)
+
+Let the update process do its thing and when you're done, you'll be back on the front Nova page and ready to keep continuing the udpate process.
+
+<p class=\"alert alert-warning\">Technically speaking, the update process is done, but odds are you have skins to update, MODs to re-apply, and other such clean-up work you'll want to do.</p>
+
+## 3. Everything Else
+
+### 3.1 What About My Skins?
+
+Nova's skinning system didn't change for version 2, so any of your skins from Nova 1 should work with only a few minor modifications (we say \"minor\" modifications because there are some small changes that need to be made to Thresher and the admin system for Nova 2). For each of your Nova 1 skins you want to use in Nova 2, use the following steps to make sure they're working as expected in Nova 2.
+
+The first thing to do is classify whether your skin is light or dark. In other words, do you have a light-colored background or a dark-colored background? If the skin you're updating has a light-colored background, all of the materials you'll need to copy can be found in the Pulsar skin `app/views/default`. If the skin you're updating uses a dark-colored background, all of the materials you'll need to copy can be found in the Titan skin `app/views/titan`. If you've edited a skin taken off of AnodyneXtras, you can download the new copy of the skin now and use the resources found in those skins instead.
+
+#### Thresher Updates
+
+1. Copy the `wiki.css` file from the appropriate skin's `wiki/css` directory (mentioned above) and paste it into to your skin's `wiki/css` directory (if you've skinned the wiki).
+2. Edit the `main.css` stylesheet in `wiki/css` and add an import statement at the end of the file for the new `wiki.css` file you just pasted in (you can simply copy and paste one of the import statements already in there). Save the file and make sure everything is uploaded to the server. (This new stylesheet controls the look and feel of the new Thresher Manage Pages section and the new category selection piece.)
+3. If you don't like the colors used, you can change them from the `wiki.css` stylesheet you just added.
+4. Copy the `cat-add.png` image from the `wiki/images` directory of whichever skin you're using as reference and paste it into your own `wiki/images` directory.
+
+#### Admin Updates
+
+* Copy the `jquery.chosen.css` file from the appropriate skin's `admin/css` directory (mentioned above) and paste it into to your skin's `admin/css` directory (if you've skinned the admin system).
+* Nova 2 will automatically look for this stylesheet and import if it exists, so you don't have to do anything else.
+* If you don't like the colors used, you can change them from the `jquery.chosen.css` stylesheet.
+* Copy the `chosen-sprite.png` image from the `admin/images` directory of whichever skin you're using as reference and paste it into your own `admin/images` directory.
+* If you're using Titan or a modified version of Titan, you will need to pull Titan 2.0's `admin.css` file from the `admin/css` directory of the new version of Titan and paste it into to your skin's `admin/css` directory (if you've skinned the admin section). The reason this is needed only for Titan is because of the use of popovers that are styled with white backgrounds instead of dark backgrounds.
+
+#### Gotchas
+
+If you've followed the above directions to the letter but you're finding pieces of your skin don't work right or errors are thrown, the odds are your skin uses seamless substitution to swap out one of the default view files for your own. In particular, the posting pages have been subject to this oversight. The fix is to simply go in to your skin and find the view file(s) that are causing the problem. (View files are found in the `pages` directory in the main/wiki/admin folders.)
+
+### 3.2 What About My MODs?
+
+Not only has Nova's file structure has changed, but the controllers themselves have also changed. You won't simply be able to copy and paste your old code in to Nova 2 and have it work. The best way to go about it is to copy the method from the base controller in `nova/modules/core/controllers` and paste it into the appropriate controller in `app/controllers`. Then, you can re-apply the MOD that way. Sadly, there's no quick and easy way to do this.
+
+If you have questions about a specific MOD working in Nova 2, you should contact the MOD developer.
+
+<p class=\"alert alert-warning\">Before you re-apply a MOD, you should verify that the MOD is necessary any more. For instance, one of Nova 2's new features is that you can use previously disallowed HTML tags like script and embed (for YouTube videos, for example) in site messages. This means that any MODs where you've overridden view files to get some code or video in to a page no longer need that MOD. If you have questions about these kinds of things, post something on the our forums.</p>", 'keywords' => 'upgrade, nova 1, mods, wiki, skins', 'featured' => 1, 'tags' => [1,3,7]],
 			
-			['title' => "What's New in Nova 2.0", 'slug' => "", 'summary' => "", 'content' => "## New File Structure\r\n\r\nOne of the biggest reasons for doing Nova 2 was to improve the file structure of Nova. We've heard from people that updating Nova is difficult and time consuming. For a product that promises to \"get you back to playing your game\" that's unacceptable. We went back to the drawing board with our file structure to make sure updating Nova is dead simple and we think we've nailed it.\r\n\r\nWhen it comes time to update Nova, all you'll need to do is delete the `nova` directory and upload the newer copy. After that, just run the update script from your web browser like you would normally and you're done. No more wading through files and making sure you don't accidentally update a file you shouldn't. In, out and back to your game.\r\n\r\n## New Database Configuration Process\r\n\r\nTaking cues from SMS, Nova 2 includes a brand new database configuration process. Instead of having to open files up and edit them before starting the Nova 2 install, you'll simply go to the site and if there's no database configuration file, you'll be taken through a simple process that will collect your information and create the file for you. Before the file is created though, Nova will actually try to connect to the database and will let you know right away if something is wrong. We think this new process will make it easier and faster to get your game up and running on Nova 2.\r\n\r\n## Refreshed Default Look\r\n\r\nAfter a year and a half with the same default look, Nova 2 has gotten a facelift. Sporting an updated and simpler default interface, Nova 2 leverages HTML5 and CSS3 to a greater degree than previous versions of Nova. The old version of the skin will continue to work, but we felt that given the larger nature of the changes, a refreshed look and feel was appropriate.\r\n\r\n## Thresher R2\r\n\r\nBy far, the majority of our focus has been on Thresher and getting it up to Release 2. There are a ton of improvements to our mini-wiki that will make using it even better than before.\r\n\r\n### System Pages\r\n\r\nPeople told us they wanted more control of some of the static content in Thresher and we came up with a solution that does just that. System pages are specialized wiki pages that cannot be deleted but can be edited like any other wiki page. Make the front Thresher page just what you want by editing the system page in the same place you'd edit a normal wiki page. In addition to the main page, we've added system pages for the all categories listing page, individual category page and creating and editing pages.\r\n\r\n### Page Restrictions\r\n\r\nHave a page that only a few people should be able to get to? In Thresher R1, you were out of luck. In Thresher R2, you can simply set access level restrictions on the page and only those access levels will be able to see them.\r\n\r\n### Brand New Category Selection Interface\r\n\r\nLet's be honest, a list of checkboxes wasn't much of an interface for selecting categories. Now, a more elegant solution makes it easier to categorize your pages.\r\n\r\n### Create Categories On-the-Fly\r\n\r\nAnother one of the big things users told us they wanted to be able to do was to create categories right from the create/edit page. Now you can. Don't have a category for what you want? Just create it then select it and your page will be using that category. Just getting started with Thresher and don't have any categories yet? Don't worry, Thresher will prompt you to create some categories right on the page.\r\n\r\n### User Experience Improvements\r\n\r\nWe're always looking to make the user experience of our products better than before. In Thresher R2, we've made viewing a wiki page a much better and simpler experience. In addition, we've overhauled the Manage Pages section with a whole new user interface that puts more controls at admins fingertips and allows filtering pages by restrictions, the type of page and more.\r\n\r\n### Better Searching\r\n\r\nThis one is pretty self-explanatory. We've worked out several bugs that existed in the search features for Thresher so that you'll get more accurate search results. In addition, we've brought search front and center on the main page with an option to search the minute you land in Thresher.\r\n\r\n## Simplified Character/User Management\r\n\r\nOne of Nova 1's major features was the separation of users and characters, allowing a single user to control multiple characters. While this was a great feature, the management piece was a bit of a struggle for a lot of admins. It was all-to-easy to deactivate a character but leave the user active or vice versa. To help with this management headache, we've borrowed from Nova 3's planned features to provide a dead-simple way to manage characters and users. If you want to take action on a character (activate, deactivate, make an NPC or make an NPC a playing character), admins will do so now with a series of buttons:\r\n\r\n* __Activating an Inactive Character__ - Only displayed with inactive characters, this button will not only activate an inactive character, but will also give admins the ability to activate the user if they're inactive, make the character the primary character for the user or even assign the character to a completely different user.\r\n* __Deactivating an Active Character__ - Only displayed with active characters, this button will deactivate the active character and check the user for any other active characters. If the user doesn't have any other active characters, admins will have an option to deactivate the user right then and there. If the user does have other characters and the one being deactivated is their main character, a dropdown menu will allow admins to set a new main character for that user.\r\n* __Making an Active or Inactive Character an NPC__ - Displayed for both active and inactive characters, this button will move an active or inactive character to be an NPC. If the character in question is someone's main character, a dropdown menu will allow admins to set a new main character for that user. The character will continue to be associated with that user even as an NPC unless the admins selects the option to clear the user association. In the event that making an active character an NPC leaves a user without an active character, admins will have the option to deactivate the user as well.\r\n* __Making an NPC an Active Character__ - Only displayed for non-playing characters, this button will move an NPC to be an active character. Admins will be able to associate the character with a user or change the user the character is associated with in addition to setting the character to be the primary character. In the event a character is being associated with an inactive user, the option will be given to activate that user.\r\n* __Activating a User__ - Only displayed for inactive user accounts, this button will activate an inactive user as well providing admins with the ability to activate any of that user's inactive characters at the same time.\r\n* __Deactivating a User__ - Only displayed for active user accounts, this button will deactivate an active user as well as deactivate all of their active characters.\r\n\r\n## Nested Mission Groups\r\n\r\nOne of the final additions to Nova 1 was mission groups as a way to pull missions together. After seeing how people are using the feature, we've expanded mission groups to allow them to be nested down one level. This means you can now have groups inside groups. Along with this, we've completely re-written the user interface for viewing mission groups which will give users more information at a glance than before.\r\n\r\n## Brand-New Character Selection\r\n\r\nOn pages where you can select multiple characters (writing a mission post, editing a mission post, writing a private message, etc.), the UI was never that good. Select a user and click a link. Select another user and click a link. It was bulky and quite a pain to maintain. In Nova 2, we've changed the UI to be a lot more friendly. Now, just start typing a character name and the list will filter for you. Click the name and you're done. Want to remove a character from the list? Just click on the X next to their name.\r\n\r\n## Updates to Site Messages\r\n\r\nOne of the biggest complaints about Nova is that it makes adding content more difficult than it needs to be. For us, it's always been a security issue to allow script, audio, video, iframe and object tags in the site messages. There are just too many documented cases of people using those for malicious purposes. Sadly, our focus on security made it more difficult for games to do the things they could do before with SMS. That shouldn't be the case. Because of that, we've relented on this issue and now allow all of the previously disallowed HTML tags in site messages. That means that games can now link to YouTube and Vimeo media without having to use seamless substitution. We think this is a big win for our users, though it does come at a cost. You should make sure you absolutely trust the source of any code you put in to your site messages so there are no security issues.\r\n\r\n## Deck Listing Updates\r\n\r\nThe deck listing page received several much-needed user interface updates for Nova 2.\r\n\r\nThe first change you'll notice on the deck listing page is the new menu at the top that will let you quickly move from item to item without having to scroll forever. Games that have a lot of decks in their deck listing will find this especially handy.\r\n\r\nThe second change is that decks are now displayed outside of a table. The previous table-based layout made the page look messy. Without tables, the deck listing flows a little better and makes it significantly easier to read, especially for games with lots of decks and even more content.\r\n\r\n## Post Locking\r\n\r\nOne of the most requested features since SMS 2 was the ability to \"lock\" a post when someone was working on it so that another user couldn't come in and overwrite the work being done. This was a tricky request and one that took a lot of time to come up with a good solution, but we've done it. Post locking relies on a very simple premise: when you start editing a post, no one else can edit it until you're done.\r\n\r\nOf course, it's significantly more complicated than that, but that's the basic idea. When you edit a post, you're granted a 5 minute lock. After 5 minutes, Nova will check to see if you're still editing the post. If you are, it'll renew the lock for another 5 minutes, but if you've walked away and left the page up, it'll auto-save your work and then release the lock. If you go to a post that's locked, you'll see a notification the post is locked and you won't be able to edit anything.\r\n\r\n## Top Open Positions\r\n\r\nSometimes, you want to highlight a few open positions to prospective players, but the open positions listing can be daunting, especially if you have a lot of positions open. Now, the top open positions listing makes it easier to nudge prospective players toward the positions you want to fill. To get started, simply update the position you want to highlight and change the Top Open Position option to Yes. The next time you go to the manifest and click on Open Positions, a new section will appear at the top of the manifest that highlights those top open positions.\r\n\r\n## Rules\r\n\r\nReturning from the ashes of SMS 2, Nova now includes a dedicated rules page that admins can update from Site Messages.\r\n\r\n## Bug Fixes\r\n\r\nAs with any update, we've taken time to fix several nagging issues in Nova, some of which have existed from the very beginning. In all, we've address over a dozen bugs to make your experience with Nova 2 even better than with version 1. Some of the major issues addressed include:\r\n\r\n* Using seamless substitution with images in the <code>_base_override</code> directory didn't work properly\r\n* When replying to or forwarding private messages, the RE and FWD prefixes would always be added to the subject line instead of just once\r\n* When replying to a private message, the person sending the message would end up on the recipient list and the message would appear in their inbox\r\n* The join form could be submitted without an email address and password\r\n* Users who were deactivated kept their system flags (webmaster, system administrator, game master, etc.)\r\n* Reactivated users didn't have their access role properly set\r\n* Inactive users saw a link to upload images even though they don't have permission to do so\r\n* Users could reset their password without needing a security question\r\n* Open slots for positions always weren't properly updated when a character was deactivated\r\n* Pulsar and Titan didn't always display properly in Internet Explorer 9\r\n* The \"Nominated By\" line was shown even when there was no nominee (only an issue for people who upgraded from SMS)\r\n* The Enterprise genre file had several issues\r\n* Patched several potential security issues\r\n* Much more...", 'tags' => [4,8]],
+			['title' => "How to Backup Your Nova Site", 'slug' => "backup", 'summary' => "", 'content' => "There's always a lot of talking about making sure to back up Nova before attempting to update it or upgrade from SMS. So how exactly do you backup Nova? Creating a backup is pretty straightforward. Before you attempt to update Nova, you should create a backup of your system in the event something goes wrong. The last thing you want is to lose data and be out of luck.
 
-			['title' => "Nova 2.3 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.3.2 <small>17 May 2014</small>\r\n\r\n### Nova Core\r\n\r\n* Updated the email from the contact form and the email to the GM from the docking form to include recipient information. Despite the name and email address are in the headers, we're including those as well as the sender's IP address.\r\n* Updated the included head files to allow for using Nova on a secure domain.\r\n* Fixed wrong language key being used for the word \"sim\" in a couple of places.\r\n\r\n## 2.3.1 <small>02 February 2014</small>\r\n\r\n### Bug Fixes\r\n\r\n* When toggling open positions, any open positions in sub-departments would throw off the display of the entire manifest.\r\n\r\n## 2.3.0 <small>14 September 2013</small>\r\n\r\n* When displaying the output of a dynamic form, if there's nothing in the field, we no longer show it.\r\n* Admins can now add inline help for any dynamic form field to help users filling the forms out. The content will be shown below the label and above the field.\r\n* Nova now shows a link back to All Characters when editing a character (if the user has permission).\r\n* Nova now shows a link back to All Users when editing a user (if the user has permission).\r\n* Admins can now specify additional metadata from the bio form to be dispalyed under the character name on the manifest (such as species, gender or any other field).\r\n* Sim stats now shows some statistics for the total life of the sim.\r\n\r\n### Bug Fixes\r\n\r\n* If a character didn't have any posts, their bio would display the start of UNIX time instead of nothing.", 'tags' => [8]],
+<p class=\"alert alert-warning\"><strong>Note:</strong> We can't stress enough the importance of a solid backup!</p>
 
-			['title' => "Nova 2.2 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.2.3 <small>7 April 2013</small>\r\n\r\n### Bug Fixes\r\n\r\n* Some users have reported errors being thrown during the update process that prevent them from moving up to newer versions of Nova. We've attempted to create a fix for this, but since we haven't been able to recreate the issue, this may or may not work.\r\n\r\n## 2.2.2 <small>27 March 2013</small>\r\n\r\n### Bug Fixes\r\n\r\n* Fixed error thrown when managing NPCs. (Thanks to evshell18 for the fix and pull request.)\r\n* Fixed issue where users without `wiki/categories` permissions couldn't create or edit wiki pages. ([#239](https://github.com/anodyne/nova/issues/239))\r\n\r\n## 2.2.1 <small>09 March 2013</small>\r\n\r\n### Bug Fixes\r\n\r\n* The update notification box always shows up.\r\n\r\n## 2.2.0 <small>15 February 2013</small>\r\n\r\n* Added reply to header to most of the emails that are sent from Nova. ([#217](https://github.com/anodyne/nova/issues/217))\r\n* Update author listings to provide links to each character's bio page. Thanks to Jordan Jay for his MOD to do this. We've expanded on his idea to provide this functionality for mission posts, personal logs, news items, wiki pages and comments. ([#223](https://github.com/anodyne/nova/issues/223))\r\n* Removed the SMS Archive feature since it's no longer needed.\r\n\r\n### Nova Core\r\n\r\n* Updated the characters model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))\r\n* Updated the docking model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))\r\n* Updated the specs model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))\r\n* Updated the tour model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))\r\n* Updated copyright dates in source code. ([#224](https://github.com/anodyne/nova/issues/224))\r\n\r\n### Bug Fixes\r\n\r\n* When viewing a mission post that doesn't exist, Nova throws a fatal error. ([#233](https://github.com/anodyne/nova/issues/233))\r\n* When using the tour form, Nova throws an error.\r\n* Sub-department names and descriptions weren't displayed properly when managing positions. ([#232](https://github.com/anodyne/nova/issues/232))\r\n* A missing closing tag on the character bio management page caused display problems.\r\n* When upgrading from SMS, system administrators didn't have the proper flags set.\r\n* When using the personal logs RSS feed, the link to the entry went to the view post page, not the view log page. ([#234](https://github.com/anodyne/nova/issues/234))", 'tags' => [8]],
+## The Files
 
-			['title' => "Nova 2.1 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.1.3 <small>05 November 2012</small>\r\n\r\n### Bug Fixes\r\n\r\n* Restoring lost functionality on some pages due to the security vulnerability update. ([#215](https://github.com/anodyne/nova/issues/215))\r\n\r\n## 2.1.2 <small>04 November 2012</small>\r\n\r\n### Nova Core\r\n\r\n* Update to jQuery 1.8.2.\r\n* Update to jQuery UI 1.8.24.\r\n* Update to markItUp! 1.1.13.\r\n* Update to CodeIgniter 2.1.3.\r\n* Update Nova to address a security issue.\r\n\r\n### Bug Fixes\r\n\r\n* Once a bio field is turned off, the only way to turn it back on is by going in to the database and changing the display value. ([#214](https://github.com/anodyne/nova/issues/214))\r\n* Once a docking field is turned off, the only way to turn it back on is by going in to the database and changing the display value. ([#214](https://github.com/anodyne/nova/issues/214))\r\n* Any spec form field that is turned off has no indication that it's disabled.\r\n* Any tour form field that is turned off has no indication that it's disabled.\r\n\r\n## 2.1.1 <small>12 September 2012</small>\r\n\r\n### Nova Core\r\n\r\n* Update to CodeIgniter 2.1.2.\r\n* Update to jQuery 1.8.1.\r\n* Update to jQuery UI 1.8.23.\r\n* Update the IP Address fields in the database to be compatible with IPv6 addresses.\r\n\r\n### Bug Fixes\r\n\r\n* During the update process, Nova never updated the system information table with the correct version number.\r\n* Despite the system version and components database tables being pulled out, the What's New menu item was never removed, throwing a 404 error if someone tried to go to the page.\r\n* The Admin Control Panel's update notification panel doesn't properly display all the language strings because the proper language file wasn't loaded.\r\n* The user bio page had debug code from 2.1 development at the top of the page.\r\n* Under some circumstances, unlinked NPCs had a link to a user bio that threw an error.\r\n* The User Not Found error was missing a parameter (would show %s instead of the word 'user').\r\n\r\n## 2.1.0 <small>26 June 2012</small>\r\n\r\n* Users are now notified when mission notes have been updated in the last 72 hours by the notes box auto-expanding when they arrive at the posting page.\r\n* Users are now shown when the last update to the mission notes was all the time.\r\n\r\n### Nova Core\r\n\r\n* Remove the `count_unread_pms` method from the private messages model. (This method was deprecated in Nova 2.0.)\r\n* Remove the `system_components` and `system_versions` tables from the database. There's really no reason to be maintaining these lists in Nova. Instead, users who are interested in Nova's components and version history should visit AnodyneDocs.\r\n* Remove the What's New page for the reasons specified above.\r\n* Update the Version Information page to reflect the database changes.\r\n* Update the post, log, and news creation pages to give a description of what tags are meant to be used for.\r\n* Remove jQuery library from the file system. We now pull jQuery from a CDN instead of storing it locally.\r\n* Update to jQuery UI 1.8.20 (we now include the entire jQuery UI library for anyone who wants to use components we don't use).\r\n* Update to prettyPhoto 3.1.4.\r\n* Update to jQuery Reflection 1.1.\r\n\r\n### Bug Fixes\r\n\r\n* The update page would always throw an error that it couldn't find Nova installed in the current database.\r\n* When a mission was updated, it was assumed mission notes updated as well. Now, there's greater precision in determining if the notes were actually updated.\r\n* Accepting or rejecting docking applications would throw a fatal error because the Messages model wasn't loaded before it was used.\r\n* Join timespan always showed as a user joining \"1 Second ago\" no matter when they joined.\r\n* Nova's `timespan_short` helper was missing the word \"ago\" when the time was less than an hour.\r\n* The Site Messages page didn't strip HTML tags from the content potentially allowing unclosed HTML tags to wreak havoc on the page.", 'tags' => [8]],
+The first step to creating a solid backup is to save the Nova files off your server to your computer. To do that, you'll need to have an FTP program to connect to the server. Once you've connected to your account with the username, password and location your host gave to you when your account was created, you can download the files. The best way of going about this is to create a folder on your Desktop called `nova_backup` and to copy all the files directly over to that folder. Make sure you get all the files! Once you have all the files, you can disconnect from the server and close your FTP program.
 
-			['title' => "Nova 2.0 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.0.3 <small>01 March 2012</small>\r\n\r\n### Nova Core\r\n\r\n* Updated jQuery UI to version 1.8.18.\r\n\r\n### Bug Fixes\r\n\r\n* Benchmarking psuedo-variables are not handled properly because of the fact the Template library doesn't use the Output library for sending content to the browser.\r\n* When saving posts with the Post Participants feature turned off, Nova would throw errors about a database field not accepting NULL values.\r\n\r\n## 2.0.2 <small>09 February 2012</small>\r\n\r\n### Nova Core\r\n\r\n* Removed the social interaction tools from prettyPhoto image modals. ([#169](https://github.com/anodyne/nova/issues/169))\r\n* Added some code to try and make the mission post locking auto-release a little smarter.\r\n\r\n### Bug Fixes\r\n\r\n* Under some (strange) circumstances, Nova could throw errors from the Ajax controller.\r\n* A typo in the language string on the reset password page when the security question you select doesn't match what's in the database.\r\n* If a user has multiple playing characters assigned to them, the milestones listing would display their main character name for every playing character they had assigned to them instead of just displaying it once.\r\n* The new manifest layout has some display issues when using sub departments. ([#168](https://github.com/anodyne/nova/issues/168))\r\n* When updating the content of a deck, the submit process went back to the select screen instead of staying on the current item's page.\r\n* When deleting specification items, if there are decks associated with that spec item, they're orphaned and not deleted.\r\n* The Who's Online listing displayed random spaces and commas.\r\n* Character image galleries duplicated the primary image.\r\n\r\n## 2.0.1 <small>04 February 2012</small>\r\n\r\n### Bug Fixes\r\n\r\n* If the user's screen isn't wide enough, the tooltip on the Writing Control Panel that displays the post lock information can slide partially out of view.\r\n* Nova tried to load a language file through an object that couldn't see it, resulting in an error thrown about the file not being found.\r\n\r\n## 2.0 <small>04 February 2012</small>\r\n\r\n* Site Messages can now contain previously disallowed HTML tags (like `embed`, `iframe`, etc) for adding media from YouTube and Vimeo to site messages (like the welcome message) without needing to use seamless substitution.\r\n* Mission groups can now be added inside other mission groups (nesting only allowed one level deep).\r\n* Users with Level 2 user admin access rights can now reset someone's password for them. The new password will be generated and emailed to the user and they'll be prompted to reset the password the next time they log in. At no time does the user with Level 2 user admin access rights see what the newly generated password is. ([#16](https://github.com/anodyne/nova/issues/16))\r\n* Multi-author posts are now locked during editing to prevent users editing the same post at the same time. The lock is released after the user saves their changes or they've gone 5 minutes without making a change. (In the event a user has changed something and walked away, their changes will be saved to the post first.)\r\n* Admins now have the option of showing the latest personal logs and mission posts on the main page. (Admins will be able to select any combination of news, logs and posts.)\r\n* Admins now have the option of setting the top open positions (from Position Management) that will be shown at the top of each manifest (not manifest-specific).\r\n* Added a rules page to the main section that can be updated from the Site Messages page.\r\n* The instructions on the upload page now include the maximum file size and maximum image dimensions (pulled from the upload config file) for reference to anyone uploading images. ([#143](https://github.com/anodyne/nova/issues/143))\r\n* The deck listing page now uses a table-less layout for a cleaner look.\r\n* The deck listing page now has a menu of decks at the top of the page for quickly moving to a deck item without having to scroll. (We think RPGs with a lot of decks are going to love this!)\r\n* Overhauled the user interface for mission groups to provide more information (and look a lot better too).\r\n* When composing a mission post, the dropdown will now show who owns a linked NPC.\r\n* When composing a mission post, personal log or private message, users only have to start typing a name and the options will be narrowed down for them. ([#23](https://github.com/anodyne/nova/issues/23))\r\n* The skin catalogue now allows removing an entire skin (with sections) and letting admins choose which skin users will beupdated to for each section.\r\n* The user account page now has options to make activating and deactivating users a lot easier.\r\n    * When deactivating a user, all active characters associated with that account with also be deactivated.\r\n    * When activating a user, admins will be prompted about which of the user's inactive characters should be reactivated.\r\n* The character bio page now has options to make activating and deactivating characters a lot easier.\r\n    * Activating an inactive character (and all related actions) can now be done with the push of a button.\r\n    * Deactivating an active character (and all related actions) can now be done with the push of a button.\r\n    * Making an NPC an active character (and all related actions) can now be done with the push of a button.\r\n    * Making a character an NPC (and all related actions) can now be done with the push of a button.\r\n* When viewing a character's posts, the entries will be paginated to help with load times and usability.\r\n* When viewing a character's logs, the entries will be paginated to help with load times and usability.\r\n* Site manifests can now store default view information so that different manifests can have different view settings. (This is now handled through Site Manifest management instead of Site Settings.) ([#157](https://github.com/anodyne/nova/issues/157))\r\n* Gave the Pulsar skin a refreshed look and feel.\r\n* Gave the Titan skin a refreshed look and feel. (If you're interested in changing the header image, please see Titan's README.md file for instructions.)\r\n* The Writing Control Panel now shows a notification for any entires that have been commented on in the last 30 days (along with a link to the comments section of the entry).\r\n* The manifest has been reorganized (for the first time ever) with a slightly different look.\r\n* The email sent to the game master when a user applies now goes to anyone who can approve or reject character applications.\r\n* Acceptance and rejection emails now CC in anyone who can approve or reject character applications.\r\n* Users can now search within their sent and received private messages.\r\n* Private messages have now been split in to separate inbox and sent message pages. This will help improve performance since the page doesn't have to load all the messages at once then split them off in to tabs.\r\n* Private messages in the inbox and sent messages list are now paginated.\r\n* The Reply to All link when reading a private message is only displayed if there's more than one recipient.\r\n* The Reply, Reply to All and Forward options when reading a private message are now displayed above and below the private message.\r\n* Users can now mark all unread private messages as read with a single click.\r\n* An all-new redesigned character bio page provides a better, cleaner user experience.\r\n\r\n### The Nova Core\r\n\r\n* Moved to CodeIgniter 2.1 (was previously 1.7.3).\r\n* Moved to a brand new file structure that further removes the Nova Core from any changes an admin might be making.\r\n* Added __experimental__ module support.\r\n* Updated to jQuery 1.7.1.\r\n* Updated to jQuery UI 1.8.17.\r\n* Updated to jQuery Uniform 1.7.5.\r\n* Updated to jQuery prettyPhoto 3.1.3.\r\n* Updated to markItUp! 1.1.12.\r\n* Added the jQuery Chosen plugin.\r\n* Added the Bootstrap by Twitter Twipsy plugin (version 1.4).\r\n* Added the Bootstrap by Twitter Popover plugin (version 1.4).\r\n* Removed the qTip plugin. (Please use the Bootstrap Twipsy plugin instead.)\r\n* Changed the `banned.php` file to `message.php` that now contains notifications of Level 2 bans, a missing `nova` directory and incompatible PHP version information.\r\n* Seamless substitution can now be used to override email view files from the `_base_override` directory.\r\n* Added seaQuest DSV as a genre option. ([#144](https://github.com/anodyne/nova/issues/144))\r\n* Changed the Location helper into a library with static methods (`Location::view` instead of `view_location`).\r\n* Removed the RSS model. (It isn't necessary since most of the calls were duplicated in the appropriate post type models.)\r\n* Added constants to the Access model for the default access roles.\r\n* The Missions model now allows group missions to be pulled from `get_all_missions()`.\r\n* The Missions model now has a method to count mission groups: `count_mission_groups()`.\r\n* The Users model now has a method to pull all of a user's LOA records: `get_user_loa_records()`.\r\n* The Auth library now uses static methods to be able to call quicker (`Auth::check_access()` instead of `&#36;this->auth->check_access()`).\r\n* Nova will always check for the existence of the database config file. If the file isn't found, Nova will enter a new config setup wizard that will walk admins through setting up the config file, test the connection and then write the file for them.\r\n* The SMS Upgrade process will now migrate SMS Database entries to the Thresher wiki page format.\r\n* Completely re-wrote the upgrade process to not use config files (admins select the components they want upgraded through a user interface), to show more useful validation messages and be a shorter, more pleasant process (reduced the number of steps from 14 to 4).\r\n* View files now check for the existence of the BASEPATH constant before rendering. On some servers, random `error_log` files are generated all over the place. A big part of this is view files that are accessed apart from the framework and generate PHP fatal errors. This fix should help eliminate those error log files.\r\n* In preparation for future deprecation, we've removed all references to jQuery's `.live()` method. Third party developers should ensure their own code is updated as soon as possible to avoid any issues once the method is removed from the jQuery core.\r\n\r\n### Thresher\r\n\r\n* Changed the way users manage categories when creating and editing a wiki page. ([#137](https://github.com/anodyne/nova/issues/137))\r\n* Users with the proper permissions can now create categories when creating and editing a wiki page. ([#64](https://github.com/anodyne/nova/issues/64))\r\n* If there are no categories set in Thresher and the user has the proper permissions, they will be prompted to create some new categories when creating and editing a wiki page.\r\n* Changed the user experience for managing wiki pages that puts more controls at the user's disposal and simplifies the entire page. ([#141](https://github.com/anodyne/nova/issues/141))\r\n* Changed the user interface for viewing wiki pages to make it simpler.\r\n* Users must have Level 1 wiki page access to see the page history now.\r\n* Only users who are logged in can see comments on a wiki page.\r\n* Added system pages to Thresher that allow some of the system pages to have their content changed like a normal wiki page. ([#123](https://github.com/anodyne/nova/issues/123))\r\n* Users can now search Thresher from the main Thresher page.\r\n* Fixed several bugs with the listing of Thresher search results.\r\n* Removed the recently changed and recently updated listings from the main Thresher page.\r\n* Users can now subscribe to an RSS feed for created wiki pages as well as updated wiki pages.\r\n* Admins can now restrict access to a wiki page based on access role. ([#11](https://github.com/anodyne/nova/issues/11), [#12](https://github.com/anodyne/nova/issues/12))\r\n\r\n### Bug Fixes\r\n\r\n* Seamless substitution of images wouldn't work when the images were in the `_base_override` directory.\r\n* The `RE:` and `FWD:` tags would be added to private message subjects when replying and forwarding indefinitely until there was no space left for the actual subject line. Now, Nova will make sure it's only added once. ([#158](https://github.com/anodyne/nova/issues/158))\r\n* When replying to a private message, the author of the message would be added to the recipient list, so any message they send would also show up in their inbox as well. (This behavior can be duplicated by manually adding themselves to the recipients list.)\r\n* The join form could be submitted without an email address or password.\r\n* Users who were deactivated kept their account flags (system administrator, game master, webmaster) and their access role. Now, all account flags and access roles are changed on deactivation.\r\n* Users who were reactivated didn't have their access role set to Standard User.\r\n* Inactive users were shown a link in the sub-navigation to upload an image even though they don't have permissions to upload images.\r\n* A password could be reset for a user even if they don't have a security question chosen.\r\n* Patched several potential security and access issues.\r\n* Positions weren't properly updated when deleting an active character.\r\n* Pulsar styling issues in Internet Explorer 9.\r\n* Titan styling issues in Internet Explorer 9.\r\n* When viewing character or user award, the \"Nominated By\" line was shown even if there was no nomineed. (This is only an issue for RPGs who upgraded from SMS.)\r\n* The Enterprise-era (ENT) genre install file had several issues and typos. ([#155](https://github.com/anodyne/nova/issues/155))\r\n* The database automatically set a default rank for pending users potentially resulting in some confusion as to why a pending user already has a rank. ([#148](https://github.com/anodyne/nova/issues/148))\r\n* If there is only one specification item, the list of items would be dispalyed instead of automatically sending the user to the only specification item. ([#146](https://github.com/anodyne/nova/issues/146))\r\n* If there is only one specification item, the list of decks would be dispalyed instead of automatically sending the user to the only deck listing. ([#147](https://github.com/anodyne/nova/issues/147))\r\n* During fresh installs, the user ID constraint wasn't consistent with the rest of the user ID fields throughout the system.\r\n* Under some circumstances, users could edit posts they weren't even a part of. (Thanks to evshell18 on the Anodyne forums for pointing this out and getting the ball rolling on a fix.)", 'tags' => [8]],
+## The Database
+
+The database is the most important part of the system. In order to backup your database, you'll need to access phpMyAdmin. On some hosts, you would've been given a direct link to phpMyAdmin and on others, you'll have access to it through cPanel. Once you've logged in to phpMyAdmin, make sure you've selected the database with your Nova tables. You'll know you're in the right place if you see a full list of all the Nova tables. Click on the Export tab across the top of the page.
+
+In the export box, click Select All and make sure the SQL option is selected below. In the Options box to the right, make sure both Structure and Data checkboxes are checked. Finally, click the Save as File checkbox then Go. The system will offer you a download of the SQL database. Save the file to your `nova_backup` folder on your Desktop.
+
+## Zip It Up
+
+Now that you have your complete backup, you should zip your backup up into a zip archive and name it `nova_backup_{date}` where _{date}_ is today's date. Make sure you save the zip file in a safe place in case you need to get at it.
+
+That's it. You've successfully backed up Nova!", 'keywords' => 'backup, phpmyadmin', 'featured' => 1, 'tags' => [2]],
+			
+			['title' => "Nova 2 Requirements", 'slug' => "requirements", 'summary' => "", 'content' => "We've worked hard to make sure Nova's requirements are as broad as possible so as many people as possible can use it for their games. Still, there are a few requirements that you should verify before installing Nova 2. In the event the server you're going to be installing Nova on doesn't support some or all of these things, you should contact your hosting provider and ask them about the possibility of upgrading these items.
+
+## PHP
+
+You will need a server that is running PHP, a dynamic web development language that Nova is built in. Nova 2 requires that your server has at least __PHP 5.1.6__ installed. If you have less than 5.1 installed, the installation will fail and you won't be allowed to continue. Some of the new features in Nova 2 take advantage of functions and methods built in to PHP 5.1.
+
+## MySQL
+
+You will need a server (and account) that has MySQL available. Nova is a database-driven system which means it needs a database (MySQL) to run. As long as you have __MySQL 4.1__ or higher, you should be fine. (Additionally, you can connect to MySQL through PHP's MySQLi functions if your hosting provider mentions that as an option.)
+
+## A Browser
+
+Since Nova is web-based software, you'll need a browser in order to use it. These days, there are a lot of browsers out there and most of them should work, but some of the older generation browser aren't supported because of their lack of support for technologies and tools used in Nova. Our recommendation is to use __Firefox__ (version 4 or higher) or a newer build of __Google Chrome__ (version 10 or higher). In addition, we also support Firefox 3, Safari 4 and higher as well as Internet Explorer 7 and higher. Make sure you have JavaScript turned on as many of Nova's features require it.
+
+<p class=\"alert alert-warning\">Due to Internet Explorer's shortcomings, there are known visual issues with Nova in IE 7. We have no intention of addressing these presentation issues and encourage you to use a standards-compliant browser such as Firefox, Google Chrome or Safari. These visual issues do not affect IE 8 and higher.</p>", 'keywords' => 'requirements, php, mysql, browser, Google Chrome, Safari, Internet Explorer, server', 'featured' => 1, 'tags' => [1]],
+
+			['title' => "What's New in Nova 2.3", 'slug' => "", 'summary' => "", 'content' => "## Character Metadata Available on Manifests
+
+Use the new character metadata setting for each manifest to tell Nova which fields to pull out of the character information and display on your manifest. You can choose as many fields as you want to display, so make the manifest show more of the information your users are looking for.
+
+## Updates to Dynamic Forms
+
+No one likes seeing blank fields on a bio, so we've updated the dynamic forms to only display fields that have something in them. This will make your forms cleaner and easier to read, especially for entries that don't have a lot of data. We've also added a much-requested feature of being able to show inline help for forms when in create or edit mode.
+
+## More Sim Stats
+
+Get a better view at the stats for your game over its entire lifetime now with the expansion of the sim stats. In addition to being able to see stats for the current and previous months, there are also new metrics for the overall lifetime of the game including total posts, average posts per month and more.", 'keywords' => 'metadata, manifest, dynamic forms, bio, stats', 'tags' => [4,8]],
+			
+			['title' => "What's New in Nova 2.2", 'slug' => "", 'summary' => "", 'content' => "## Character Bio Linking in Author Lists
+
+Forum member Jordan Jay rolled out a MOD for Nova that added links to the character bio for the list of authors for a mission post. We loved this idea so much that we talked to Jordan about rolling the functionality into the Nova core! We've taken his idea and expanded on it though, so in addition to mission posts, the same linking behavior will happen on personal logs, news items, wiki pages and any comments that are entered throughout the system.
+
+## Reply To on Emails
+
+Since making changes to emails from Nova to combat emails being marked as spam by hosts, we've heared several people want us to set the Reply To header on email messages so that users can just hit reply and send an email back to the author of the post/log/news items. We've rolled this functionality into _most_ emails that come from Nova. In some cases, it doesn't make sense to have a Reply To header there (password resets were one of the emails we didn't think it didn't make sense for).
+
+<p class=\"alert alert-warning\"><strong>Note:</strong> Replying to an email will <strong>not</strong> post that item back into Nova. If you want to reply to an item or comment on it, you have to do so from inside Nova.</p>", 'keywords' => 'bio, email', 'tags' => [4,8]],
+			
+			['title' => "What's New in Nova 2.1", 'slug' => "", 'summary' => "", 'content' => "## Mission Note Update Notifications
+
+Mission notes are an incredible useful feature that allow game masters to keep players updated on what's happening with the game, how players can best move things forward, and to give direction on how to post. The biggest challenge with mission notes though has always been accounting for the length of content (the big reason why notes are hidden by default). Users expressed concern that their updates to mission notes were going unnoticed by players because they didn't know changes had been made.
+
+Now, if mission notes have been updated within 72 hours, the mission notes content box will automatically be expanded and have an <span class=\"label label-warning\">UPDATED</span> label. If mission notes haven't been updated within 72 hours, the box will stay collapsed. Regardless of time though, the mission notes box will now always show the last time the notes were updated (unless, of course, they've never been updated).
+
+## Bug Fixes
+
+* The update page would always throw an error that it couldn't find Nova installed in the current database.
+* When a mission was updated, it was assumed mission notes updated as well. Now, there's greater precision in determining if the notes were actually updated.
+* Accepting or rejecting docking applications would throw a fatal error because the Messages model wasn't loaded before it was used.
+* Join timespan always showed as a user joining \"1 Second ago\" no matter when they joined.
+* Nova's `timespan_short` helper was missing the word \"ago\" when the time was less than an hour.
+* The Site Messages page didn't strip HTML tags from the content potentially allowing unclosed HTML tags to wreak havoc on the page.", 'keywords' => 'mission notes', 'tags' => [4,8]],
+			
+			['title' => "What's New in Nova 2.0", 'slug' => "", 'summary' => "", 'content' => "## New File Structure
+
+One of the biggest reasons for doing Nova 2 was to improve the file structure of Nova. We've heard from people that updating Nova is difficult and time consuming. For a product that promises to \"get you back to playing your game\" that's unacceptable. We went back to the drawing board with our file structure to make sure updating Nova is dead simple and we think we've nailed it.
+
+When it comes time to update Nova, all you'll need to do is delete the `nova` directory and upload the newer copy. After that, just run the update script from your web browser like you would normally and you're done. No more wading through files and making sure you don't accidentally update a file you shouldn't. In, out and back to your game.
+
+## New Database Configuration Process
+
+Taking cues from SMS, Nova 2 includes a brand new database configuration process. Instead of having to open files up and edit them before starting the Nova 2 install, you'll simply go to the site and if there's no database configuration file, you'll be taken through a simple process that will collect your information and create the file for you. Before the file is created though, Nova will actually try to connect to the database and will let you know right away if something is wrong. We think this new process will make it easier and faster to get your game up and running on Nova 2.
+
+## Refreshed Default Look
+
+After a year and a half with the same default look, Nova 2 has gotten a facelift. Sporting an updated and simpler default interface, Nova 2 leverages HTML5 and CSS3 to a greater degree than previous versions of Nova. The old version of the skin will continue to work, but we felt that given the larger nature of the changes, a refreshed look and feel was appropriate.
+
+## Thresher R2
+
+By far, the majority of our focus has been on Thresher and getting it up to Release 2. There are a ton of improvements to our mini-wiki that will make using it even better than before.
+
+### System Pages
+
+People told us they wanted more control of some of the static content in Thresher and we came up with a solution that does just that. System pages are specialized wiki pages that cannot be deleted but can be edited like any other wiki page. Make the front Thresher page just what you want by editing the system page in the same place you'd edit a normal wiki page. In addition to the main page, we've added system pages for the all categories listing page, individual category page and creating and editing pages.
+
+### Page Restrictions
+
+Have a page that only a few people should be able to get to? In Thresher R1, you were out of luck. In Thresher R2, you can simply set access level restrictions on the page and only those access levels will be able to see them.
+
+### Brand New Category Selection Interface
+
+Let's be honest, a list of checkboxes wasn't much of an interface for selecting categories. Now, a more elegant solution makes it easier to categorize your pages.
+
+### Create Categories On-the-Fly
+
+Another one of the big things users told us they wanted to be able to do was to create categories right from the create/edit page. Now you can. Don't have a category for what you want? Just create it then select it and your page will be using that category. Just getting started with Thresher and don't have any categories yet? Don't worry, Thresher will prompt you to create some categories right on the page.
+
+### User Experience Improvements
+
+We're always looking to make the user experience of our products better than before. In Thresher R2, we've made viewing a wiki page a much better and simpler experience. In addition, we've overhauled the Manage Pages section with a whole new user interface that puts more controls at admins fingertips and allows filtering pages by restrictions, the type of page and more.
+
+### Better Searching
+
+This one is pretty self-explanatory. We've worked out several bugs that existed in the search features for Thresher so that you'll get more accurate search results. In addition, we've brought search front and center on the main page with an option to search the minute you land in Thresher.
+
+## Simplified Character/User Management
+
+One of Nova 1's major features was the separation of users and characters, allowing a single user to control multiple characters. While this was a great feature, the management piece was a bit of a struggle for a lot of admins. It was all-to-easy to deactivate a character but leave the user active or vice versa. To help with this management headache, we've borrowed from Nova 3's planned features to provide a dead-simple way to manage characters and users. If you want to take action on a character (activate, deactivate, make an NPC or make an NPC a playing character), admins will do so now with a series of buttons:
+
+* __Activating an Inactive Character__ - Only displayed with inactive characters, this button will not only activate an inactive character, but will also give admins the ability to activate the user if they're inactive, make the character the primary character for the user or even assign the character to a completely different user.
+* __Deactivating an Active Character__ - Only displayed with active characters, this button will deactivate the active character and check the user for any other active characters. If the user doesn't have any other active characters, admins will have an option to deactivate the user right then and there. If the user does have other characters and the one being deactivated is their main character, a dropdown menu will allow admins to set a new main character for that user.
+* __Making an Active or Inactive Character an NPC__ - Displayed for both active and inactive characters, this button will move an active or inactive character to be an NPC. If the character in question is someone's main character, a dropdown menu will allow admins to set a new main character for that user. The character will continue to be associated with that user even as an NPC unless the admins selects the option to clear the user association. In the event that making an active character an NPC leaves a user without an active character, admins will have the option to deactivate the user as well.
+* __Making an NPC an Active Character__ - Only displayed for non-playing characters, this button will move an NPC to be an active character. Admins will be able to associate the character with a user or change the user the character is associated with in addition to setting the character to be the primary character. In the event a character is being associated with an inactive user, the option will be given to activate that user.
+* __Activating a User__ - Only displayed for inactive user accounts, this button will activate an inactive user as well providing admins with the ability to activate any of that user's inactive characters at the same time.
+* __Deactivating a User__ - Only displayed for active user accounts, this button will deactivate an active user as well as deactivate all of their active characters.
+
+## Nested Mission Groups
+
+One of the final additions to Nova 1 was mission groups as a way to pull missions together. After seeing how people are using the feature, we've expanded mission groups to allow them to be nested down one level. This means you can now have groups inside groups. Along with this, we've completely re-written the user interface for viewing mission groups which will give users more information at a glance than before.
+
+## Brand-New Character Selection
+
+On pages where you can select multiple characters (writing a mission post, editing a mission post, writing a private message, etc.), the UI was never that good. Select a user and click a link. Select another user and click a link. It was bulky and quite a pain to maintain. In Nova 2, we've changed the UI to be a lot more friendly. Now, just start typing a character name and the list will filter for you. Click the name and you're done. Want to remove a character from the list? Just click on the X next to their name.
+
+## Updates to Site Messages
+
+One of the biggest complaints about Nova is that it makes adding content more difficult than it needs to be. For us, it's always been a security issue to allow script, audio, video, iframe and object tags in the site messages. There are just too many documented cases of people using those for malicious purposes. Sadly, our focus on security made it more difficult for games to do the things they could do before with SMS. That shouldn't be the case. Because of that, we've relented on this issue and now allow all of the previously disallowed HTML tags in site messages. That means that games can now link to YouTube and Vimeo media without having to use seamless substitution. We think this is a big win for our users, though it does come at a cost. You should make sure you absolutely trust the source of any code you put in to your site messages so there are no security issues.
+
+## Deck Listing Updates
+
+The deck listing page received several much-needed user interface updates for Nova 2.
+
+The first change you'll notice on the deck listing page is the new menu at the top that will let you quickly move from item to item without having to scroll forever. Games that have a lot of decks in their deck listing will find this especially handy.
+
+The second change is that decks are now displayed outside of a table. The previous table-based layout made the page look messy. Without tables, the deck listing flows a little better and makes it significantly easier to read, especially for games with lots of decks and even more content.
+
+## Post Locking
+
+One of the most requested features since SMS 2 was the ability to \"lock\" a post when someone was working on it so that another user couldn't come in and overwrite the work being done. This was a tricky request and one that took a lot of time to come up with a good solution, but we've done it. Post locking relies on a very simple premise: when you start editing a post, no one else can edit it until you're done.
+
+Of course, it's significantly more complicated than that, but that's the basic idea. When you edit a post, you're granted a 5 minute lock. After 5 minutes, Nova will check to see if you're still editing the post. If you are, it'll renew the lock for another 5 minutes, but if you've walked away and left the page up, it'll auto-save your work and then release the lock. If you go to a post that's locked, you'll see a notification the post is locked and you won't be able to edit anything.
+
+## Top Open Positions
+
+Sometimes, you want to highlight a few open positions to prospective players, but the open positions listing can be daunting, especially if you have a lot of positions open. Now, the top open positions listing makes it easier to nudge prospective players toward the positions you want to fill. To get started, simply update the position you want to highlight and change the Top Open Position option to Yes. The next time you go to the manifest and click on Open Positions, a new section will appear at the top of the manifest that highlights those top open positions.
+
+## Rules
+
+Returning from the ashes of SMS 2, Nova now includes a dedicated rules page that admins can update from Site Messages.
+
+## Bug Fixes
+
+As with any update, we've taken time to fix several nagging issues in Nova, some of which have existed from the very beginning. In all, we've address over a dozen bugs to make your experience with Nova 2 even better than with version 1. Some of the major issues addressed include:
+
+* Using seamless substitution with images in the <code>_base_override</code> directory didn't work properly
+* When replying to or forwarding private messages, the RE and FWD prefixes would always be added to the subject line instead of just once
+* When replying to a private message, the person sending the message would end up on the recipient list and the message would appear in their inbox
+* The join form could be submitted without an email address and password
+* Users who were deactivated kept their system flags (webmaster, system administrator, game master, etc.)
+* Reactivated users didn't have their access role properly set
+* Inactive users saw a link to upload images even though they don't have permission to do so
+* Users could reset their password without needing a security question
+* Open slots for positions always weren't properly updated when a character was deactivated
+* Pulsar and Titan didn't always display properly in Internet Explorer 9
+* The \"Nominated By\" line was shown even when there was no nominee (only an issue for people who upgraded from SMS)
+* The Enterprise genre file had several issues
+* Patched several potential security issues
+* Much more...", 'tags' => [4,8]],
+
+			['title' => "Nova 2.3 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.3.2 <small>17 May 2014</small>
+
+### Nova Core
+
+* Updated the email from the contact form and the email to the GM from the docking form to include recipient information. Despite the name and email address are in the headers, we're including those as well as the sender's IP address.
+* Updated the included head files to allow for using Nova on a secure domain.
+* Fixed wrong language key being used for the word \"sim\" in a couple of places.
+
+## 2.3.1 <small>02 February 2014</small>
+
+### Bug Fixes
+
+* When toggling open positions, any open positions in sub-departments would throw off the display of the entire manifest.
+
+## 2.3.0 <small>14 September 2013</small>
+
+* When displaying the output of a dynamic form, if there's nothing in the field, we no longer show it.
+* Admins can now add inline help for any dynamic form field to help users filling the forms out. The content will be shown below the label and above the field.
+* Nova now shows a link back to All Characters when editing a character (if the user has permission).
+* Nova now shows a link back to All Users when editing a user (if the user has permission).
+* Admins can now specify additional metadata from the bio form to be dispalyed under the character name on the manifest (such as species, gender or any other field).
+* Sim stats now shows some statistics for the total life of the sim.
+
+### Bug Fixes
+
+* If a character didn't have any posts, their bio would display the start of UNIX time instead of nothing.", 'tags' => [8]],
+
+			['title' => "Nova 2.2 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.2.3 <small>7 April 2013</small>
+
+### Bug Fixes
+
+* Some users have reported errors being thrown during the update process that prevent them from moving up to newer versions of Nova. We've attempted to create a fix for this, but since we haven't been able to recreate the issue, this may or may not work.
+
+## 2.2.2 <small>27 March 2013</small>
+
+### Bug Fixes
+
+* Fixed error thrown when managing NPCs. (Thanks to evshell18 for the fix and pull request.)
+* Fixed issue where users without `wiki/categories` permissions couldn't create or edit wiki pages. ([#239](https://github.com/anodyne/nova/issues/239))
+
+## 2.2.1 <small>09 March 2013</small>
+
+### Bug Fixes
+
+* The update notification box always shows up.
+
+## 2.2.0 <small>15 February 2013</small>
+
+* Added reply to header to most of the emails that are sent from Nova. ([#217](https://github.com/anodyne/nova/issues/217))
+* Update author listings to provide links to each character's bio page. Thanks to Jordan Jay for his MOD to do this. We've expanded on his idea to provide this functionality for mission posts, personal logs, news items, wiki pages and comments. ([#223](https://github.com/anodyne/nova/issues/223))
+* Removed the SMS Archive feature since it's no longer needed.
+
+### Nova Core
+
+* Updated the characters model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))
+* Updated the docking model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))
+* Updated the specs model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))
+* Updated the tour model to allow retrieving specific field information by ID or field_name. ([#216](https://github.com/anodyne/nova/issues/216))
+* Updated copyright dates in source code. ([#224](https://github.com/anodyne/nova/issues/224))
+
+### Bug Fixes
+
+* When viewing a mission post that doesn't exist, Nova throws a fatal error. ([#233](https://github.com/anodyne/nova/issues/233))
+* When using the tour form, Nova throws an error.
+* Sub-department names and descriptions weren't displayed properly when managing positions. ([#232](https://github.com/anodyne/nova/issues/232))
+* A missing closing tag on the character bio management page caused display problems.
+* When upgrading from SMS, system administrators didn't have the proper flags set.
+* When using the personal logs RSS feed, the link to the entry went to the view post page, not the view log page. ([#234](https://github.com/anodyne/nova/issues/234))", 'tags' => [8]],
+
+			['title' => "Nova 2.1 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.1.3 <small>05 November 2012</small>
+
+### Bug Fixes
+
+* Restoring lost functionality on some pages due to the security vulnerability update. ([#215](https://github.com/anodyne/nova/issues/215))
+
+## 2.1.2 <small>04 November 2012</small>
+
+### Nova Core
+
+* Update to jQuery 1.8.2.
+* Update to jQuery UI 1.8.24.
+* Update to markItUp! 1.1.13.
+* Update to CodeIgniter 2.1.3.
+* Update Nova to address a security issue.
+
+### Bug Fixes
+
+* Once a bio field is turned off, the only way to turn it back on is by going in to the database and changing the display value. ([#214](https://github.com/anodyne/nova/issues/214))
+* Once a docking field is turned off, the only way to turn it back on is by going in to the database and changing the display value. ([#214](https://github.com/anodyne/nova/issues/214))
+* Any spec form field that is turned off has no indication that it's disabled.
+* Any tour form field that is turned off has no indication that it's disabled.
+
+## 2.1.1 <small>12 September 2012</small>
+
+### Nova Core
+
+* Update to CodeIgniter 2.1.2.
+* Update to jQuery 1.8.1.
+* Update to jQuery UI 1.8.23.
+* Update the IP Address fields in the database to be compatible with IPv6 addresses.
+
+### Bug Fixes
+
+* During the update process, Nova never updated the system information table with the correct version number.
+* Despite the system version and components database tables being pulled out, the What's New menu item was never removed, throwing a 404 error if someone tried to go to the page.
+* The Admin Control Panel's update notification panel doesn't properly display all the language strings because the proper language file wasn't loaded.
+* The user bio page had debug code from 2.1 development at the top of the page.
+* Under some circumstances, unlinked NPCs had a link to a user bio that threw an error.
+* The User Not Found error was missing a parameter (would show %s instead of the word 'user').
+
+## 2.1.0 <small>26 June 2012</small>
+
+* Users are now notified when mission notes have been updated in the last 72 hours by the notes box auto-expanding when they arrive at the posting page.
+* Users are now shown when the last update to the mission notes was all the time.
+
+### Nova Core
+
+* Remove the `count_unread_pms` method from the private messages model. (This method was deprecated in Nova 2.0.)
+* Remove the `system_components` and `system_versions` tables from the database. There's really no reason to be maintaining these lists in Nova. Instead, users who are interested in Nova's components and version history should visit AnodyneDocs.
+* Remove the What's New page for the reasons specified above.
+* Update the Version Information page to reflect the database changes.
+* Update the post, log, and news creation pages to give a description of what tags are meant to be used for.
+* Remove jQuery library from the file system. We now pull jQuery from a CDN instead of storing it locally.
+* Update to jQuery UI 1.8.20 (we now include the entire jQuery UI library for anyone who wants to use components we don't use).
+* Update to prettyPhoto 3.1.4.
+* Update to jQuery Reflection 1.1.
+
+### Bug Fixes
+
+* The update page would always throw an error that it couldn't find Nova installed in the current database.
+* When a mission was updated, it was assumed mission notes updated as well. Now, there's greater precision in determining if the notes were actually updated.
+* Accepting or rejecting docking applications would throw a fatal error because the Messages model wasn't loaded before it was used.
+* Join timespan always showed as a user joining \"1 Second ago\" no matter when they joined.
+* Nova's `timespan_short` helper was missing the word \"ago\" when the time was less than an hour.
+* The Site Messages page didn't strip HTML tags from the content potentially allowing unclosed HTML tags to wreak havoc on the page.", 'tags' => [8]],
+
+			['title' => "Nova 2.0 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 2.0.3 <small>01 March 2012</small>
+
+### Nova Core
+
+* Updated jQuery UI to version 1.8.18.
+
+### Bug Fixes
+
+* Benchmarking psuedo-variables are not handled properly because of the fact the Template library doesn't use the Output library for sending content to the browser.
+* When saving posts with the Post Participants feature turned off, Nova would throw errors about a database field not accepting NULL values.
+
+## 2.0.2 <small>09 February 2012</small>
+
+### Nova Core
+
+* Removed the social interaction tools from prettyPhoto image modals. ([#169](https://github.com/anodyne/nova/issues/169))
+* Added some code to try and make the mission post locking auto-release a little smarter.
+
+### Bug Fixes
+
+* Under some (strange) circumstances, Nova could throw errors from the Ajax controller.
+* A typo in the language string on the reset password page when the security question you select doesn't match what's in the database.
+* If a user has multiple playing characters assigned to them, the milestones listing would display their main character name for every playing character they had assigned to them instead of just displaying it once.
+* The new manifest layout has some display issues when using sub departments. ([#168](https://github.com/anodyne/nova/issues/168))
+* When updating the content of a deck, the submit process went back to the select screen instead of staying on the current item's page.
+* When deleting specification items, if there are decks associated with that spec item, they're orphaned and not deleted.
+* The Who's Online listing displayed random spaces and commas.
+* Character image galleries duplicated the primary image.
+
+## 2.0.1 <small>04 February 2012</small>
+
+### Bug Fixes
+
+* If the user's screen isn't wide enough, the tooltip on the Writing Control Panel that displays the post lock information can slide partially out of view.
+* Nova tried to load a language file through an object that couldn't see it, resulting in an error thrown about the file not being found.
+
+## 2.0 <small>04 February 2012</small>
+
+* Site Messages can now contain previously disallowed HTML tags (like `embed`, `iframe`, etc) for adding media from YouTube and Vimeo to site messages (like the welcome message) without needing to use seamless substitution.
+* Mission groups can now be added inside other mission groups (nesting only allowed one level deep).
+* Users with Level 2 user admin access rights can now reset someone's password for them. The new password will be generated and emailed to the user and they'll be prompted to reset the password the next time they log in. At no time does the user with Level 2 user admin access rights see what the newly generated password is. ([#16](https://github.com/anodyne/nova/issues/16))
+* Multi-author posts are now locked during editing to prevent users editing the same post at the same time. The lock is released after the user saves their changes or they've gone 5 minutes without making a change. (In the event a user has changed something and walked away, their changes will be saved to the post first.)
+* Admins now have the option of showing the latest personal logs and mission posts on the main page. (Admins will be able to select any combination of news, logs and posts.)
+* Admins now have the option of setting the top open positions (from Position Management) that will be shown at the top of each manifest (not manifest-specific).
+* Added a rules page to the main section that can be updated from the Site Messages page.
+* The instructions on the upload page now include the maximum file size and maximum image dimensions (pulled from the upload config file) for reference to anyone uploading images. ([#143](https://github.com/anodyne/nova/issues/143))
+* The deck listing page now uses a table-less layout for a cleaner look.
+* The deck listing page now has a menu of decks at the top of the page for quickly moving to a deck item without having to scroll. (We think RPGs with a lot of decks are going to love this!)
+* Overhauled the user interface for mission groups to provide more information (and look a lot better too).
+* When composing a mission post, the dropdown will now show who owns a linked NPC.
+* When composing a mission post, personal log or private message, users only have to start typing a name and the options will be narrowed down for them. ([#23](https://github.com/anodyne/nova/issues/23))
+* The skin catalogue now allows removing an entire skin (with sections) and letting admins choose which skin users will beupdated to for each section.
+* The user account page now has options to make activating and deactivating users a lot easier.
+    * When deactivating a user, all active characters associated with that account with also be deactivated.
+    * When activating a user, admins will be prompted about which of the user's inactive characters should be reactivated.
+    * The character bio page now has options to make activating and deactivating characters a lot easier.
+    * Activating an inactive character (and all related actions) can now be done with the push of a button.
+    * Deactivating an active character (and all related actions) can now be done with the push of a button.
+    * Making an NPC an active character (and all related actions) can now be done with the push of a button.
+    * Making a character an NPC (and all related actions) can now be done with the push of a button.
+    * When viewing a character's posts, the entries will be paginated to help with load times and usability.
+* When viewing a character's logs, the entries will be paginated to help with load times and usability.
+* Site manifests can now store default view information so that different manifests can have different view settings. (This is now handled through Site Manifest management instead of Site Settings.) ([#157](https://github.com/anodyne/nova/issues/157))
+* Gave the Pulsar skin a refreshed look and feel.
+* Gave the Titan skin a refreshed look and feel. (If you're interested in changing the header image, please see Titan's README.md file for instructions.)
+* The Writing Control Panel now shows a notification for any entires that have been commented on in the last 30 days (along with a link to the comments section of the entry).
+* The manifest has been reorganized (for the first time ever) with a slightly different look.
+* The email sent to the game master when a user applies now goes to anyone who can approve or reject character applications.
+* Acceptance and rejection emails now CC in anyone who can approve or reject character applications.
+* Users can now search within their sent and received private messages.
+* Private messages have now been split in to separate inbox and sent message pages. This will help improve performance since the page doesn't have to load all the messages at once then split them off in to tabs.
+* Private messages in the inbox and sent messages list are now paginated.
+* The Reply to All link when reading a private message is only displayed if there's more than one recipient.
+* The Reply, Reply to All and Forward options when reading a private message are now displayed above and below the private message.
+* Users can now mark all unread private messages as read with a single click.
+* An all-new redesigned character bio page provides a better, cleaner user experience.
+
+### The Nova Core
+
+* Moved to CodeIgniter 2.1 (was previously 1.7.3).
+* Moved to a brand new file structure that further removes the Nova Core from any changes an admin might be making.
+* Added __experimental__ module support.
+* Updated to jQuery 1.7.1.
+* Updated to jQuery UI 1.8.17.
+* Updated to jQuery Uniform 1.7.5.
+* Updated to jQuery prettyPhoto 3.1.3.
+* Updated to markItUp! 1.1.12.
+* Added the jQuery Chosen plugin.
+* Added the Bootstrap by Twitter Twipsy plugin (version 1.4).
+* Added the Bootstrap by Twitter Popover plugin (version 1.4).
+* Removed the qTip plugin. (Please use the Bootstrap Twipsy plugin instead.)
+* Changed the `banned.php` file to `message.php` that now contains notifications of Level 2 bans, a missing `nova` directory and incompatible PHP version information.
+* Seamless substitution can now be used to override email view files from the `_base_override` directory.
+* Added seaQuest DSV as a genre option. ([#144](https://github.com/anodyne/nova/issues/144))
+* Changed the Location helper into a library with static methods (`Location::view` instead of `view_location`).
+* Removed the RSS model. (It isn't necessary since most of the calls were duplicated in the appropriate post type models.)
+* Added constants to the Access model for the default access roles.
+* The Missions model now allows group missions to be pulled from `get_all_missions()`.
+* The Missions model now has a method to count mission groups: `count_mission_groups()`.
+* The Users model now has a method to pull all of a user's LOA records: `get_user_loa_records()`.
+* The Auth library now uses static methods to be able to call quicker (`Auth::check_access()` instead of `&#36;this->auth->check_access()`).
+* Nova will always check for the existence of the database config file. If the file isn't found, Nova will enter a new config setup wizard that will walk admins through setting up the config file, test the connection and then write the file for them.
+* The SMS Upgrade process will now migrate SMS Database entries to the Thresher wiki page format.
+* Completely re-wrote the upgrade process to not use config files (admins select the components they want upgraded through a user interface), to show more useful validation messages and be a shorter, more pleasant process (reduced the number of steps from 14 to 4).
+* View files now check for the existence of the BASEPATH constant before rendering. On some servers, random `error_log` files are generated all over the place. A big part of this is view files that are accessed apart from the framework and generate PHP fatal errors. This fix should help eliminate those error log files.
+* In preparation for future deprecation, we've removed all references to jQuery's `.live()` method. Third party developers should ensure their own code is updated as soon as possible to avoid any issues once the method is removed from the jQuery core.
+
+### Thresher
+
+* Changed the way users manage categories when creating and editing a wiki page. ([#137](https://github.com/anodyne/nova/issues/137))
+* Users with the proper permissions can now create categories when creating and editing a wiki page. ([#64](https://github.com/anodyne/nova/issues/64))
+* If there are no categories set in Thresher and the user has the proper permissions, they will be prompted to create some new categories when creating and editing a wiki page.
+* Changed the user experience for managing wiki pages that puts more controls at the user's disposal and simplifies the entire page. ([#141](https://github.com/anodyne/nova/issues/141))
+* Changed the user interface for viewing wiki pages to make it simpler.
+* Users must have Level 1 wiki page access to see the page history now.
+* Only users who are logged in can see comments on a wiki page.
+* Added system pages to Thresher that allow some of the system pages to have their content changed like a normal wiki page. ([#123](https://github.com/anodyne/nova/issues/123))
+* Users can now search Thresher from the main Thresher page.
+* Fixed several bugs with the listing of Thresher search results.
+* Removed the recently changed and recently updated listings from the main Thresher page.
+* Users can now subscribe to an RSS feed for created wiki pages as well as updated wiki pages.
+* Admins can now restrict access to a wiki page based on access role. ([#11](https://github.com/anodyne/nova/issues/11), [#12](https://github.com/anodyne/nova/issues/12))
+
+### Bug Fixes
+
+* Seamless substitution of images wouldn't work when the images were in the `_base_override` directory.
+* The `RE:` and `FWD:` tags would be added to private message subjects when replying and forwarding indefinitely until there was no space left for the actual subject line. Now, Nova will make sure it's only added once. ([#158](https://github.com/anodyne/nova/issues/158))
+* When replying to a private message, the author of the message would be added to the recipient list, so any message they send would also show up in their inbox as well. (This behavior can be duplicated by manually adding themselves to the recipients list.)
+* The join form could be submitted without an email address or password.
+* Users who were deactivated kept their account flags (system administrator, game master, webmaster) and their access role. Now, all account flags and access roles are changed on deactivation.
+* Users who were reactivated didn't have their access role set to Standard User.
+* Inactive users were shown a link in the sub-navigation to upload an image even though they don't have permissions to upload images.
+* A password could be reset for a user even if they don't have a security question chosen.
+* Patched several potential security and access issues.
+* Positions weren't properly updated when deleting an active character.
+* Pulsar styling issues in Internet Explorer 9.
+* Titan styling issues in Internet Explorer 9.
+* When viewing character or user award, the \"Nominated By\" line was shown even if there was no nomineed. (This is only an issue for RPGs who upgraded from SMS.)
+* The Enterprise-era (ENT) genre install file had several issues and typos. ([#155](https://github.com/anodyne/nova/issues/155))
+* The database automatically set a default rank for pending users potentially resulting in some confusion as to why a pending user already has a rank. ([#148](https://github.com/anodyne/nova/issues/148))
+* If there is only one specification item, the list of items would be dispalyed instead of automatically sending the user to the only specification item. ([#146](https://github.com/anodyne/nova/issues/146))
+* If there is only one specification item, the list of decks would be dispalyed instead of automatically sending the user to the only deck listing. ([#147](https://github.com/anodyne/nova/issues/147))
+* During fresh installs, the user ID constraint wasn't consistent with the rest of the user ID fields throughout the system.
+* Under some circumstances, users could edit posts they weren't even a part of. (Thanks to evshell18 on the Anodyne forums for pointing this out and getting the ball rolling on a fix.)", 'tags' => [8]],
 
 			['title' => "Changing Language Items", 'slug' => "", 'summary' => "", 'content' => "Generally speaking, the language items we've set up for Nova suffice for 99% of sims, but every so often, someone wants to do something a little different. While it isn't as simple as doing something in the control panel, modifying Nova's files to use different terms is really easy.
 
@@ -195,7 +778,7 @@ Next, we need to update the config file to point to the right bootstrap file. Op
 
 All this does is overrides the default `index.php` option with the new bootstrap file. Once you've saved and uploaded the config file back up to your server, you can navigate to your new file and you should see Nova as usual.", 'keywords' => 'index, name, rename, bootstrap', 'tags' => [2,7]],
 
-			['title' => "Creating a New Page", 'slug' => "", 'summary' => "Oftentimes, the built-in pages in Nova just won't be enough and you need to create a new page for you sim to hold new information.", 'content' => "Oftentimes, the built-in pages in Nova just won't be enough and you need to create a new page for you sim to hold new information.
+			['title' => "Creating a New Page", 'slug' => "", 'summary' => "", 'content' => "Oftentimes, the built-in pages in Nova just won't be enough and you need to create a new page for you sim to hold new information.
 
 ## The Problem
 
@@ -548,6 +1131,390 @@ Nova allows admins to change the type of email that are delivered to users. By d
 CodeIgniter provides an FTP class that Nova uses for trying to adjust file permissions during install and for deleting upload files. You can choose to set these settings if you want or ignore them. Nova will work either way. For more detailed information about CodeIgniter's FTP class, please visit the [CodeIgniter User Guide](http://codeigniter.com/user_guide/libraries/ftp.html).
 
 From the FTP config file located at `app/config/ftp.php`, you can set your host name, username, password and port for use by CodeIgniter in connecting to your server for advanced operations. If you change settings in this file, make sure the file's permissions on the server are set to an appropriately safe level (664 should be fine).", 'keywords' => 'config, configure, codeigniter, ci, email, mail, uri, ftp, security, xss, routes, output, compression, session, class prefix, hook, autoloading, database', 'tags' => [9]],
+
+			['title' => "Upgrading from SMS 2", 'slug' => "sms-upgrade", 'summary' => "", 'content' => "So you've been using SMS 2 since it came out or since you started your game. When Nova came out, you were hesitant to make the jump, but now that 2.0 is out, you decide that it's time to make the leap and start using Nova. But wait, what about the _years_ of information you've accumulated in your SMS site? You don't want to lose that. We've already thought about that and have a simple solution to upgrade most (there are some pieces it just isn't possible to upgrade easily) of your SMS data to the newer Nova format.
+
+## What Will/Won't Be Upgraded?
+
+You probably read the part above about \\"most\\" of your SMS data being upgraded, but what exactly will and won't be upgraded? The table below will show you the different pieces and whether they'll be upgraded or not.
+
+<div class=\"data-table data-table-bordered data-table-striped\">
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Access Levels__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+If you've made changes to the default access levels in SMS they will not be saved since Nova uses a new user access control system.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Awards__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Any awards you've put in to SMS will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Award Nominations__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Award nominations that have been submitted will not be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Chain of Command__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Because of the complex way we move characters over to Nova and split out characters and users, the chain of command will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Characters/Users__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Characters and users from SMS will be moved to the Nova format. Users will have their passwords and access level automatically reset.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Database Items__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-warning\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Nova doesn't have a \"database\" feature like SMS, instead, we've built a mini-wiki called Thresher that does similar things. Any of your database entries that are stored in the database will be converted to Thresher pages. Any content on external pages linked through the Database will not be converted.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Departments__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Departments stored in SMS will not be upgraded to Nova. New departments will be created based on the genre selected.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Settings (Site Globals)__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-warning\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+The following settings will be upgraded to Nova: _sim name, sim year, post count preference, email subject_.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Menu Items__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+SMS menu items will not be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Site Messages__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-warning\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+The following messages will be upgraded to Nova: _welcome message, sim message, join disclaimer, user accept email message, user reject email message, join codele post_.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Missions__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+All missions will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__News Items__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+All news items will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__News Categories__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+All news categories will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Personal Logs__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+All personal logs will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Positions__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Positions stored in SMS will not be upgraded to Nova. New positions will be created based on the genre selected.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Mission Posts__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-success\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+All mission posts will be upgraded to the Nova format.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Private Messages__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+SMS private messages will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Ranks__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Ranks stored in SMS will not be upgraded to Nova. New ranks will be created based on the genre selected.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Specifications__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-warning\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Only out-of-the-box specifications will be upgraded. If you have modified the specifications database table, your changes will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Docking__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Nova uses a new, highly dynamic form system and docking records will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Strikes__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+There is currently no way to handle strikes in Nova and SMS strikes will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Tour__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-warning\"><span class=\"icn\" data-icon=\"1\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+Only out-of-the-box tour information will be upgraded. If you have modified the tour database table, your changes will not be upgraded.
+</div>
+</div>
+<div class=\"row\">
+<div class=\"col-md-3\">
+
+__Deck Listing__
+</div>
+<div class=\"col-md-1\">
+<p><span class=\"icn-size-md text-danger\"><span class=\"icn\" data-icon=\"2\"></span></span></p>
+</div>
+<div class=\"col-md-8\">
+
+The deck listing will not be upgraded.
+</div>
+</div>
+</div>
+
+<h2>Before You Start</h2>
+
+<p>Upgrading from SMS to Nova 2 is a much different process than upgrading from SMS to Nova 1 (for those who did that process). With 10 fewer steps and a vastly improved user interface, doing a full upgrade from SMS 2 should take less than 10 minutes to do (this will depend on how much data you have to upgrade). In order to do an upgrade from SMS, you'll need to be running SMS 2.6.9 or higher and have the information below. If you don't know any of this, contact your host to get the information.</p>
+
+<ul>
+	<li>Your database location (localhost or some other means of connecting)</li>
+	<li>Your database name</li>
+	<li>Your database username and password (these may or may not be the same as your FTP username and password)</li>
+	<li>Your FTP username and password</li>
+</ul>
+
+<h2>Step 1 <small>Backup and Remove</small></h2>
+
+<p>Before you get started, you should export your SMS database from phpMyAdmin as a .sql file in case something happens during the upgrade process. Don't drop the tables or do anything like that since you'll still need all the information in those database tables. You should also backup all your SMS files to your desktop in case you need them. Once you've done both backups, delete all the SMS files on your server.</p>
+
+<h2>Step 2 <small>Upload Nova</small></h2>
+
+<p>Next, you'll need to upload the Nova 2 files up to your server where the SMS files were. If you're not sure how to upload the files to your server, contact your host for help with this step of the process or do a Google search.</p>
+
+<h2>Step 3 <small>Configure Nova</small></h2>
+
+<p>Before beginning the upgrade, you can choose to change any of Nova's configuration options in the config files located in the <code>app/config</code> directory. This is completely optional and Nova 2 will install fine without any changes to any files in the <code>config</code> directory.</p>
+
+<h2>Step 4 <small>Setting Up the Database Connection</small></h2>
+
+<p>This is the part where everyone panics and says it's too complicated and difficult to get started. This is also the part where we prove you wrong.</p>
+
+<p>Setting up your connection to the database is dead simple. All you need to do is open your browser and navigate to the location on your server where you uploaded the Nova files. If your server was <strong>http://example.com</strong> and you uploaded Nova 2 to the root directory (often called www or public_html), then you'd navigate to <strong>http://example.com</strong> and you'd be automatically redirected to the Config Setup page. From this page, you'll be able to tell Nova the information for connecting to your database and then Nova will 1) attempt to connect to the database and make sure it can, then 2) write that information to a connection file. Pretty easy, huh?</p>
+
+<p>If for some reason your server doesn't support creating files from a web script, the setup process will show you the code to copy and paste into the database connection file.</p>
+
+<h3>Explaining the Options</h3>
+
+<ul>
+	<li><strong>Database Name</strong> &ndash; The name of the database you're trying to connect to and install Nova to in to. If you don't know the name of your database, contact your host.</li>
+	<li><strong>Username</strong> &ndash; The username used to connect to your database. This may or may not be the same as your FTP username, so if you don't know, contact your host.</li>
+	<li><strong>Password</strong> &ndash; The password used to connect to your database. This may or may not be the same as your FTP password, so if you don't know, contact your host.</li>
+	<li><strong>Database Host</strong> &ndash; This is where the database lives. 99% of the time, this will be <em>localhost</em> though if your host has a different setup, they may have sent you a different host name. If you aren't sure about this, contact your host.</li>
+	<li><strong>Table Prefix</strong> &ndash; This is the word or initials that will prefix all table names. This helps to keep Nova's tables together and allows you to install other things in to the database without causing conflicts. This is set to <em>nova_</em> by default.</li>
+</ul>
+
+<h2>Step 5 <small>Upgrade to Nova</small></h2>
+
+<p>When you start in to the upgrade process, the first thing that will happen is that Nova 2 will be installed as normal, except you won't be prompted to create your character and set the system settings. Once Nova is installed, there are 3 distinct sections to the upgrade process, but don't worry, they're all very straightforward.</p>
+
+<h3>Select What to Upgrade</h3>
+
+<p>For anyone who attempted (or did) the SMS to Nova 1 upgrade, you'll quickly note the lack of a need to update a config file before starting. The new upgrade process handles everything right in the site. You'll be presented with a list of components and whether you want to upgrade those components to Nova. By default, it will upgrade everything in the list, but you can pick and choose based on your preferences. The upgrade process is smart enough to know when something depends on something else. For instance, if you didn't want characters and users upgrade, the upgrade process won't let you upgrade posts, logs and new items since they depend on characters and users.</p>
+
+<p>Once you've set which things you want to upgrade, you can click on the button to run the first step. An indicator will point out which item is currently running. Once it's finished running icons will be displayed to indicate whether the upgrade of that component was successful, failed or has errors or warnings. Once the final component has run, you'll be able to click the button and move on to the next step.</p>
+
+<h3>Upgrade the Components</h3>
+
+<p>After doing the initial upgrade, there's follow-up work that needs to be done. All that's required for this step is to click the button. Like the first part of the process, an indicator will show you what's running an an icon will let you know its status after it's finished running. Once all the items have been run, you'll be able to click the button and move on to the next step.</p>
+
+<h3>Set Password and Administrator(s)</h3>
+
+<p>Because Nova uses a different method of hashing passwords, none of the SMS passwords will work. The final step of the upgrade process is to specify what you want the new password to be. This password is case sensitive and is the password you'll need to send to the entire crew. The first time a player logs in, they'll be prompted to update their password.</p>
+
+<p>In addition, you can select the members of the crew that should have system administrator rights. Once you've set the password and selected the users, click the button to run the process. Once the process has finished running (you'll know because icons will indicate the success/failure of the two final steps), you'll be able to continue on to your site.</p>
+
+<h2>Step 6 <small>That's It?</small></h2>
+
+<p>Yep, that's it. Pretty easy, huh?</p>
+
+<p>One final thing to note is that at the end of the upgrade Nova will attempt to change several permissions in order to ensure all the backup and upload features work properly. It's possible that your host will have turned off the functions necessary to do this, so if you run in to any problems uploading to Nova, you'll need to change the file permissions on several directories to ensure they're writable (777). If you don't know how to change file permissions, contact your host. The following directories (and their sub-directories) need to be writable:</p>
+
+<ul>
+	<li>app/assets/images</li>
+	<li>app/assets/backups</li>
+	<li>app/cache</li>
+	<li>app/logs</li>
+</ul>", 'keywords' => "sms, upgrade", 'tags' => [1,3]],
+
+			//['title' => "", 'slug' => "", 'summary' => "", 'content' => "", 'keywords' => "", 'tags' => []],
 		];
 	}
 
