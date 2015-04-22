@@ -5,6 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class PopulateNova1Articles extends Migration {
 
+	protected $productId = 1;
+
 	/**
 	 * Run the migrations.
 	 *
@@ -14,7 +16,7 @@ class PopulateNova1Articles extends Migration {
 	{
 		foreach ($this->articles() as $article)
 		{
-			$article['product_id'] = 1;
+			$article['product_id'] = $this->productId;
 			$article['user_id'] = 1;
 			$article['published'] = (int) true;
 
@@ -37,10 +39,10 @@ class PopulateNova1Articles extends Migration {
 	 */
 	public function down()
 	{
-		Article::where('product_id', 1)->delete();
+		Article::where('product_id', $this->productId)->delete();
 	}
 
-	public function articles()
+	protected function articles()
 	{
 		return [
 			['title' => "Nova 1.2 Changelog", 'slug' => "", 'summary' => "", 'content' => "## 1.2.6 <small>15 July 2011</small>

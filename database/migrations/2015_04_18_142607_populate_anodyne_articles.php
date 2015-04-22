@@ -5,6 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class PopulateAnodyneArticles extends Migration {
 
+    protected $productId = 6;
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,8 +14,48 @@ class PopulateAnodyneArticles extends Migration {
 	 */
 	public function up()
 	{
-		$articles = [
-			['title' => "Markdown Guide", 'slug' => "markdown-guide", 'summary' => "There are many places through Anodyne's products and services where Markdown is used for lightweight styling. Learn about Markdown and its syntax to use it throughout Anodyne's products and services.", 'content' => "Markdown is a plain-text formatting syntax that's converted into HTML. In several places throughout our products and services, we allow using Markdown to quickly and easily style your content instead of using straight HTML. Markdown will also be prevalent in future products from Anodyne Productions as well. This guide should give you the basics for how to use Markdown.
+		foreach ($this->articles() as $article)
+		{
+			$article['product_id'] = $this->productId;
+			$article['user_id'] = 1;
+            $article['published'] = (int) true;
+
+			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
+			unset($article['tags']);
+
+			$item = Article::create($article);
+
+			if ($tags)
+			{
+				$item->tags()->sync($tags);
+			}
+		}
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Article::where('product_id', $this->productId)->delete();
+	}
+
+    protected function articles()
+    {
+        return [
+            ['title' => "The AnodyneID", 'slug' => 'anodyne-id', 'summary' => "", 'content' => "If you're anything like us, you find yourself constantly frustrated by all the different accounts you need to have for sites and services across the Internet. It seems like every other day we're having to create a new account and remember a new password. Anodyne Productions is no longer one of those places!
+
+When building AnodyneXtras 2.0, we knew there would need to be some kind of user system, but we also knew that in the future, other sites and services Anodyne would offer would need something similar. To prevent all sorts of usernames and passwords flying around, we wanted to create a single account that all Anodyne sites would use.
+
+Enter the AnodyneID.
+
+As it stands today, you can log in to the Anodyne site with your AnodyneID and edit your user profile, do everything you need to do with AnodyneXtras (create/edit/remove/download Xtras, report issues, comment, etc.), and do a few things in the Help Center (mark articles as needing an update, sharing articles, mark articles as helpful).
+
+In the future, we'll start rolling out more services that will use the AnodyneID. In addition to having a single username/password for Anodyne's sites and services, there's the added bonus of single sign-on. When you log in to the Anodyne site, you'll automatically be logged on to AnodyneXtras and the Help Center.", 'featured' => 1, 'keywords', 'anodyneid', 'tags' => [1,10]],
+
+            ['title' => "Markdown Guide", 'slug' => "markdown-guide", 'summary' => "There are many places through Anodyne's products and services where Markdown is used for lightweight styling. Learn about Markdown and its syntax to use it throughout Anodyne's products and services.", 'content' => "Markdown is a plain-text formatting syntax that's converted into HTML. In several places throughout our products and services, we allow using Markdown to quickly and easily style your content instead of using straight HTML. Markdown will also be prevalent in future products from Anodyne Productions as well. This guide should give you the basics for how to use Markdown.
 
 ## Typography
 
@@ -310,35 +352,8 @@ Blockquotes can contain other Markdown elements, including headers, lists, and c
 
 ## Using HTML
 
-With Markdown, you can use any HTML you want as well and it will not be parsed as Markdown. The only caveat is that once you use HTML on a line, the parser will ignore any Markdown in the line, so you cannot mix Markdown and HTML on the same line.", 'keywords' => 'markdown, html', 'featured' => 1, 'tags' => [2,5]],
-		];
-
-		foreach ($articles as $article)
-		{
-			$article['product_id'] = 6;
-			$article['user_id'] = 1;
-            $article['published'] = (int) true;
-
-			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
-			unset($article['tags']);
-
-			$item = Article::create($article);
-
-			if ($tags)
-			{
-				$item->tags()->sync($tags);
-			}
-		}
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Article::where('product_id', 6)->delete();
-	}
+With Markdown, you can use any HTML you want as well and it will not be parsed as Markdown. The only caveat is that once you use HTML on a line, the parser will ignore any Markdown in the line, so you cannot mix Markdown and HTML on the same line.", 'keywords' => 'markdown, html', 'featured' => 1, 'tags' => [2,9]],
+        ];
+    }
 
 }

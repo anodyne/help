@@ -5,6 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class PopulateNova2Articles extends Migration {
 
+	protected $productId = 2;
+
 	/**
 	 * Run the migrations.
 	 *
@@ -14,7 +16,7 @@ class PopulateNova2Articles extends Migration {
 	{
 		foreach ($this->articles() as $article)
 		{
-			$article['product_id'] = 2;
+			$article['product_id'] = $this->productId;
 			$article['user_id'] = 1;
 			$article['published'] = (int) true;
 
@@ -37,10 +39,10 @@ class PopulateNova2Articles extends Migration {
 	 */
 	public function down()
 	{
-		Article::where('product_id', 2)->delete();
+		Article::where('product_id', $this->productId)->delete();
 	}
 
-	public function articles()
+	protected function articles()
 	{
 		return [
 			['title' => "Installing Nova 2", 'slug' => "install", 'summary' => "", 'content' => "Installing Nova 2 on your server is a painless process that should only take a few minutes if you have all the pieces you need at the start. In order to do a fresh install of Nova 2, you'll need the information below. If you don't know any of this, contact your host to get the information.

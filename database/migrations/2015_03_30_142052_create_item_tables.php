@@ -73,6 +73,8 @@ class CreateItemTables extends Migration {
 			['name' => "Developer Resource"],
 			['name' => "Changelog"],
 			['name' => "Reference"],
+			['name' => "General Information"],
+			['name' => "Error"],
 		];
 
 		foreach ($tags as $tag)

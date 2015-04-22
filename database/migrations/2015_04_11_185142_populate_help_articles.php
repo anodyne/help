@@ -5,6 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class PopulateHelpArticles extends Migration {
 
+	protected $productId = 5;
+
 	/**
 	 * Run the migrations.
 	 *
@@ -12,11 +14,9 @@ class PopulateHelpArticles extends Migration {
 	 */
 	public function up()
 	{
-		$articles = [];
-
-		foreach ($articles as $article)
+		foreach ($this->articles() as $article)
 		{
-			$article['product_id'] = 5;
+			$article['product_id'] = $this->productId;
 			$article['user_id'] = 1;
 			$article['published'] = (int) true;
 
@@ -39,7 +39,12 @@ class PopulateHelpArticles extends Migration {
 	 */
 	public function down()
 	{
-		Article::where('product_id', 5)->delete();
+		Article::where('product_id', $this->productId)->delete();
+	}
+
+	protected function articles()
+	{
+		return [];
 	}
 
 }
