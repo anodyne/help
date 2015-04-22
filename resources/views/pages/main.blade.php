@@ -64,12 +64,7 @@
 		<div class="row">
 		@foreach ($newest as $new)
 			<div class="col-md-6">
-				<strong><a href="{{ route('article.show', [$new->product->slug, $new->slug]) }}">{!! $new->present()->title !!}</a></strong>
-				<p>
-					{!! $new->present()->productAsLabel !!}
-					{!! $new->present()->tagsAsLabel !!}
-				</p>
-				{!! $new->present()->summary !!}
+				{!! partial('article-block', ['article' => $new, 'rating' => false]) !!}
 			</div>
 		@endforeach
 		</div>
@@ -83,11 +78,13 @@
 
 			<hr class="partial-split">
 
-			<dl>
+			<div class="row">
 			@foreach ($helpful as $help)
-				{!! partial('article', ['article' => $help, 'rating' => true]) !!}
+				<div class="col-md-6">
+					{!! partial('article-block', ['article' => $help, 'rating' => true]) !!}
+				</div>
 			@endforeach
-			</dl>
+			</div>
 		@else
 			{!! alert('warning', "Not enough rated articles") !!}
 		@endif

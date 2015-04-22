@@ -816,45 +816,6 @@ form {
 	}
 }
 
-.xtra {
-	position: relative;
-	margin-bottom: @spacing;
-
-	background: #ebebeb;
-
-	.rounded(@border-radius);
-	.box-shadow(~"inset 0 0 0 transparent, inset 0 0 1px rgba(0, 0, 0, .5)");
-
-	.xtra-img {
-		.border-radius(@border-radius, @border-radius, 0, 0);
-	}
-
-	.xtra-avatar {
-		position: relative;
-		display: block;
-		margin: -50px auto 0 auto;
-
-		border: 3px solid #ebebeb;
-	}
-
-	.xtra-heading {
-		margin: 10px;
-		line-height: @line-height;
-
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		-ms-text-overflow: ellipsis;
-		text-align: center;
-	}
-
-	.xtra-desc {
-		padding: 10px;
-
-		font-size: @font-size-sm;
-	}
-}
-
 .avatar {
 	height: 100px;
 	width: 100px;
@@ -1132,4 +1093,14 @@ hr.partial-split {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
+}
+
+.article-block {
+	.article-title {
+		display: block;
+		
+		font-family: @font-special;
+		font-size: @font-size-md;
+		font-weight: 600;
+	}
 }
