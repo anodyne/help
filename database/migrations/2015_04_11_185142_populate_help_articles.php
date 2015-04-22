@@ -18,6 +18,7 @@ class PopulateHelpArticles extends Migration {
 		{
 			$article['product_id'] = 5;
 			$article['user_id'] = 1;
+			$article['published'] = (int) true;
 
 			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
 			unset($article['tags']);

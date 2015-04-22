@@ -11,7 +11,7 @@ class Article extends Model {
 	protected $table = 'articles';
 
 	protected $fillable = ['product_id', 'user_id', 'title', 'slug', 'summary',
-		'content', 'keywords', 'featured'];
+		'content', 'keywords', 'featured', 'published'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -72,6 +72,11 @@ class Article extends Model {
 		$id = ($product instanceof Product) ? $product->id : $product;
 
 		$query->where('product_id', $id);
+	}
+
+	public function scopePublished($query)
+	{
+		$query->where('published', (int) true);
 	}
 
 	public function scopeSlug($query, $slug)

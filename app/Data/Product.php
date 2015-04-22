@@ -37,7 +37,7 @@ class Product extends Model {
 
 	public function articles()
 	{
-		return $this->hasMany('Article');
+		return $this->hasMany('Article')->published();
 	}
 
 }

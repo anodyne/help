@@ -23,6 +23,7 @@ class CreateArticleTables extends Migration {
 			$table->longText('content');
 			$table->text('keywords')->nullable();
 			$table->boolean('featured')->default((int) false);
+			$table->boolean('published')->default((int) false);
 			$table->timestamps();
 			$table->softDeletes();
 		});

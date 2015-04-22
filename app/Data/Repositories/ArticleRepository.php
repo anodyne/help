@@ -95,14 +95,20 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 	public function getLatestArticles($number = 5)
 	{
 		return $this->model->with(['tags', 'product'])
-			->latest()->limit($number)->get();
+			->published()
+			->latest()
+			->limit($number)
+			->get();
 	}
 
 	public function getMostHelpfulArticles($number = 5)
 	{
 		// Get all the articles that have ratings
 		$articles = $this->model->with(['tags', 'product', 'ratings'])
-			->has('ratings')->limit($number)->get();
+			->has('ratings')
+			->published()
+			->limit($number)
+			->get();
 
 		return $articles->sortByDesc(function($a)
 		{
@@ -131,6 +137,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 	public function search($input)
 	{
 		return $this->model->with('author', 'product', 'tags')
+			->published()
 			->where(function($query) use ($input)
 			{
 				$query->where('title', 'like', "%{$input}%")
@@ -142,7 +149,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 	public function searchAdvanced(array $input)
 	{
-		$search = $this->make(['product', 'tags']);
+		$search = $this->make(['product', 'tags'])->published();
 
 		if (array_key_exists('p', $input) and count($input['p']) > 0)
 		{

@@ -32,6 +32,7 @@ class PopulateXtrasArticles extends Migration {
 		{
 			$article['product_id'] = 4;
 			$article['user_id'] = 1;
+			$article['published'] = (int) true;
 
 			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
 			unset($article['tags']);

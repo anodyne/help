@@ -16,6 +16,7 @@ class PopulateNova2Articles extends Migration {
 		{
 			$article['product_id'] = 2;
 			$article['user_id'] = 1;
+			$article['published'] = (int) true;
 
 			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
 			unset($article['tags']);
@@ -1136,7 +1137,7 @@ From the FTP config file located at `app/config/ftp.php`, you can set your host 
 
 ## What Will/Won't Be Upgraded?
 
-You probably read the part above about \\"most\\" of your SMS data being upgraded, but what exactly will and won't be upgraded? The table below will show you the different pieces and whether they'll be upgraded or not.
+You probably read the part above about \"most\" of your SMS data being upgraded, but what exactly will and won't be upgraded? The table below will show you the different pieces and whether they'll be upgraded or not.
 
 <div class=\"data-table data-table-bordered data-table-striped\">
 <div class=\"row\">

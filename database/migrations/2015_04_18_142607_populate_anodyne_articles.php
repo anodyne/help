@@ -317,6 +317,7 @@ With Markdown, you can use any HTML you want as well and it will not be parsed a
 		{
 			$article['product_id'] = 6;
 			$article['user_id'] = 1;
+            $article['published'] = (int) true;
 
 			$tags = (array_key_exists('tags', $article)) ? $article['tags'] : null;
 			unset($article['tags']);
