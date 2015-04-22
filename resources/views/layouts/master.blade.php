@@ -35,7 +35,7 @@
 							<nav class="nav-sub">
 								<ul>
 									<li><a href="{{ route('product', ['nova-2']) }}">Nova 2</a></li>
-									<li><a href="{{ route('product', ['nova-3']) }}">Nova 3</a></li>
+									<li><a href="{{ route('product', ['nova-3']) }}">Nova NextGen</a></li>
 									<li><a href="{{ route('product', ['xtras']) }}">AnodyneXtras</a></li>
 									<li><a href="{{ route('search.advanced') }}">Advanced Search</a></li>
 								</ul>

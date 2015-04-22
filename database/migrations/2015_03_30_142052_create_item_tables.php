@@ -52,7 +52,7 @@ class CreateItemTables extends Migration {
 		$products = [
 			['name' => "Nova 1", 'slug' => "nova-1"],
 			['name' => "Nova 2", 'slug' => "nova-2"],
-			['name' => "Nova 3", 'slug' => "nova-3"],
+			['name' => "Nova NextGen", 'slug' => "nova-3"],
 			['name' => "AnodyneXtras", 'slug' => "xtras"],
 			['name' => "Anodyne Help Center", 'slug' => "help-center"],
 			['name' => "Anodyne Productions", 'slug' => "anodyne"],
