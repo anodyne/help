@@ -16,22 +16,24 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-sm-9 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2">
-						{!! Form::text('q', null, ['class' => 'form-control input-lg', 'placeholder' => "Search ".$tag->name." Articles..."]) !!}
+						<p>{!! Form::text('q', null, ['class' => 'form-control input-lg', 'placeholder' => "Search ".$tag->name." Articles..."]) !!}</p>
 					</div>
 					<div class="col-sm-3 col-md-2 col-lg-2">
-						{!! Form::button("Search", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}
+						<p>{!! Form::button("Search", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}</p>
 					</div>
 				</div>
 			</div>
 		{!! Form::close() !!}
 
 		<hr class="partial-split">
-		
-		<dl>
-			@foreach ($articles as $article)
-				{!! partial('article', ['article' => $article, 'rating' => false]) !!}
-			@endforeach
-		</dl>
+
+		<div class="row">
+		@foreach ($articles as $article)
+			<div class="col-md-6">
+				{!! partial('article-block', ['article' => $article, 'rating' => false]) !!}
+			</div>
+		@endforeach
+		</div>
 	@else
 		{!! alert('warning', "No articles found") !!}
 	@endif
