@@ -86,6 +86,9 @@
 								<div class="visible-xs visible-sm">
 									<div class="row">
 										<div class="col-sm-6">
+											<p><a href="{% article.links.view %}" class="btn btn-default btn-lg btn-block">View</a></p>
+										</div>
+										<div class="col-sm-6">
 											<p><a href="{% article.links.edit %}" class="btn btn-default btn-lg btn-block">Edit</a></p>
 										</div>
 										<div class="col-sm-6" ng-hide="{% article.isTrashed %}">
@@ -98,6 +101,9 @@
 								</div>
 								<div class="visible-md visible-lg">
 									<div class="btn-toolbar pull-right">
+										<div class="btn-group">
+											<a href="{% article.links.view %}" class="btn btn-default">View</a>
+										</div>
 										<div class="btn-group">
 											<a href="{% article.links.edit %}" class="btn btn-default">Edit</a>
 										</div>

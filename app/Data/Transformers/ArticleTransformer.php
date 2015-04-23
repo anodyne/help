@@ -27,6 +27,7 @@ class ArticleTransformer extends Fractal\TransformerAbstract {
 			'isTrashed'		=> (bool) $article->trashed(),
 			'links'			=> [
 				'edit'		=> route('admin.article.edit', [$article->id]),
+				'view'		=> route('article.show', [$article->product->slug, $article->slug]),
 			],
 			'tags'			=> (array) $tags,
 		];
