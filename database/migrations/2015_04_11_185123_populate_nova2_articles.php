@@ -691,7 +691,7 @@ Make sure you're only changing the __value__ of the array item (what's on the ri
 
 Now that you've made your changes, make sure the `app_lang.php` file is saved and then upload it to your server (or if you're editing it on the server, just save it). Head over to your Nova site and you should see that things should be changed.
 
-It's important to note that menu items don't respect the language files since they're stored in the database. If you want to change something in a menu item, simply edit the menu item.", 'keywords' => 'language, i10n, translate, internationalization', 'tags' => [2,7]],
+It's important to note that menu items don't respect the language files since they're stored in the database. If you want to change something in a menu item, simply edit the menu item.", 'keywords' => 'language, i10n, translate, internationalization', 'tags' => [2]],
 
 			['title' => "Adding an Image to a Page", 'slug' => "", 'summary' => "", 'content' => "The concept behind seamless substitution is pretty simple: Nova will use its system default for icons, pages and Javascript files unless the same file exists in either the current skin or the base override, in which case, Nova will use that instead.
 
