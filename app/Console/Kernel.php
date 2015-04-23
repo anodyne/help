@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'Help\Console\Commands\Inspire',
+		'Help\Console\Commands\ClearViews',
 	];
 
 	/**
@@ -22,8 +23,11 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('inspire')
-				 ->hourly();
+		// Clear the application cache once a day
+		$schedule->command('cache:clear')->daily();
+
+		// Clear the views cache once a day
+		$schedule->command('views:clear')->daily();
 	}
 
 }
