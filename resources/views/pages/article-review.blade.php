@@ -1,4 +1,4 @@
-<p>We want to ensure the articles available on the Help Center are as accurate and helpful as possible. If this article doesn't meet that standard, we encourage you to let us know what you think could be improved so we can make the changes. When an article has been updated, you'll receive an email notification.</p>
+<p>We want to ensure the articles available on the Help Center are as accurate and helpful as possible. If this article doesn't meet that standard, we encourage you to let us know what you think could be improved so we can make the changes.</p>
 
 <hr class="partial-split">
 
@@ -10,6 +10,7 @@
 				<option value="correction">I think something is wrong in the article</option>
 				<option value="review">I think this article needs an overall review</option>
 				<option value="suggestion">I'm suggesting a change to this article</option>
+				<option value="review">This article wasn't helpful</option>
 			</select>
 		</div>
 	</div>
@@ -17,7 +18,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3">Comments</label>
 		<div class="col-md-9">
-			{!! Form::textarea('comments', null, ['class' => 'form-control input-lg', 'rows' => 10]) !!}
+			{!! Form::textarea('comments', null, ['class' => 'form-control input-lg', 'rows' => 8]) !!}
 			<p class="help-block">Be sure to let us know what you think should be changed and how we can make this article better. Be as specific as possible!</p>
 		</div>
 	</div>
