@@ -27,11 +27,11 @@
 			<header>
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-md-5">
+						<div class="col-xs-12 col-md-4 col-lg-5">
 							<a href="{{ route('home') }}" class="brand">Anodyne Help Center</a>
 						</div>
 
-						<div class="col-xs-12 col-md-7">
+						<div class="col-xs-12 col-md-8 col-lg-7">
 							<nav class="nav-sub">
 								<ul>
 									<li><a href="{{ route('product', ['nova-2']) }}">Nova 2</a></li>
