@@ -41,6 +41,11 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		return false;
 	}
 
+	public function countLeastHelpful()
+	{
+		return $this->getLeastHelpfulArticles()->count();
+	}
+
 	public function create(array $data)
 	{
 		// Create the article
@@ -99,6 +104,20 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 			->latest()
 			->limit($number)
 			->get();
+	}
+
+	public function getLeastHelpfulArticles()
+	{
+		// Get all the articles that have ratings
+		$articles = $this->model->with(['tags', 'product', 'ratings'])
+			->has('ratings')
+			->published()
+			->get();
+
+		return $articles->sortByDesc(function($a)
+		{
+			return $a->getNotHelpfulRatings()->count();
+		});
 	}
 
 	public function getMostHelpfulArticles($number = 5)

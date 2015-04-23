@@ -77,4 +77,8 @@ Route::group($adminOptions, function()
 	Route::resource('tag', 'Admin\TagController', ['except' => ['show']]);
 	Route::resource('article', 'Admin\ArticleController', ['except' => ['show']]);
 	Route::resource('review', 'Admin\ReviewController', ['except' => ['destroy']]);
+
+	Route::get('report/not-helpful', [
+		'as'	=> 'admin.report.not-helpful',
+		'uses'	=> 'Admin\ReportController@notHelpful']);
 });

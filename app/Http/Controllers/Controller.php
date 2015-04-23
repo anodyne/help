@@ -25,6 +25,7 @@ abstract class Controller extends BaseController {
 		view()->share('_currentUser', $this->currentUser);
 		view()->share('_icons', config('icons'));
 		view()->share('_reviewCount', app('ReviewRepository')->count());
+		view()->share('_leastHelpfulCount', app('ArticleRepository')->countLeastHelpful());
 	}
 
 	protected function errorUnauthorized($message = false)
