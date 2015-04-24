@@ -98,7 +98,7 @@ class Article extends Model {
 		});
 	}
 
-	public function getNotHelpfulRatings()
+	public function getLeastHelpfulRatings()
 	{
 		return $this->ratings->filter(function($r)
 		{

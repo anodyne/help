@@ -48,7 +48,7 @@
 							<li><a href="{{ route('admin.article.create') }}">Add an Article</a></li>
 							<li class="divider"></li>
 							<li><a href="{{ route('admin.review.index') }}">Review Queue <span class="badge">{{ $_reviewCount }}</span></a></li>
-							<li><a href="{{ route('admin.report.not-helpful') }}">Least Helpful Report <span class="badge">{{ $_reviewCount }}</span></a></li>
+							<li><a href="{{ route('admin.report.least-helpful') }}">Least Helpful Report <span class="badge">{{ $_leastHelpfulCount }}</span></a></li>
 							<li class="divider"></li>
 							<li><a href="{{ route('admin.article.index') }}">Manage Articles</a></li>
 							<li><a href="{{ route('admin.product.index') }}">Manage Products</a></li>

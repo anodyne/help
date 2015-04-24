@@ -116,7 +116,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 		return $articles->sortByDesc(function($a)
 		{
-			return $a->getNotHelpfulRatings()->count();
+			return $a->getLeastHelpfulRatings()->count();
 		});
 	}
 

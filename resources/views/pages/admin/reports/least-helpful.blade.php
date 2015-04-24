@@ -14,7 +14,7 @@
 				<div class="col-md-10">
 					<p class="lead">{!! $article->present()->title !!}</p>
 					<p>
-						{!! label('danger', $article->getNotHelpfulRatings()->count()) !!}
+						{!! label('danger', $article->getLeastHelpfulRatings()->count()) !!}
 						{!! $article->present()->productAsLabel !!}
 						{!! $article->present()->tagsAsLabel !!}
 					</p>

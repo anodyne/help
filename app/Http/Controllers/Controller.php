@@ -24,8 +24,12 @@ abstract class Controller extends BaseController {
 		// Make sure we some variables available on all views
 		view()->share('_currentUser', $this->currentUser);
 		view()->share('_icons', config('icons'));
-		view()->share('_reviewCount', app('ReviewRepository')->count());
-		view()->share('_leastHelpfulCount', app('ArticleRepository')->countLeastHelpful());
+
+		if ($this->currentUser->can('help.admin'))
+		{
+			view()->share('_reviewCount', app('ReviewRepository')->count());
+			view()->share('_leastHelpfulCount', app('ArticleRepository')->countLeastHelpful());
+		}
 	}
 
 	protected function errorUnauthorized($message = false)

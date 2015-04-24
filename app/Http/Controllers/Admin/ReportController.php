@@ -20,12 +20,12 @@ class ReportController extends Controller {
 		$this->beforeFilter('@checkPermissions');
 	}
 
-	public function notHelpful()
+	public function leastHelpful()
 	{
 		// Get any article that has unhelpful ratings
 		$articles = $this->repo->getLeastHelpfulArticles();
 
-		return view('pages.admin.reports.not-helpful', compact('articles'));
+		return view('pages.admin.reports.least-helpful', compact('articles'));
 	}
 
 	public function checkPermissions()

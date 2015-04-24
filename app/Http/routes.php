@@ -78,7 +78,7 @@ Route::group($adminOptions, function()
 	Route::resource('article', 'Admin\ArticleController', ['except' => ['show']]);
 	Route::resource('review', 'Admin\ReviewController', ['except' => ['destroy']]);
 
-	Route::get('report/not-helpful', [
-		'as'	=> 'admin.report.not-helpful',
-		'uses'	=> 'Admin\ReportController@notHelpful']);
+	Route::get('report/least-helpful', [
+		'as'	=> 'admin.report.least-helpful',
+		'uses'	=> 'Admin\ReportController@leastHelpful']);
 });
