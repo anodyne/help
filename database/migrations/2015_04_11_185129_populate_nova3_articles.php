@@ -77,9 +77,39 @@ Since Nova is web-based software, you'll need a browser in order to use it. Thes
 
 Our recommendation is to use __Google Chrome__ (version 30 or higher) or __Mozilla Firefox__ (version 20 or higher). In addition, we also support Safari as well as Internet Explorer 10 and higher. Make sure you have JavaScript and cookies enabled as many of Nova's features require them.", 'keywords' => "php, mysql, server, browser", 'featured' => 1, 'tags' => [1,10]],
 
-			['title' => "Preview Release Changelog", 'slug' => "preview-release-changelog", 'summary' => "", 'content' => "", 'keywords' => "preview, release, changelog", 'featured' => 1, 'tags' => [8]],
+			['title' => "Preview Release Changelog", 'slug' => "preview-release-changelog", 'summary' => "", 'content' => "## Coming in Preview Release 2
 
-			['title' => "Installing the Preview Release", 'slug' => "install-preview-release", 'summary' => "", 'content' => "", 'keywords' => "install, preview, release", 'featured' => 1, 'tags' => [1,3]],
+- Logging in and resetting passwords
+- Basic admin control panel
+- Page Manager
+	- Basic page info
+	- Page content
+- Menu Manager
+
+## What's in Preview Release 1
+
+- Basic technology stack
+- Application architecture
+- Foundational elements
+- Basic themeing elements
+- Setup Center
+	- Fresh install
+	- Uninstall", 'keywords' => "preview, release, changelog", 'featured' => 1, 'tags' => [8]],
+
+			['title' => "Installing the Preview Release", 'slug' => "install-preview-release", 'summary' => "Get a sneak peek into the future of Nova with the preview releases. They're easy to install and let you play around with the new features.", 'content' => "<p class=\"alert alert-warning\">Nova NextGen is provided \"as-is\" and doesn't have any support for it. You're free to ask questions in the forums, but understand that Anodyne will not provide walkthroughs and support for Nova NextGen at this time.</p>
+
+Nova NextGen can be run from any web server running PHP 5.4 or higher with a MySQL, PostgreSQL, or SQLite database. You can also install Nova NextGen on a local server if you're running one, so long as it has PHP and a database.
+
+1. Upload Nova NextGen to your server (or if it's a local server, copy the files to the location where you want it)
+2. Navigate to `http://[yoursite]` and you'll be automatically redirected to the Setup Center
+3. You may be prompted to make certain directories writable in order to continue. Laravel requires having the ability to create files for logging, caching, and other framework operations. You'll need to make the `config` and `storage` directories (as well as all their sub-directories) writable by the web server (777).
+4. Select the option to do a Fresh Install of Nova NextGen and follow the prompts
+
+Once Nova NextGen is installed, you'll be presented with a white screen with the words \"#NovaNextGen\" on it. That's as far as Preview Release 1 goes. In future preview releases, you'll be able to use more of the system as it's built.
+
+_Theme developers:_ Much of the structure for themes is in place now. You can look through the `nova/views` directory to see what's there and read more in the Site Themes overview of the Nova NextGen Vision series.
+
+_Extension developers:_ There hasn't been any work done on extensions yet, but in future preview releases we'll have more stuff for you to play with.", 'keywords' => "install, preview, release", 'featured' => 1, 'tags' => [1,3]],
 
 			//['title' => "", 'slug' => "", 'summary' => "", 'content' => "", 'keywords' => "", 'tags' => []],
 		];
