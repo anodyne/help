@@ -41,6 +41,11 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		return false;
 	}
 
+	public function countLeastHelpful()
+	{
+		return $this->getLeastHelpfulArticles()->count();
+	}
+
 	public function create(array $data)
 	{
 		// Create the article
@@ -73,7 +78,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 	public function find($id)
 	{
-		$query = $this->make(['tags', 'product', 'author']);
+		$query = $this->make(['tags', 'product', 'author', 'ratings']);
 
 		return $query->where('id', '=', $id)->withTrashed()->first();
 	}
@@ -85,7 +90,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 		if ($product)
 		{
-			return $this->model->with(['tags', 'product', 'author'])
+			return $this->model->with(['tags', 'product', 'author', 'ratings'])
 				->product($product)
 				->slug($slug)
 				->first();
@@ -94,8 +99,40 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
 	public function getLatestArticles($number = 5)
 	{
-		return $this->model->with(['tags', 'product', 'author'])
-			->latest()->limit($number)->get();
+		return $this->model->with(['tags', 'product'])
+			->published()
+			->latest()
+			->limit($number)
+			->get();
+	}
+
+	public function getLeastHelpfulArticles()
+	{
+		// Get all the articles that have ratings
+		$articles = $this->model->with(['tags', 'product', 'ratings'])
+			->has('ratings')
+			->published()
+			->get();
+
+		return $articles->sortByDesc(function($a)
+		{
+			return $a->getLeastHelpfulRatings()->count();
+		});
+	}
+
+	public function getMostHelpfulArticles($number = 5)
+	{
+		// Get all the articles that have ratings
+		$articles = $this->model->with(['tags', 'product', 'ratings'])
+			->has('ratings')
+			->published()
+			->limit($number)
+			->get();
+
+		return $articles->sortByDesc(function($a)
+		{
+			return $a->getHelpfulRatings()->count();
+		});
 	}
 
 	public function restore($id)
@@ -119,17 +156,19 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 	public function search($input)
 	{
 		return $this->model->with('author', 'product', 'tags')
+			->published()
 			->where(function($query) use ($input)
 			{
 				$query->where('title', 'like', "%{$input}%")
 					->orWhere('summary', 'like', "%{$input}%")
+					->orWhere('keywords', 'like', "%{$input}%")
 					->orWhere('content', 'like', "%{$input}%");
 			})->paginate(25);
 	}
 
 	public function searchAdvanced(array $input)
 	{
-		$search = $this->make(['author', 'product', 'tags']);
+		$search = $this->make(['product', 'tags'])->published();
 
 		if (array_key_exists('p', $input) and count($input['p']) > 0)
 		{
@@ -140,7 +179,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 		{
 			$search = $search->whereHas('tags', function($query) use ($input)
 			{
-				$query->whereIn('id', $input['t']);
+				$query->whereIn('tags.id', $input['t']);
 			});
 		}
 
@@ -150,6 +189,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 			{
 				$query->where('title', 'like', "%{$input['q']}%")
 					->orWhere('summary', 'like', "%{$input['q']}%")
+					->orWhere('keywords', 'like', "%{$input['q']}%")
 					->orWhere('content', 'like', "%{$input['q']}%");
 			});
 		}

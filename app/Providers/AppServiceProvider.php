@@ -15,6 +15,11 @@ class AppServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->setRepositoryBindings();
+
+		if ($this->app->isDownForMaintenance())
+		{
+			view()->share('_icons', config('icons'));
+		}
 	}
 
 	/**

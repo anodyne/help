@@ -21,7 +21,7 @@ class ReviewController extends Controller {
 		if ($this->currentUser->can('help.admin'))
 		{
 			// Get all the reviews
-			$reviews = $this->repo->all(['article', 'author']);
+			$reviews = $this->repo->all(['article', 'submitter']);
 			
 			return view('pages.admin.articles.reviews.index', compact('reviews'));
 		}
@@ -91,7 +91,7 @@ class ReviewController extends Controller {
 		if ($this->currentUser->can('help.admin'))
 		{
 			// Get the review
-			$review = $this->repo->getById($id, ['article', 'author']);
+			$review = $this->repo->getById($id, ['article', 'submitter']);
 
 			// Get the article
 			$article = $this->repo->getReviewArticle($review);

@@ -21,6 +21,9 @@ class CreateArticleTables extends Migration {
 			$table->string('slug');
 			$table->text('summary');
 			$table->longText('content');
+			$table->text('keywords')->nullable();
+			$table->boolean('featured')->default((int) false);
+			$table->boolean('published')->default((int) false);
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -39,9 +42,9 @@ class CreateArticleTables extends Migration {
 			$table->bigInteger('article_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->string('type')->default('review');
+			$table->text('comments')->nullable();
 			$table->string('resolution')->nullable();
 			$table->text('notes')->nullable();
-			$table->text('comments')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

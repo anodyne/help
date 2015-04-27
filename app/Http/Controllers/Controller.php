@@ -17,14 +17,19 @@ abstract class Controller extends BaseController {
 	public function __construct()
 	{
 		$this->currentUser = (app('auth')->check())
-			? app('auth')->getUser()->load('roles', 'roles.perms')
+			? app('auth')->user()->load('roles', 'roles.perms')
 			: null;
 		$this->request = app('request')->instance();
 
 		// Make sure we some variables available on all views
 		view()->share('_currentUser', $this->currentUser);
 		view()->share('_icons', config('icons'));
-		view()->share('_reviewCount', app('ReviewRepository')->count());
+
+		if ($this->currentUser->can('help.admin'))
+		{
+			view()->share('_reviewCount', app('ReviewRepository')->count());
+			view()->share('_leastHelpfulCount', app('ArticleRepository')->countLeastHelpful());
+		}
 	}
 
 	protected function errorUnauthorized($message = false)

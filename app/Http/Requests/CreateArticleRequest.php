@@ -20,7 +20,6 @@ class CreateArticleRequest extends Request {
 			'product_id' => 'required|exists:products,id',
 			'title' => 'required',
 			'slug' => 'required',
-			'summary' => 'required',
 			'content' => 'required',
 		];
 	}
@@ -32,7 +31,6 @@ class CreateArticleRequest extends Request {
 			'product_id.exists' => "Please select a valid product",
 			'title.required' => "Please enter a title for this article",
 			'slug.required' => "Please enter a slug for this article",
-			'summary.required' => "Please enter a summary for this article",
 			'content.required' => "Please enter the content for this article",
 		];
 	}

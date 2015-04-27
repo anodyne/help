@@ -18,12 +18,21 @@ class MainController extends Controller {
 		$this->repo = $repo;
 	}
 
-	public function index()
+	public function index(ProductRepositoryInterface $productRepo, TagRepositoryInterface $tagRepo)
 	{
-		$latest = $this->repo->getLatestArticles();
-		$helpful = [];
+		// Get the products
+		$products = $productRepo->all();
 
-		return view('pages.main', compact('latest', 'helpful'));
+		// Get the tags
+		$tags = $tagRepo->all();
+
+		// Get the newest articles
+		$newest = $this->repo->getLatestArticles(6);
+
+		// Get the helpful articles
+		$helpful = $this->repo->getMostHelpfulArticles(6);
+
+		return view('pages.main', compact('products', 'tags', 'newest', 'helpful'));
 	}
 
 	public function showProduct(ProductRepositoryInterface $productRepo, $product)
@@ -31,10 +40,16 @@ class MainController extends Controller {
 		// Get the product
 		$product = $productRepo->getBySlug($product);
 
-		// Get the product's articles
-		$articles = $productRepo->getProductArticles($product);
+		// Get the product's newest articles
+		$newest = $productRepo->getProductNewestArticles($product);
 
-		return view('pages.product', compact('articles', 'product'));
+		// Get the product's most helpful articles
+		$helpful = $productRepo->getProductHelpfulArticles($product);
+
+		// Get the product's featured articles
+		$featured = $productRepo->getProductFeaturedArticles($product);
+
+		return view('pages.product', compact('newest', 'product', 'helpful', 'featured'));
 	}
 
 	public function showTag(TagRepositoryInterface $tagRepo, $tag)

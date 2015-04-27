@@ -15,7 +15,7 @@
 		<div ng-cloak>
 			<div class="visible-xs visible-sm">
 				<p><a href="{{ route('admin.article.create') }}" class="btn btn-primary btn-lg btn-block">Add an Article</a></p>
-				<p><a href="{{ route('admin.article.create') }}" class="btn btn-default btn-lg btn-block">Article Review Queue</a></p>
+				<p><a href="{{ route('admin.review.index') }}" class="btn btn-default btn-lg btn-block">Article Review Queue</a></p>
 			</div>
 			<div class="visible-md visible-lg">
 				<div class="btn-toolbar">
@@ -23,7 +23,7 @@
 						<a href="{{ route('admin.article.create') }}" class="btn btn-primary">Add an Article</a>
 					</div>
 					<div class="btn-group">
-						<a href="{{ route('admin.article.create') }}" class="btn btn-default">Article Review Queue</a>
+						<a href="{{ route('admin.review.index') }}" class="btn btn-default">Article Review Queue</a>
 					</div>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 								<label class="control-label">By Product</label>
 								<div id="productCheckboxes" ng-repeat="product in productsGroup">
 									<div class="checkbox">
-										<label class="text-sm"><input type="checkbox" ng-model="useProducts[product]"> {% product %}</label>
+										<label><input type="checkbox" ng-model="useProducts[product]"> {% product %}</label>
 									</div>
 								</div>
 							</div>
@@ -48,7 +48,7 @@
 								<label class="control-label">By Tag</label>
 								<div id="tagCheckboxes" ng-repeat="tag in tagsGroup">
 									<div class="checkbox">
-										<label class="text-sm"><input type="checkbox" ng-model="useTags[tag]"> {% tag %}</label>
+										<label><input type="checkbox" ng-model="useTags[tag]"> {% tag %}</label>
 									</div>
 								</div>
 							</div>
@@ -86,6 +86,9 @@
 								<div class="visible-xs visible-sm">
 									<div class="row">
 										<div class="col-sm-6">
+											<p><a href="{% article.links.view %}" class="btn btn-default btn-lg btn-block">View</a></p>
+										</div>
+										<div class="col-sm-6">
 											<p><a href="{% article.links.edit %}" class="btn btn-default btn-lg btn-block">Edit</a></p>
 										</div>
 										<div class="col-sm-6" ng-hide="{% article.isTrashed %}">
@@ -98,6 +101,9 @@
 								</div>
 								<div class="visible-md visible-lg">
 									<div class="btn-toolbar pull-right">
+										<div class="btn-group">
+											<a href="{% article.links.view %}" class="btn btn-default">View</a>
+										</div>
 										<div class="btn-group">
 											<a href="{% article.links.edit %}" class="btn btn-default">Edit</a>
 										</div>

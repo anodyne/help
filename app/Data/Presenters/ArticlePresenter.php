@@ -36,12 +36,12 @@ class ArticlePresenter extends Presenter {
 
 	public function rating()
 	{
-		# code...
+		return (int) $this->entity->getHelpfulRatings()->count();
 	}
 
 	public function ratingAsLabel()
 	{
-		return partial('rating', ['content' => 15]);
+		return partial('rating', ['content' => $this->rating()]);
 	}
 
 	public function summary()

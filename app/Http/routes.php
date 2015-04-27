@@ -36,6 +36,14 @@ Route::post('article/rate', [
 	'as'		=> 'article.rate',
 	'uses'		=> 'ArticleController@rate',
 	'middleware'=> 'auth']);
+Route::post('article/share', [
+	'as'		=> 'article.share',
+	'uses'		=> 'ArticleController@share',
+	'middleware'=> 'auth']);
+Route::post('article/review', [
+	'as'		=> 'article.review',
+	'uses'		=> 'ArticleController@review',
+	'middleware'=> 'auth']);
 
 $adminOptions = [
 	'prefix'		=> 'admin',
@@ -69,4 +77,8 @@ Route::group($adminOptions, function()
 	Route::resource('tag', 'Admin\TagController', ['except' => ['show']]);
 	Route::resource('article', 'Admin\ArticleController', ['except' => ['show']]);
 	Route::resource('review', 'Admin\ReviewController', ['except' => ['destroy']]);
+
+	Route::get('report/least-helpful', [
+		'as'	=> 'admin.report.least-helpful',
+		'uses'	=> 'Admin\ReportController@leastHelpful']);
 });

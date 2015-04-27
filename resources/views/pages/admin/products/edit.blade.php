@@ -48,6 +48,13 @@
 		</div>
 
 		<div class="form-group">
+			<label class="control-label col-md-2">Description</label>
+			<div class="col-md-5">
+				{!! Form::textarea('description', null, ['class' => 'form-control input-lg', 'rows' => 5]) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
 			<div class="col-md-5 col-md-offset-2">
 				<div class="visible-xs visible-sm">
 					{!! Form::button("Update Product", ['type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block']) !!}

@@ -150,6 +150,13 @@ header {
 		letter-spacing: 0.01em;
 		outline: none;
 
+		small {
+			font-size: 24px;
+			font-weight: 300;
+			text-transform: lowercase;
+			font-variant: small-caps;
+		}
+
 		&:hover {
 			text-decoration: none;
 		}
@@ -235,7 +242,7 @@ section {
 		color: @color-primary;
 	}
 
-	h2, h3 {
+	h2, h3, h4 {
 		margin-top: 0;
 
 		font-family: @font-special;
@@ -245,7 +252,7 @@ section {
 	}
 
 	h3 {
-		color: @color-primary-bright;
+		color: darken(@color-primary-bright, 5%);
 	}
 
 	h4 {
@@ -366,7 +373,7 @@ footer {
 }
 
 form {
-	label {
+	.control-label {
 		font-weight: 600;
 		font-family: @font-special;
 		color: @color-gray-dark;
@@ -377,11 +384,11 @@ form {
 		.rounded(@border-radius);
 	}
 
-	.checkbox-inline, .radio-inline {
+	/*.checkbox-inline, .radio-inline {
 		font-weight: 400;
 		font-family: @font-base;
 		font-size: @font-size-sm;
-	}
+	}*/
 
 	.help-block {
 		font-size: @font-size-sm;
@@ -437,6 +444,14 @@ form {
 	}
 }
 
+.text-success {
+	color: @color-success;
+
+	&:hover {
+		color: @color-success;
+	}
+}
+
 .text-warning {
 	color: @color-warning-dark;
 
@@ -474,6 +489,14 @@ form {
 	&.btn-link {
 		color: @color-primary;
 		font-size: @font-size;
+	}
+
+	&.btn-default {
+		border-color: @color-gray-light;
+	}
+
+	&.btn-dark {
+		.btn-pseudo-states(@color-white, @color-gray-blue, @color-gray-blue);
 	}
 }
 
@@ -522,11 +545,21 @@ form {
 	}
 
 	&.label-primary {
-		background-color: @color-primary-bright;
+		background-color: @color-primary;
 	}
 
 	&.label-lg {
 		font-size: @font-size;
+	}
+
+	.icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		.icn {
+			font-size: 14px !important;
+		}
 	}
 }
 
@@ -535,18 +568,58 @@ form {
 	font-weight: 500;
 	font-size: @font-size;
 
+	a {
+		color: @color-warning-dark;
+		border-bottom: 1px solid;
+
+		&:hover {
+			color: @color-warning-dark;
+			text-decoration: none;
+		}
+	}
+
 	.alert-variant(@color-warning-bright, @color-warning-light, @color-warning-dark);
 	.rounded(@border-radius);
 
 	&.alert-info {
+		a {
+			color: @color-info-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				color: @color-info-dark;
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-info-bright, @color-info-light, @color-info-dark);
 	}
 
 	&.alert-success {
+		a {
+			color: @color-success-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				color: @color-success-dark;
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-success-bright, @color-success-light, @color-success-dark);
 	}
 
 	&.alert-danger {
+		a {
+			color: @color-danger-dark;
+			border-bottom: 1px solid;
+
+			&:hover {
+				color: @color-danger-dark;
+				text-decoration: none;
+			}
+		}
+
 		.alert-variant(@color-danger-bright, @color-danger-light, @color-danger-dark);
 	}
 }
@@ -750,45 +823,6 @@ form {
 	}
 }
 
-.xtra {
-	position: relative;
-	margin-bottom: @spacing;
-
-	background: #ebebeb;
-
-	.rounded(@border-radius);
-	.box-shadow(~"inset 0 0 0 transparent, inset 0 0 1px rgba(0, 0, 0, .5)");
-
-	.xtra-img {
-		.border-radius(@border-radius, @border-radius, 0, 0);
-	}
-
-	.xtra-avatar {
-		position: relative;
-		display: block;
-		margin: -50px auto 0 auto;
-
-		border: 3px solid #ebebeb;
-	}
-
-	.xtra-heading {
-		margin: 10px;
-		line-height: @line-height;
-
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		-ms-text-overflow: ellipsis;
-		text-align: center;
-	}
-
-	.xtra-desc {
-		padding: 10px;
-
-		font-size: @font-size-sm;
-	}
-}
-
 .avatar {
 	height: 100px;
 	width: 100px;
@@ -864,12 +898,24 @@ form {
 	}
 }
 
+pre {
+	background-color: @color-subtle;
+	border: 1px solid @color-gray-light;
+
+	.rounded(@border-radius);
+}
+
 code {
 	background-color: @color-subtle;
 	border: 1px solid @color-gray-light;
 	color: @color-primary-light;
 
 	.rounded(@border-radius);
+}
+
+pre > code {
+	background: none;
+	border: none;
 }
 
 .img-rounded {
@@ -1016,6 +1062,19 @@ hr.partial-split {
 	}
 }
 
+.list-group {
+	margin: @spacing 0;
+	
+	.list-group-item {
+		&:first-child {
+			.border-radius(@border-radius, @border-radius, 0, 0);
+		}
+		&:last-child {
+			.border-radius(0, 0, @border-radius, @border-radius);
+		}
+	}
+}
+
 .uk-htmleditor-navbar {
 	background: @color-subtle !important;
 	border-color: #ccc !important;
@@ -1041,4 +1100,14 @@ hr.partial-split {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
+}
+
+.article-block {
+	.article-title {
+		display: block;
+		
+		font-family: @font-special;
+		font-size: @font-size-md;
+		font-weight: 600;
+	}
 }

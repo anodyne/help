@@ -11,7 +11,7 @@ class Article extends Model {
 	protected $table = 'articles';
 
 	protected $fillable = ['product_id', 'user_id', 'title', 'slug', 'summary',
-		'content'];
+		'content', 'keywords', 'featured', 'published'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -74,9 +74,51 @@ class Article extends Model {
 		$query->where('product_id', $id);
 	}
 
+	public function scopePublished($query)
+	{
+		$query->where('published', (int) true);
+	}
+
 	public function scopeSlug($query, $slug)
 	{
 		$query->where('slug', $slug);
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Methods
+	|---------------------------------------------------------------------------
+	*/
+
+	public function getHelpfulRatings()
+	{
+		return $this->ratings->filter(function($r)
+		{
+			return (int) $r->rating > 0;
+		});
+	}
+
+	public function getLeastHelpfulRatings()
+	{
+		return $this->ratings->filter(function($r)
+		{
+			return (int) $r->rating === 0;
+		});
+	}
+
+	public function getUserRating(User $user)
+	{
+		return $this->ratings->filter(function($r) use ($user)
+		{
+			return (int) $r->user_id === (int) $user->id;
+		})->first();
+	}
+
+	public function userHasRated(User $user)
+	{
+		if ($this->getUserRating($user)) return true;
+
+		return false;
 	}
 
 }

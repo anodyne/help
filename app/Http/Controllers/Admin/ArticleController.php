@@ -64,6 +64,9 @@ class ArticleController extends Controller {
 		// Get the article
 		$article = $this->repo->find($id);
 
+		// Start the article tags array
+		$articleTags= [];
+
 		// Get the article's tags
 		foreach ($article->tags as $tag)
 		{

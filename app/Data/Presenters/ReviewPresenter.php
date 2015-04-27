@@ -10,6 +10,11 @@ class ReviewPresenter extends Presenter {
 		return $this->entity->article->present()->title;
 	}
 
+	public function comments()
+	{
+		return Markdown::parse($this->entity->comments);
+	}
+
 	public function notes()
 	{
 		return Markdown::parse($this->entity->notes);
@@ -17,7 +22,7 @@ class ReviewPresenter extends Presenter {
 
 	public function submitter()
 	{
-		return $this->entity->author->present()->name;
+		return $this->entity->submitter->present()->name;
 	}
 
 	public function type($capitalize = false)

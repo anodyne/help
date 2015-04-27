@@ -37,7 +37,7 @@ class Tag extends Model {
 
 	public function articles()
 	{
-		return $this->belongsToMany('Article', 'articles_tags');
+		return $this->belongsToMany('Article', 'articles_tags')->published();
 	}
 
 }

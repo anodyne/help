@@ -7,9 +7,9 @@
 	</div>
 
 	<div class="form-group">
-		<label class="control-label col-md-3">Message to Submitter</label>
+		<label class="control-label col-md-3">Notes</label>
 		<div class="col-md-9">
-			{!! Form::textarea('message', null, ['class' => 'form-control input-lg']) !!}
+			{!! Form::textarea('notes', null, ['class' => 'form-control input-lg']) !!}
 		</div>
 	</div>
 

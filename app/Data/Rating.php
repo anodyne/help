@@ -31,4 +31,20 @@ class Rating extends Model {
 		return $this->belongsTo('User', 'user_id');
 	}
 
+	/*
+	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeGetArticle($query, Article $article)
+	{
+		$query->where('article_id', $article->id);
+	}
+
+	public function scopeGetUser($query, User $user)
+	{
+		$query->where('user_id', $user->id);
+	}
+
 }

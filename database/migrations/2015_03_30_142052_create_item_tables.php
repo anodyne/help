@@ -18,6 +18,7 @@ class CreateItemTables extends Migration {
 			$table->string('name');
 			$table->string('slug');
 			$table->boolean('display')->default((int) true);
+			$table->text('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -51,9 +52,10 @@ class CreateItemTables extends Migration {
 		$products = [
 			['name' => "Nova 1", 'slug' => "nova-1"],
 			['name' => "Nova 2", 'slug' => "nova-2"],
-			['name' => "Nova 3", 'slug' => "nova-3"],
+			['name' => "Nova NextGen", 'slug' => "nova-3", 'description' => "Nova NextGen is the culmination of everything we've learned about RPG management since the day we released the first version of the SIMM Management System. Every version, be it SMS or Nova, has been a little better than the one that came before it. When thinking about the future though, we came to the inescapable conclusion that Nova is broken. Creating software that does something and does it well is only half the battle; every iteration needs to be better, smarter, faster, and more efficient than the previous. In order to do that, we had to re-think what Nova is, what it should be, and what it ultimately can be. This is the next generation."],
 			['name' => "AnodyneXtras", 'slug' => "xtras"],
 			['name' => "Anodyne Help Center", 'slug' => "help-center"],
+			['name' => "Anodyne Productions", 'slug' => "anodyne"],
 		];
 
 		foreach ($products as $product)
@@ -69,6 +71,10 @@ class CreateItemTables extends Migration {
 			['name' => "FAQ"],
 			['name' => "Skinning"],
 			['name' => "Developer Resource"],
+			['name' => "Changelog"],
+			['name' => "Reference"],
+			['name' => "General Information"],
+			['name' => "Error"],
 		];
 
 		foreach ($tags as $tag)

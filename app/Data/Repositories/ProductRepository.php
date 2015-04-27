@@ -58,6 +58,33 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 		return $product->articles;
 	}
 
+	public function getProductFeaturedArticles(Model $product)
+	{
+		return $product->articles->filter(function($a)
+		{
+			return (bool) $a->featured === true;
+		})->sortBy('title')->load('product', 'tags', 'ratings');
+	}
+
+	public function getProductHelpfulArticles(Model $product, $number = 5)
+	{
+		return $product->articles->filter(function($a)
+		{
+			return $a->ratings->count() > 0;
+		})->sortByDesc(function($s)
+		{
+			return $s->getHelpfulRatings()->count();
+		})->load('tags', 'product', 'ratings')->take($number);
+	}
+
+	public function getProductNewestArticles(Model $product, $number = 5)
+	{
+		return $product->articles->sortByDesc(function($s)
+		{
+			return $s->created_at;
+		})->load('tags', 'product', 'ratings')->take($number);
+	}
+
 	public function restore($id)
 	{
 		// Get the product

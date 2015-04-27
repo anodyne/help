@@ -41,19 +41,18 @@
 				<li class="dropdown">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="user-icon">{!! $_icons['user'] !!}</span> {{ $_currentUser->present()->name }} <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-menu-right dd">
-						@if ($_currentUser->can('help.article.create'))
-							<li><a href="{{ route('admin.article.create') }}">Create New Article</a></li>
-							<li class="divider"></li>
-						@endif
 						<li><a href="{{ config('anodyne.links.www') }}admin/users/{{ $_currentUser->username }}/edit">Edit My Profile</a></li>
 
 						@if ($_currentUser->can('help.admin'))
 							<li class="divider"></li>
+							<li><a href="{{ route('admin.article.create') }}">Add an Article</a></li>
+							<li class="divider"></li>
+							<li><a href="{{ route('admin.review.index') }}">Review Queue <span class="badge">{{ $_reviewCount }}</span></a></li>
+							<li><a href="{{ route('admin.report.least-helpful') }}">Least Helpful Report <span class="badge">{{ $_leastHelpfulCount }}</span></a></li>
+							<li class="divider"></li>
 							<li><a href="{{ route('admin.article.index') }}">Manage Articles</a></li>
 							<li><a href="{{ route('admin.product.index') }}">Manage Products</a></li>
 							<li><a href="{{ route('admin.tag.index') }}">Manage Tags</a></li>
-							<li class="divider"></li>
-							<li><a href="{{ route('admin.review.index') }}">Review Queue <span class="badge">{{ $_reviewCount }}</span></a></li>
 						@endif
 
 						<li class="divider"></li>

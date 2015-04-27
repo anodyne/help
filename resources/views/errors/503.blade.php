@@ -1,41 +1,11 @@
-<html>
-	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('layouts.master')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('title')
+	Down For Maintenance
+@stop
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+@section('content')
+	<h1>Down For Maintenance</h1>
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				font-size: 72px;
-				margin-bottom: 40px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Be right back.</div>
-			</div>
-		</div>
-	</body>
-</html>
+	<p class="alert alert-warning">The Help Center is currently down for maintenance. We apologize for the inconvenience. Please follow us on <a href="http://facebook.com/anodyneproductions" target="_blank">Facebook</a> and/or <a href="https://twitter.com/anodyneprod" target="_blank">Twitter</a> for an update on when the Help Center will be available again.</p>
+@stop

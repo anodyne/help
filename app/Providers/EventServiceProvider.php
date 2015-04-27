@@ -11,8 +11,11 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		'Help\Events\ReviewWasCreated' => [
+			'Help\Handlers\Events\NotifyReviewCreated',
+		],
+		'Help\Events\ReviewWasUpdated' => [
+			'Help\Handlers\Events\NotifyReviewSubmitter',
 		],
 	];
 

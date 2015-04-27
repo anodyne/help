@@ -14,14 +14,14 @@ class ReviewRepository extends BaseRepository implements ReviewRepositoryInterfa
 
 	public function all(array $with = [])
 	{
-		$query = $this->make($with);
+		$query = $this->make($with)->open();
 
 		return $query->orderBy('created_at', 'asc')->get();
 	}
 
 	public function count()
 	{
-		return $this->model->count();
+		return $this->model->open()->count();
 	}
 
 	public function create(array $data)

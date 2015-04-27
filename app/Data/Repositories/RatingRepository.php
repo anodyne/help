@@ -36,4 +36,12 @@ class RatingRepository extends BaseRepository implements RatingRepositoryInterfa
 		]);
 	}
 
+	public function delete(Article $article, User $user)
+	{
+		$rating = $this->model->getArticle($article)->getUser($user)->first();
+
+		if ($rating)
+			$rating->delete();
+	}
+
 }

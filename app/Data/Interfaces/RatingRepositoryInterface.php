@@ -7,5 +7,6 @@ interface RatingRepositoryInterface extends BaseRepositoryInterface {
 	public function count(Article $article);
 	public function countHelpful(Article $article);
 	public function create(Article $article, User $user, $rating);
+	public function delete(Article $article, User $user);
 
 }
