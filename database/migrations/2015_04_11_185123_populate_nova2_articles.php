@@ -45,7 +45,7 @@ class PopulateNova2Articles extends Migration {
 	protected function articles()
 	{
 		return [
-			['title' => "Installing Nova 2", 'slug' => "install", 'summary' => "", 'content' => "Installing Nova 2 on your server is a painless process that should only take a few minutes if you have all the pieces you need at the start. In order to do a fresh install of Nova 2, you'll need the information below. If you don't know any of this, contact your host to get the information.
+			['title' => "Installing Nova 2", 'slug' => "install", 'summary' => "Learn how to get up and running with Nova 2 in just a few minutes.", 'content' => "Installing Nova 2 on your server is a painless process that should only take a few minutes if you have all the pieces you need at the start. In order to do a fresh install of Nova 2, you'll need the information below. If you don't know any of this, contact your host to get the information.
 
 * Your database location (localhost or some other means of connecting)
 * Your database name
@@ -95,7 +95,7 @@ At the end of the installation Nova will attempt to change several permissions i
 * `app/cache`
 * `app/logs`", 'keywords' => 'install', 'featured' => 1, 'tags' => [1,3]],
 			
-			['title' => "Updating Nova 2", 'slug' => "update", 'summary' => "", 'content' => "## Backup
+			['title' => "Updating Nova 2", 'slug' => "update", 'summary' => "When a newer version of Nova is available, updating to it couldn't be easier. Learn how here.", 'content' => "## Backup
 
 Before you attempt to update Nova 2, please make sure you backup both your files and database. While we don't anticipate any problems, if something does happen, you'll have a solid backup of your system to fall back to.
 
@@ -115,7 +115,7 @@ The update process works just like the update process in Nova 1. The first step 
 
 Let the update process do its thing and when you're done, you'll be back on the front Nova page and ready to use Nova again.", 'keywords' => 'update', 'featured' => 1, 'tags' => [1,4]],
 			
-			['title' => "Upgrading from Nova 1 to Nova 2", 'slug' => "upgrade", 'summary' => "", 'content' => "The process of updating from Nova 1 to Nova 2 is pretty simple and straightforward, but it's important that you follow these instructions otherwise something could go wrong and you'll have to start all over again, or worst-case scenario, you lose your data (yet another reason you should __always__ backup first).
+			['title' => "Upgrading from Nova 1 to Nova 2", 'slug' => "upgrade", 'summary' => "Moving your game from Nova 1 to Nova 2 is a little bit of a process, but this guide will walk you through the process step-by-step", 'content' => "The process of updating from Nova 1 to Nova 2 is pretty simple and straightforward, but it's important that you follow these instructions otherwise something could go wrong and you'll have to start all over again, or worst-case scenario, you lose your data (yet another reason you should __always__ backup first).
 
 ## 1. Getting Started
 
@@ -194,7 +194,7 @@ If you have questions about a specific MOD working in Nova 2, you should contact
 
 <p class=\"alert alert-warning\">Before you re-apply a MOD, you should verify that the MOD is necessary any more. For instance, one of Nova 2's new features is that you can use previously disallowed HTML tags like script and embed (for YouTube videos, for example) in site messages. This means that any MODs where you've overridden view files to get some code or video in to a page no longer need that MOD. If you have questions about these kinds of things, post something on the our forums.</p>", 'keywords' => 'upgrade, nova 1, mods, wiki, skins', 'featured' => 1, 'tags' => [1,3,7]],
 			
-			['title' => "How to Backup Your Nova Site", 'slug' => "backup", 'summary' => "", 'content' => "There's always a lot of talking about making sure to back up Nova before attempting to update it or upgrade from SMS. So how exactly do you backup Nova? Creating a backup is pretty straightforward. Before you attempt to update Nova, you should create a backup of your system in the event something goes wrong. The last thing you want is to lose data and be out of luck.
+			['title' => "How to Backup Your Nova Site", 'slug' => "backup", 'summary' => "We talk about backing up your site all the time, but how do you do that?", 'content' => "There's always a lot of talking about making sure to back up Nova before attempting to update it or upgrade from SMS. So how exactly do you backup Nova? Creating a backup is pretty straightforward. Before you attempt to update Nova, you should create a backup of your system in the event something goes wrong. The last thing you want is to lose data and be out of luck.
 
 <p class=\"alert alert-warning\"><strong>Note:</strong> We can't stress enough the importance of a solid backup!</p>
 
@@ -214,7 +214,7 @@ Now that you have your complete backup, you should zip your backup up into a zip
 
 That's it. You've successfully backed up Nova!", 'keywords' => 'backup, phpmyadmin', 'featured' => 1, 'tags' => [2]],
 			
-			['title' => "Nova 2 Requirements", 'slug' => "requirements", 'summary' => "", 'content' => "We've worked hard to make sure Nova's requirements are as broad as possible so as many people as possible can use it for their games. Still, there are a few requirements that you should verify before installing Nova 2. In the event the server you're going to be installing Nova on doesn't support some or all of these things, you should contact your hosting provider and ask them about the possibility of upgrading these items.
+			['title' => "Nova 2 Requirements", 'slug' => "requirements", 'summary' => "The server and browser requirements for Nova 2", 'content' => "We've worked hard to make sure Nova's requirements are as broad as possible so as many people as possible can use it for their games. Still, there are a few requirements that you should verify before installing Nova 2. In the event the server you're going to be installing Nova on doesn't support some or all of these things, you should contact your hosting provider and ask them about the possibility of upgrading these items.
 
 ## PHP
 
@@ -654,7 +654,7 @@ As with any update, we've taken time to fix several nagging issues in Nova, some
 * During fresh installs, the user ID constraint wasn't consistent with the rest of the user ID fields throughout the system.
 * Under some circumstances, users could edit posts they weren't even a part of. (Thanks to evshell18 on the Anodyne forums for pointing this out and getting the ball rolling on a fix.)", 'tags' => [8]],
 
-			['title' => "Changing Language Items", 'slug' => "", 'summary' => "", 'content' => "Generally speaking, the language items we've set up for Nova suffice for 99% of sims, but every so often, someone wants to do something a little different. While it isn't as simple as doing something in the control panel, modifying Nova's files to use different terms is really easy.
+			['title' => "Changing Language Items", 'slug' => "", 'summary' => "Learn how to change specific language items to get your game terminology exactly how you want it", 'content' => "Generally speaking, the language items we've set up for Nova suffice for 99% of sims, but every so often, someone wants to do something a little different. While it isn't as simple as doing something in the control panel, modifying Nova's files to use different terms is really easy.
 
 ## The Problem
 
@@ -693,7 +693,7 @@ Now that you've made your changes, make sure the `app_lang.php` file is saved an
 
 It's important to note that menu items don't respect the language files since they're stored in the database. If you want to change something in a menu item, simply edit the menu item.", 'keywords' => 'language, i10n, translate, internationalization', 'tags' => [2]],
 
-			['title' => "Adding an Image to a Page", 'slug' => "", 'summary' => "", 'content' => "The concept behind seamless substitution is pretty simple: Nova will use its system default for icons, pages and Javascript files unless the same file exists in either the current skin or the base override, in which case, Nova will use that instead.
+			['title' => "Adding an Image to a Page", 'slug' => "", 'summary' => "Learn how to use Seamless Substitution to add an image to a system page", 'content' => "The concept behind seamless substitution is pretty simple: Nova will use its system default for icons, pages and Javascript files unless the same file exists in either the current skin or the base override, in which case, Nova will use that instead.
 
 ## The Problem
 
@@ -719,7 +719,7 @@ This same process will work for any view file in Nova!
 
 <p class=\"alert alert-warning\">Why do I need to copy the file to another location? Why not just change the file in the <em>_base</em> folder? The short answer is <strong>because putting it in the application folder is the right way to do it</strong> (kinda like your Mom telling you \"because I said so\"). The longer answer is that the <em>_base</em> folder in the Nova core will get replaced with every update, so unless you want to update your views after every update, best to use seamless substitution and put your changes in the application folder.</p>", 'keywords' => 'seamless substitution, image', 'tags' => [2,7]],
 
-			['title' => "Changing Icons", 'slug' => "", 'summary' => "", 'content' => "The concept behind seamless substitution is pretty simple: Nova will use its system default for icons, pages and Javascript files unless the same file exists in either the current skin or the base override, in which case, Nova will use that instead.
+			['title' => "Changing Icons", 'slug' => "", 'summary' => "Learn how to use Seamless Substitution to swap out icons that are used in Nova", 'content' => "The concept behind seamless substitution is pretty simple: Nova will use its system default for icons, pages and Javascript files unless the same file exists in either the current skin or the base override, in which case, Nova will use that instead.
 
 ## The Problem
 
@@ -737,7 +737,7 @@ In order to get this working, simply upload your new image to `app/views/_base_o
 
 This relates to using the base override only. You can also substitute on a per-skin level which is described in more detail in the skin development section.", 'keywords' => 'seamless substitution, icon, image', 'tags' => [2,7]],
 
-			['title' => "Changing the Name of the Application Folder", 'slug' => "", 'summary' => "", 'content' => "## The Problem
+			['title' => "Changing the Name of the Application Folder", 'slug' => "", 'summary' => "Sometimes you may want to change the name of the application folder to align with the name of your sim. Learn how here.", 'content' => "## The Problem
 
 You're toying around with the idea of running several Nova installations from the same directory and you can't have multiple application folders (or maybe you just want to change it for the hell of it).
 
@@ -759,7 +759,7 @@ Once you've saved and uploaded the index file back up to your server, you can na
 
 <p class=\"alert alert-warning\"><strong>Important:</strong> Since this change doesn't happen in the application directory, it's possible a change in the future to the index file may force you to re-apply this change after an update.</p>", 'keywords' => 'application, folder, name, rename', 'tags' => [2,7]],
 
-			['title' => "Changing the Index File", 'slug' => "", 'summary' => "", 'content' => "## The Problem
+			['title' => "Changing the Index File", 'slug' => "", 'summary' => "If you need to change the index file to avoid conflicts with other software, this guide will show you how", 'content' => "## The Problem
 
 Your sim is running a static site, static page, forums or something else (or hell, you just want a new file name) and you want to change the name of the front file Nova uses from `index.php` to `nova.php`.
 
@@ -781,7 +781,7 @@ Next, we need to update the config file to point to the right bootstrap file. Op
 
 All this does is overrides the default `index.php` option with the new bootstrap file. Once you've saved and uploaded the config file back up to your server, you can navigate to your new file and you should see Nova as usual.", 'keywords' => 'index, name, rename, bootstrap', 'tags' => [2,7]],
 
-			['title' => "Creating a New Page", 'slug' => "", 'summary' => "", 'content' => "Oftentimes, the built-in pages in Nova just won't be enough and you need to create a new page for you sim to hold new information.
+			['title' => "Creating a New Page", 'slug' => "", 'summary' => "Nova comes with the basics, but how do you go about creating an all new page?", 'content' => "Oftentimes, the built-in pages in Nova just won't be enough and you need to create a new page for you sim to hold new information.
 
 ## The Problem
 
@@ -855,7 +855,7 @@ As you can see, it's __really__ straightforward. The only thing we're doing is u
 
 From here, you can make whatever changes you want to the view file and continue to add awards. Because we've done all this work in the `application` directory, we don't have to worry about losing our changes when we make an update either!", 'keywords' => 'page, add, create, new', 'tags' => [2,7]],
 
-			['title' => "Versioning in Nova", 'slug' => "", 'summary' => "", 'content' => "For transparency and insight into our release cycle, and for striving to maintain backwards compatibility, Nova will be maintained under the Semantic Versioning guidelines as much as possible. Releases will be numbered with the follow format:
+			['title' => "Versioning in Nova", 'slug' => "", 'summary' => "This article explains how we version Nova and what constitutes major, minor, and patch version bumps", 'content' => "For transparency and insight into our release cycle, and for striving to maintain backwards compatibility, Nova will be maintained under the Semantic Versioning guidelines as much as possible. Releases will be numbered with the follow format:
 
     {major}.{minor}.{patch}
 
@@ -874,7 +874,7 @@ These version numbers are constructed with the following guidelines:
 
 For more information on SemVer, please visit [SemVer.org](http://semver.org/).", 'keywords' => 'versions', 'tags' => [9]],
 
-			['title' => "Nova URLs", 'slug' => "", 'summary' => "", 'content' => "A typical URL in Nova _without_ mod_rewrite enabled:
+			['title' => "Nova URLs", 'slug' => "", 'summary' => "Nova's URLs are the key to figuring out where things are. Learn how to decipher URLs and find stuff in the Nova core.", 'content' => "A typical URL in Nova _without_ mod_rewrite enabled:
 
     http://localhost/nova/index.php/main/credits/1
 
@@ -901,7 +901,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AN
 
 Anodyne Productions reserves the right, at their discretion, to collect anonymous statistics from your hosting environment for informational purposes related to future updates to the Software as well as future products.", 'keywords' => 'license', 'featured' => 1, 'tags' => [9]],
 
-			['title' => "Nova 2 File Structure", 'slug' => "file-structure", 'summary' => "", 'content' => "In order to fully understand how Nova works, the best place to start is the file structure. Nova's file structure is significantly different from SMS and getting used to these changes can be daunting. To help you get used to the new file layout, a brief walkthrough of the root, application and core folders is below.
+			['title' => "Nova 2 File Structure", 'slug' => "file-structure", 'summary' => "This breakdown will explain what is where in the Nova 2 file structure", 'content' => "In order to fully understand how Nova works, the best place to start is the file structure. Nova's file structure is significantly different from SMS and getting used to these changes can be daunting. To help you get used to the new file layout, a brief walkthrough of the root, application and core folders is below.
 
 ## The Root
 
@@ -957,7 +957,7 @@ Anodyne Productions reserves the right, at their discretion, to collect anonymou
 		* __models__ - The base models used by Nova are stored here. If you need to modify an existing model, copy it (or the method(s) you need) to the application's models folder and edit from there.
 		* __views__ - The base views used by Nova are stored here. If you need to modify an existing view, copy it to the specific skin you want it to apply to or the `_base_override` folder and edit from there.", 'keywords' => 'files, structure', 'tags' => [9]],
 
-			['title' => "Genres in Nova", 'slug' => "genres", 'summary' => "", 'content' => "One of Nova's defining features is the ability to use genres outside of Star Trek, a genre which has been at the heart of SMS since its initial release in 2005. While Star Trek genres still play a large role in Nova, it's no longer the only genre you can use. So what goes in to a genre? There are a lot of pieces, but once you understand those pieces, you'll be well on your way to using genres to their full potential and maybe even creating your own genre installations!
+			['title' => "Genres in Nova", 'slug' => "genres", 'summary' => "Learn how genres work and where all the files go for a genre", 'content' => "One of Nova's defining features is the ability to use genres outside of Star Trek, a genre which has been at the heart of SMS since its initial release in 2005. While Star Trek genres still play a large role in Nova, it's no longer the only genre you can use. So what goes in to a genre? There are a lot of pieces, but once you understand those pieces, you'll be well on your way to using genres to their full potential and maybe even creating your own genre installations!
 
 ## Files
 
@@ -993,7 +993,7 @@ If you're interested in creating a genre file, we recommend that you duplicate o
 
     \"Alternately, you could switch to use double quotes so you don't have to escape any single quotes.\"", 'keywords' => 'genre', 'tags' => [9]],
 
-			['title' => "Configuring Nova", 'slug' => "", 'summary' => "", 'content' => "## Genre
+			['title' => "Configuring Nova", 'slug' => "", 'summary' => "Nova comes with its own config file that you can use to change some of the more advanced settings for the system", 'content' => "## Genre
 
 One of the most important configuration variables, the genre option will tell Nova what position, department, and rank data to use when installing the system as well as when accessing the database. If this is blank, the system will not install! If you want to change your genre after you've installed Nova, you'll need to change this variable to the three letter genre code for the genre you're going to.
 
@@ -1015,7 +1015,7 @@ Nova's integrated mini wiki, Thresher, has a single config file that allows admi
 
 <p class=\"alert alert-warning\"><strong>Note:</strong> Once you have selected a parse type, you shouldn't change it. If you change the parse type, your wiki pages may not display properly.</p>", 'keywords' => 'config, configure, rss, thresher, wiki, metadata, seo, search engine', 'tags' => [9]],
 
-			['title' => "Configuring CodeIgniter", 'slug' => "", 'summary' => "", 'content' => "## Basic System Settings
+			['title' => "Configuring CodeIgniter", 'slug' => "", 'summary' => "CodeIgniter, the foundation of Nova, can be configured to do a lot of different things. This guide walks you through all the CI configuration items.", 'content' => "## Basic System Settings
 
 ### Base URL
 
@@ -1135,7 +1135,7 @@ CodeIgniter provides an FTP class that Nova uses for trying to adjust file permi
 
 From the FTP config file located at `app/config/ftp.php`, you can set your host name, username, password and port for use by CodeIgniter in connecting to your server for advanced operations. If you change settings in this file, make sure the file's permissions on the server are set to an appropriately safe level (664 should be fine).", 'keywords' => 'config, configure, codeigniter, ci, email, mail, uri, ftp, security, xss, routes, output, compression, session, class prefix, hook, autoloading, database', 'tags' => [9]],
 
-			['title' => "Upgrading from SMS 2", 'slug' => "sms-upgrade", 'summary' => "", 'content' => "So you've been using SMS 2 since it came out or since you started your game. When Nova came out, you were hesitant to make the jump, but now that 2.0 is out, you decide that it's time to make the leap and start using Nova. But wait, what about the _years_ of information you've accumulated in your SMS site? You don't want to lose that. We've already thought about that and have a simple solution to upgrade most (there are some pieces it just isn't possible to upgrade easily) of your SMS data to the newer Nova format.
+			['title' => "Upgrading from SMS 2", 'slug' => "sms-upgrade", 'summary' => "Learn how to move your data from SMS 2 to the newer Nova 2 format", 'content' => "So you've been using SMS 2 since it came out or since you started your game. When Nova came out, you were hesitant to make the jump, but now that 2.0 is out, you decide that it's time to make the leap and start using Nova. But wait, what about the _years_ of information you've accumulated in your SMS site? You don't want to lose that. We've already thought about that and have a simple solution to upgrade most (there are some pieces it just isn't possible to upgrade easily) of your SMS data to the newer Nova format.
 
 ## What Will/Won't Be Upgraded?
 
@@ -1443,79 +1443,73 @@ The deck listing will not be upgraded.
 </div>
 </div>
 
-<h2>Before You Start</h2>
+## Before You Start
 
 <p>Upgrading from SMS to Nova 2 is a much different process than upgrading from SMS to Nova 1 (for those who did that process). With 10 fewer steps and a vastly improved user interface, doing a full upgrade from SMS 2 should take less than 10 minutes to do (this will depend on how much data you have to upgrade). In order to do an upgrade from SMS, you'll need to be running SMS 2.6.9 or higher and have the information below. If you don't know any of this, contact your host to get the information.</p>
 
-<ul>
-	<li>Your database location (localhost or some other means of connecting)</li>
-	<li>Your database name</li>
-	<li>Your database username and password (these may or may not be the same as your FTP username and password)</li>
-	<li>Your FTP username and password</li>
-</ul>
+* Your database location (localhost or some other means of connecting)
+* Your database name
+* Your database username and password (these may or may not be the same as your FTP username and password)
+* Your FTP username and password
 
-<h2>Step 1 <small>Backup and Remove</small></h2>
+## Step 1 <small>Backup and Remove</small>
 
-<p>Before you get started, you should export your SMS database from phpMyAdmin as a .sql file in case something happens during the upgrade process. Don't drop the tables or do anything like that since you'll still need all the information in those database tables. You should also backup all your SMS files to your desktop in case you need them. Once you've done both backups, delete all the SMS files on your server.</p>
+Before you get started, you should export your SMS database from phpMyAdmin as a .sql file in case something happens during the upgrade process. Don't drop the tables or do anything like that since you'll still need all the information in those database tables. You should also backup all your SMS files to your desktop in case you need them. Once you've done both backups, delete all the SMS files on your server.
 
-<h2>Step 2 <small>Upload Nova</small></h2>
+## Step 2 <small>Upload Nova</small>
 
-<p>Next, you'll need to upload the Nova 2 files up to your server where the SMS files were. If you're not sure how to upload the files to your server, contact your host for help with this step of the process or do a Google search.</p>
+Next, you'll need to upload the Nova 2 files up to your server where the SMS files were. If you're not sure how to upload the files to your server, contact your host for help with this step of the process or do a Google search.
 
-<h2>Step 3 <small>Configure Nova</small></h2>
+## Step 3 <small>Configure Nova</small>
 
-<p>Before beginning the upgrade, you can choose to change any of Nova's configuration options in the config files located in the <code>app/config</code> directory. This is completely optional and Nova 2 will install fine without any changes to any files in the <code>config</code> directory.</p>
+Before beginning the upgrade, you can choose to change any of Nova's configuration options in the config files located in the `app/config` directory. This is completely optional and Nova 2 will install fine without any changes to any files in the `config` directory.
 
-<h2>Step 4 <small>Setting Up the Database Connection</small></h2>
+## Step 4 <small>Setting Up the Database Connection</small>
 
-<p>This is the part where everyone panics and says it's too complicated and difficult to get started. This is also the part where we prove you wrong.</p>
+This is the part where everyone panics and says it's too complicated and difficult to get started. This is also the part where we prove you wrong.
 
-<p>Setting up your connection to the database is dead simple. All you need to do is open your browser and navigate to the location on your server where you uploaded the Nova files. If your server was <strong>http://example.com</strong> and you uploaded Nova 2 to the root directory (often called www or public_html), then you'd navigate to <strong>http://example.com</strong> and you'd be automatically redirected to the Config Setup page. From this page, you'll be able to tell Nova the information for connecting to your database and then Nova will 1) attempt to connect to the database and make sure it can, then 2) write that information to a connection file. Pretty easy, huh?</p>
+Setting up your connection to the database is dead simple. All you need to do is open your browser and navigate to the location on your server where you uploaded the Nova files. If your server was `http://example.com` and you uploaded Nova 2 to the root directory (often called `www` or `public_html`), then you'd navigate to `http://example.com` and you'd be automatically redirected to the Config Setup page. From this page, you'll be able to tell Nova the information for connecting to your database and then Nova will 1) attempt to connect to the database and make sure it can, then 2) write that information to a connection file. Pretty easy, huh?
 
-<p>If for some reason your server doesn't support creating files from a web script, the setup process will show you the code to copy and paste into the database connection file.</p>
+If for some reason your server doesn't support creating files from a web script, the setup process will show you the code to copy and paste into the database connection file.
 
-<h3>Explaining the Options</h3>
+### Explaining the Options
 
-<ul>
-	<li><strong>Database Name</strong> &ndash; The name of the database you're trying to connect to and install Nova to in to. If you don't know the name of your database, contact your host.</li>
-	<li><strong>Username</strong> &ndash; The username used to connect to your database. This may or may not be the same as your FTP username, so if you don't know, contact your host.</li>
-	<li><strong>Password</strong> &ndash; The password used to connect to your database. This may or may not be the same as your FTP password, so if you don't know, contact your host.</li>
-	<li><strong>Database Host</strong> &ndash; This is where the database lives. 99% of the time, this will be <em>localhost</em> though if your host has a different setup, they may have sent you a different host name. If you aren't sure about this, contact your host.</li>
-	<li><strong>Table Prefix</strong> &ndash; This is the word or initials that will prefix all table names. This helps to keep Nova's tables together and allows you to install other things in to the database without causing conflicts. This is set to <em>nova_</em> by default.</li>
-</ul>
+* __Database Name__ - The name of the database you're trying to connect to and install Nova to in to. If you don't know the name of your database, contact your host.
+* __Username__ - The username used to connect to your database. This may or may not be the same as your FTP username, so if you don't know, contact your host.
+* __Password__ - The password used to connect to your database. This may or may not be the same as your FTP password, so if you don't know, contact your host.
+* __Database Host__ - This is where the database lives. 99% of the time, this will be `localhost` though if your host has a different setup, they may have sent you a different host name. If you aren't sure about this, contact your host.
+* __Table Prefix__ - This is the word or initials that will prefix all table names. This helps to keep Nova's tables together and allows you to install other things in to the database without causing conflicts. This is set to `nova_` by default.
 
-<h2>Step 5 <small>Upgrade to Nova</small></h2>
+## Step 5 <small>Upgrade to Nova</small>
 
-<p>When you start in to the upgrade process, the first thing that will happen is that Nova 2 will be installed as normal, except you won't be prompted to create your character and set the system settings. Once Nova is installed, there are 3 distinct sections to the upgrade process, but don't worry, they're all very straightforward.</p>
+When you start in to the upgrade process, the first thing that will happen is that Nova 2 will be installed as normal, except you won't be prompted to create your character and set the system settings. Once Nova is installed, there are 3 distinct sections to the upgrade process, but don't worry, they're all very straightforward.
 
-<h3>Select What to Upgrade</h3>
+### Select What to Upgrade
 
-<p>For anyone who attempted (or did) the SMS to Nova 1 upgrade, you'll quickly note the lack of a need to update a config file before starting. The new upgrade process handles everything right in the site. You'll be presented with a list of components and whether you want to upgrade those components to Nova. By default, it will upgrade everything in the list, but you can pick and choose based on your preferences. The upgrade process is smart enough to know when something depends on something else. For instance, if you didn't want characters and users upgrade, the upgrade process won't let you upgrade posts, logs and new items since they depend on characters and users.</p>
+For anyone who attempted (or did) the SMS to Nova 1 upgrade, you'll quickly note the lack of a need to update a config file before starting. The new upgrade process handles everything right in the site. You'll be presented with a list of components and whether you want to upgrade those components to Nova. By default, it will upgrade everything in the list, but you can pick and choose based on your preferences. The upgrade process is smart enough to know when something depends on something else. For instance, if you didn't want characters and users upgrade, the upgrade process won't let you upgrade posts, logs and new items since they depend on characters and users.
 
-<p>Once you've set which things you want to upgrade, you can click on the button to run the first step. An indicator will point out which item is currently running. Once it's finished running icons will be displayed to indicate whether the upgrade of that component was successful, failed or has errors or warnings. Once the final component has run, you'll be able to click the button and move on to the next step.</p>
+Once you've set which things you want to upgrade, you can click on the button to run the first step. An indicator will point out which item is currently running. Once it's finished running icons will be displayed to indicate whether the upgrade of that component was successful, failed or has errors or warnings. Once the final component has run, you'll be able to click the button and move on to the next step.
 
-<h3>Upgrade the Components</h3>
+### Upgrade the Components
 
-<p>After doing the initial upgrade, there's follow-up work that needs to be done. All that's required for this step is to click the button. Like the first part of the process, an indicator will show you what's running an an icon will let you know its status after it's finished running. Once all the items have been run, you'll be able to click the button and move on to the next step.</p>
+After doing the initial upgrade, there's follow-up work that needs to be done. All that's required for this step is to click the button. Like the first part of the process, an indicator will show you what's running an an icon will let you know its status after it's finished running. Once all the items have been run, you'll be able to click the button and move on to the next step.
 
-<h3>Set Password and Administrator(s)</h3>
+### Set Password and Administrator(s)
 
-<p>Because Nova uses a different method of hashing passwords, none of the SMS passwords will work. The final step of the upgrade process is to specify what you want the new password to be. This password is case sensitive and is the password you'll need to send to the entire crew. The first time a player logs in, they'll be prompted to update their password.</p>
+Because Nova uses a different method of hashing passwords, none of the SMS passwords will work. The final step of the upgrade process is to specify what you want the new password to be. This password is case sensitive and is the password you'll need to send to the entire crew. The first time a player logs in, they'll be prompted to update their password.
 
-<p>In addition, you can select the members of the crew that should have system administrator rights. Once you've set the password and selected the users, click the button to run the process. Once the process has finished running (you'll know because icons will indicate the success/failure of the two final steps), you'll be able to continue on to your site.</p>
+In addition, you can select the members of the crew that should have system administrator rights. Once you've set the password and selected the users, click the button to run the process. Once the process has finished running (you'll know because icons will indicate the success/failure of the two final steps), you'll be able to continue on to your site.
 
-<h2>Step 6 <small>That's It?</small></h2>
+## Step 6 <small>That's It?</small>
 
-<p>Yep, that's it. Pretty easy, huh?</p>
+Yep, that's it. Pretty easy, huh?
 
-<p>One final thing to note is that at the end of the upgrade Nova will attempt to change several permissions in order to ensure all the backup and upload features work properly. It's possible that your host will have turned off the functions necessary to do this, so if you run in to any problems uploading to Nova, you'll need to change the file permissions on several directories to ensure they're writable (777). If you don't know how to change file permissions, contact your host. The following directories (and their sub-directories) need to be writable:</p>
+One final thing to note is that at the end of the upgrade Nova will attempt to change several permissions in order to ensure all the backup and upload features work properly. It's possible that your host will have turned off the functions necessary to do this, so if you run in to any problems uploading to Nova, you'll need to change the file permissions on several directories to ensure they're writable (777). If you don't know how to change file permissions, contact your host. The following directories (and their sub-directories) need to be writable:
 
-<ul>
-	<li>app/assets/images</li>
-	<li>app/assets/backups</li>
-	<li>app/cache</li>
-	<li>app/logs</li>
-</ul>", 'keywords' => "sms, upgrade", 'tags' => [1,3]],
+* app/assets/images
+* app/assets/backups
+* app/cache
+* app/logs", 'keywords' => "sms, upgrade", 'tags' => [1,3]],
 
 			//['title' => "", 'slug' => "", 'summary' => "", 'content' => "", 'keywords' => "", 'tags' => []],
 		];
