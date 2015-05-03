@@ -25,7 +25,7 @@ abstract class Controller extends BaseController {
 		view()->share('_currentUser', $this->currentUser);
 		view()->share('_icons', config('icons'));
 
-		if ($this->currentUser->can('help.admin'))
+		if ($this->currentUser and $this->currentUser->can('help.admin'))
 		{
 			view()->share('_reviewCount', app('ReviewRepository')->count());
 			view()->share('_leastHelpfulCount', app('ArticleRepository')->countLeastHelpful());
