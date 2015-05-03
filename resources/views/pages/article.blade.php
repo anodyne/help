@@ -82,8 +82,10 @@
 @stop
 
 @section('modals')
-	{!! modal(['id' => 'review', 'header' => "Review Article Request", 'body' => view('pages.article-review', compact('article'))]) !!}
-	{!! modal(['id' => 'share', 'header' => "Share Article", 'body' => view('pages.article-share', compact('article'))]) !!}
+	@if ($_currentUser)
+		{!! modal(['id' => 'review', 'header' => "Review Article Request", 'body' => view('pages.article-review', compact('article'))]) !!}
+		{!! modal(['id' => 'share', 'header' => "Share Article", 'body' => view('pages.article-share', compact('article'))]) !!}
+	@endif
 @stop
 
 @section('scripts')
