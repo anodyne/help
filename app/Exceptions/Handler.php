@@ -2,7 +2,6 @@
 
 use Log, Auth, Request, Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler {
 
@@ -12,7 +11,8 @@ class Handler extends ExceptionHandler {
 	 * @var array
 	 */
 	protected $dontReport = [
-		'Symfony\Component\HttpKernel\Exception\HttpException'
+		'Symfony\Component\HttpKernel\Exception\HttpException',
+		'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
 	];
 
 	/**
@@ -25,21 +25,11 @@ class Handler extends ExceptionHandler {
 	 */
 	public function report(Exception $e)
 	{
-		if ($e instanceof NotFoundHttpException)
-		{
-			Log::notice("404 Not Found");
-			Log::notice("URL: ".Request::instance()->fullUrl());
-			Log::notice("Referrer: ".@$_SERVER['HTTP_REFERER']);
+		Log::error("URL: ".Request::instance()->fullUrl());
 
-			if (Auth::check())
-				Log::notice("USER: ".Auth::user()->name);
-		}
-		else
+		if (Auth::check())
 		{
-			Log::error("URL: ".Request::instance()->fullUrl());
-
-			if (Auth::check())
-				Log::error("USER: ".Auth::user()->name);
+			Log::error("USER: ".Auth::user()->name);
 		}
 
 		return parent::report($e);
