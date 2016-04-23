@@ -142,8 +142,6 @@ return [
 		'Collective\Html\HtmlServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Help\Providers\AppServiceProvider',
-		'Help\Providers\BusServiceProvider',
-		'Help\Providers\ConfigServiceProvider',
 		'Help\Providers\EventServiceProvider',
 		'Help\Providers\RouteServiceProvider',
 
