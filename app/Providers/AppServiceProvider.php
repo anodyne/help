@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider {
 		// Grab the aliases from the config
 		$this->aliases = $this->app['config']['app.aliases'];
 
-		if ($this->app['env'] == 'local')
+		if ($this->app['config']['app.env'] == 'local')
 		{
 			if (class_exists('Barryvdh\Debugbar\ServiceProvider'))
 			{
@@ -68,21 +68,16 @@ class AppServiceProvider extends ServiceProvider {
 		// Loop through the repositories and do the binding
 		foreach ($bindings as $binding)
 		{
-			$this->bindRepository($binding);
+			// Set the concrete and abstract names
+			$abstract = "{$binding}RepositoryInterface";
+			$concrete = "{$binding}Repository";
+
+			// Bind to the container
+			$this->app->bind(
+				[$abstract => $this->aliases[$abstract]],
+				$this->aliases[$concrete]
+			);
 		}
-	}
-
-	private function bindRepository($item)
-	{
-		// Set the concrete and abstract names
-		$abstract = "{$item}RepositoryInterface";
-		$concrete = "{$item}Repository";
-
-		// Bind to the container
-		$this->app->bind(
-			[$abstract => $this->aliases[$abstract]],
-			$this->aliases[$concrete]
-		);
 	}
 
 }
