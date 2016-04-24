@@ -2,6 +2,7 @@
 
 use Review as Model,
 	ReviewRepositoryInterface;
+use Help\Events;
 
 class ReviewRepository extends BaseRepository implements ReviewRepositoryInterface {
 
@@ -26,7 +27,11 @@ class ReviewRepository extends BaseRepository implements ReviewRepositoryInterfa
 
 	public function create(array $data)
 	{
-		return $this->model->create($data);
+		$review = $this->model->create($data);
+
+		event(new Events\ReviewWasCreated($review));
+
+		return $review;
 	}
 
 	public function delete($id)
