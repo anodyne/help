@@ -15,18 +15,25 @@ class ArticleController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
-
-		// Before filter to check if the user has permissions
-		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		return view('pages.admin.articles.index');
 	}
 
 	public function create()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Get the products
 		$products = app('ProductRepository')->listAll('name', 'id');
 
@@ -38,6 +45,11 @@ class ArticleController extends Controller {
 
 	public function store(Requests\CreateArticleRequest $request)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Build the input array
 		$input = array_merge(Input::all(), ['user_id' => $this->currentUser->id]);
 
@@ -55,6 +67,11 @@ class ArticleController extends Controller {
 
 	public function edit($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Get the products
 		$products = app('ProductRepository')->listAll('name', 'id');
 
@@ -79,6 +96,11 @@ class ArticleController extends Controller {
 
 	public function update(Requests\EditArticleRequest $request, $id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Build the input array
 		$input = Input::all();
 
@@ -122,6 +144,11 @@ class ArticleController extends Controller {
 
 	public function destroy($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Remove the article
 		$article = $this->repo->delete($id);
 
@@ -153,6 +180,11 @@ class ArticleController extends Controller {
 
 	public function restore($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage articles!");
+		}
+
 		// Restore the article
 		$article = $this->repo->restore($id);
 
@@ -181,14 +213,6 @@ class ArticleController extends Controller {
 		}
 
 		return json_encode(['code' => 1, 'slug' => $slug]);
-	}
-
-	public function checkPermissions()
-	{
-		if ( ! $this->currentUser->can('help.admin'))
-		{
-			return $this->errorUnauthorized("You do not have permission to manage articles!");
-		}
 	}
 
 }

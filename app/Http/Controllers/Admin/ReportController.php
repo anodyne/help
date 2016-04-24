@@ -15,25 +15,19 @@ class ReportController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
-
-		// Before filter to check if the user has permissions
-		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function leastHelpful()
-	{
-		// Get any article that has unhelpful ratings
-		$articles = $this->repo->getLeastHelpfulArticles();
-
-		return view('pages.admin.reports.least-helpful', compact('articles'));
-	}
-
-	public function checkPermissions()
 	{
 		if ( ! $this->currentUser->can('help.admin'))
 		{
 			return $this->errorUnauthorized("You do not have permission to view reports!");
 		}
+
+		// Get any article that has unhelpful ratings
+		$articles = $this->repo->getLeastHelpfulArticles();
+
+		return view('pages.admin.reports.least-helpful', compact('articles'));
 	}
 
 }
