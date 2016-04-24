@@ -33,6 +33,7 @@ class NotifyReviewSubmitter {
 			{
 				$msg->to($review->submitter->email)
 					->subject(config('anodyne.email.subject')." Article Review Request Completed")
+					->from(config('anodyne.email.address'), config('anodyne.email.name'))
 					->replyTo($article->author->email);
 			});
 		}
