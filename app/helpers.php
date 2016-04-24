@@ -81,6 +81,6 @@ if ( ! function_exists('partial'))
 {
 	function partial($file, array $data = [])
 	{
-		return view("partials.{$file}", $data);
+		return view("partials.{$file}", $data)->render();
 	}
 }
