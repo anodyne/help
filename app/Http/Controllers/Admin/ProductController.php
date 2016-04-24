@@ -16,13 +16,15 @@ class ProductController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
-
-		// Before filter to check if the user has permissions
-		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Get all the products
 		$products = $this->repo->allWithTrashed();
 
@@ -31,11 +33,21 @@ class ProductController extends Controller {
 
 	public function create()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		return view('pages.admin.products.create');
 	}
 
 	public function store(Requests\CreateProductRequest $request)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Create the product
 		$product = $this->repo->create(Input::all());
 
@@ -50,6 +62,11 @@ class ProductController extends Controller {
 
 	public function edit($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Get the product
 		$product = $this->repo->getById($id);
 
@@ -63,6 +80,11 @@ class ProductController extends Controller {
 
 	public function update(Requests\EditProductRequest $request, $id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Update the product
 		$product = $this->repo->update($id, Input::all());
 
@@ -94,6 +116,11 @@ class ProductController extends Controller {
 
 	public function destroy($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Remove the product
 		$this->repo->delete($id);
 
@@ -127,6 +154,11 @@ class ProductController extends Controller {
 
 	public function restore($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Restore the product
 		$product = $this->repo->restore($id);
 
@@ -137,14 +169,6 @@ class ProductController extends Controller {
 		flash_success("Product was restored.");
 
 		return redirect()->route('admin.product.index');
-	}
-
-	public function checkPermissions()
-	{
-		if ( ! $this->currentUser->can('help.admin'))
-		{
-			return $this->errorUnauthorized("You do not have permission to manage products!");
-		}
 	}
 
 }

@@ -73,7 +73,7 @@
 				<div class="col-md-9 col-md-pull-3">
 					<div class="data-table data-table-bordered data-table-striped">
 						<div class="row" ng-repeat="article in filteredArticles | filter:search">
-							<div class="col-md-9">
+							<div class="col-md-8">
 								<p class="lead">{% article.title %}</p>
 								<p>
 									<span class="label label-success">{% article.product %}</span>
@@ -82,7 +82,7 @@
 									</span>
 								</p>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="visible-xs visible-sm">
 									<div class="row">
 										<div class="col-sm-6">

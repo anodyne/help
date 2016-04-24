@@ -16,13 +16,15 @@ class TagController extends Controller {
 		parent::__construct();
 
 		$this->repo = $repo;
-
-		// Before filter to check if the user has permissions
-		$this->beforeFilter('@checkPermissions');
 	}
 
 	public function index()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage tags!");
+		}
+
 		// Get all the tags
 		$tags = $this->repo->allWithTrashed();
 
@@ -31,11 +33,21 @@ class TagController extends Controller {
 
 	public function create()
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+		
 		return view('pages.admin.tags.create');
 	}
 
 	public function store(Requests\CreateTagRequest $request)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Create the tag
 		$tag = $this->repo->create(Input::all());
 
@@ -50,6 +62,11 @@ class TagController extends Controller {
 
 	public function edit($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Get the tag
 		$tag = $this->repo->find($id);
 
@@ -63,6 +80,11 @@ class TagController extends Controller {
 
 	public function update(Requests\EditTagRequest $request, $id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Update the tag
 		$tag = $this->repo->update($id, Input::all());
 
@@ -94,6 +116,11 @@ class TagController extends Controller {
 
 	public function destroy($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Remove the tag
 		$this->repo->delete($id);
 
@@ -127,6 +154,11 @@ class TagController extends Controller {
 
 	public function restore($id)
 	{
+		if ( ! $this->currentUser->can('help.admin'))
+		{
+			return $this->errorUnauthorized("You do not have permission to manage products!");
+		}
+
 		// Restore the tag
 		$tag = $this->repo->restore($id);
 
@@ -137,14 +169,6 @@ class TagController extends Controller {
 		flash_success("Tag was restored.");
 
 		return redirect()->route('admin.tag.index');
-	}
-
-	public function checkPermissions()
-	{
-		if ( ! $this->currentUser->can('help.admin'))
-		{
-			return $this->errorUnauthorized("You do not have permission to manage tags!");
-		}
 	}
 
 }

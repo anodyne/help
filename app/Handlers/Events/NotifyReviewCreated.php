@@ -25,12 +25,14 @@ class NotifyReviewCreated {
 			'article'	=> $article->title,
 			'link'		=> route('article.show', [$article->product->slug, $article->slug]),
 			'comments'	=> $review->comments,
+			'type'		=> $review->type,
 		];
 
 		Mail::queue('emails.article-review-created', $data, function($msg) use ($review, $article)
 		{
-			$msg->to(config('anodyne.email.admin'))
+			$msg->to(config('anodyne.email.address'))
 				->subject(config('anodyne.email.subject')." Article Review Request Submitted")
+				->from($review->submitter->email, $review->submitter->name)
 				->replyTo($review->submitter->email);
 		});
 	}

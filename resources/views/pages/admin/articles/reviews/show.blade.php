@@ -9,7 +9,7 @@
 
 	<div class="visible-xs visible-sm">
 		<p><a href="{{ route('admin.review.index') }}" class="btn btn-default btn-lg btn-block">Back to the Queue</a></p>
-		<p><a href="#" class="btn btn-default btn-lg btn-block">View Article</a></p>
+		<p><a href="{{ route('article.show', [$article->product->slug, $article->slug]) }}" class="btn btn-default btn-lg btn-block">View Article</a></p>
 		<p><a href="{{ route('admin.article.edit', [$article->id]) }}" class="btn btn-default btn-lg btn-block">Edit Article</a></p>
 	</div>
 	<div class="visible-md visible-lg">
@@ -18,7 +18,7 @@
 				<a href="{{ route('admin.review.index') }}" class="btn btn-default">Back to the Queue</a>
 			</div>
 			<div class="btn-group">
-				<a href="#" class="btn btn-default">View Article</a>
+				<a href="{{ route('article.show', [$article->product->slug, $article->slug]) }}" class="btn btn-default">View Article</a>
 				<a href="{{ route('admin.article.edit', [$article->id]) }}" class="btn btn-default">Edit Article</a>
 			</div>
 		</div>

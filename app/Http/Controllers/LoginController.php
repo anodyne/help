@@ -3,11 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Help\Http\Controllers\Controller;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class LoginController extends Controller {
-
-	use ValidatesRequests;
 
 	protected $auth;
 

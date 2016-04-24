@@ -15,6 +15,8 @@ return [
 
 	'debug' => env('APP_DEBUG'),
 
+	'env' => env('APP_ENV', 'production'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application URL
@@ -113,12 +115,11 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
 		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-		'Illuminate\Routing\ControllerServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
@@ -142,8 +143,6 @@ return [
 		'Collective\Html\HtmlServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Help\Providers\AppServiceProvider',
-		'Help\Providers\BusServiceProvider',
-		'Help\Providers\ConfigServiceProvider',
 		'Help\Providers\EventServiceProvider',
 		'Help\Providers\RouteServiceProvider',
 
