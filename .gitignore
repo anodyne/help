@@ -8,3 +8,4 @@ storage/framework/compiled.php
 
 *.sublime-project
 *.sublime-workspace
+*.codekit
