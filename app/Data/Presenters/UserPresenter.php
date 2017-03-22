@@ -17,8 +17,8 @@ class UserPresenter extends Presenter {
 		$url = Gravatar::image(
 			$this->entity->email,
 			500,
-			null
-			null
+			null,
+			null,
 			null,
 			true
 		)."&r=pg&d={$defaultImage}";
