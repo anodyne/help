@@ -14,7 +14,15 @@ class UserPresenter extends Presenter {
 			: 'retro' ;
 
 		// Build the URL for the avatar
-		$url = Gravatar::image($this->entity->email, 500)."&r=pg&d={$defaultImage}";
+		$url = Gravatar::image(
+			$this->entity->email,
+			500,
+			null
+			null
+			null,
+			true
+		)."&r=pg&d={$defaultImage}";
+		//$url = Gravatar::image($this->entity->email, 500)."&r=pg&d={$defaultImage}";
 
 		// Merge all the options to pass them to the partial
 		$mergedOptions = $options + ['url' => $url];

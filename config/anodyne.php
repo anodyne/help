@@ -17,8 +17,8 @@ return [
 
 		'www'		=> env('LINKS_WWW', 'http://anodyne-productions.com/'),
 		'nova'		=> env('LINKS_NOVA', 'http://anodyne-productions.com/nova'),
-		'forums'	=> env('LINKS_FORUMS', 'http://forums.anodyne-productions.com/'),
-		'xtras'		=> env('LINKS_XTRAS', 'http://xtras.anodyne-productions.com/'),
+		'forums'	=> env('LINKS_FORUMS', 'https://forums.anodyne-productions.com/'),
+		'xtras'		=> env('LINKS_XTRAS', 'https://xtras.anodyne-productions.com/'),
 
 	],
 
