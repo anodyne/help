@@ -20,6 +20,7 @@
 					<li><a href="{{ config('anodyne.links.xtras') }}">Xtras</a></li>
 					<li><a href="{{ config('anodyne.links.forums') }}">Forums</a></li>
 					<li><a href="{{ route('home') }}">Help</a></li>
+					<li><a href="https://discord.gg/7WmKUks" target="_blank">Discord</a></li>
 					<li><a href="#" class="js-contact">Contact</a></li>
 					<li><a href="{{ config('anodyne.links.www') }}register">Register</a></li>
 					<li><a href="{{ route('login') }}">Log In</a></li>
@@ -71,6 +72,7 @@
 			<li><a href="{{ config('anodyne.links.xtras') }}">Xtras<div class="arrow"></div></a></li>
 			<li><a href="{{ config('anodyne.links.forums') }}">Forums<div class="arrow"></div></a></li>
 			<li><a href="{{ route('home') }}" class="active">Help<div class="arrow"></div></a></li>
+			<li><a href="https://discord.gg/7WmKUks" target="_blank">Discord<div class="arrow"></div></a></li>
 			<!--<li><a href="http://learn.anodyne-productions.com">Learn<div class="arrow"></div></a></li>-->
 			<li class="visible-sm"><a href="#" class="js-contact">Contact</a></li>
 			<li class="visible-sm"><a href="{{ config('anodyne.links.www') }}register">Register</a></li>
